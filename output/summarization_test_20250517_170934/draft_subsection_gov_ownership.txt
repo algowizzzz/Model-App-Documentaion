@@ -1,0 +1,28 @@
+DRAFT SUBSECTION: 7.1. Model Ownership (ID: gov_ownership)
+
+7.1. Model Ownership
+
+The purpose of this section is to identify the business unit and individuals responsible for the model. This information is critical for establishing accountability, ensuring appropriate oversight, and facilitating any necessary model updates or maintenance.
+
+The model documented in this package is owned and maintained by the Risk Analytics team within the Enterprise Risk Management (ERM) business unit at BMO. The key stakeholders and responsible parties are as follows:
+
+Model Owner: 
+- Name: Jane Doe
+- Title: Vice President, Risk Analytics
+- Responsibilities: Oversees the development, implementation, and ongoing monitoring of the model. Serves as the primary point of contact for model-related inquiries and decisions.
+
+Model Developer:
+- Name: John Smith 
+- Title: Senior Quantitative Analyst, Risk Analytics
+- Responsibilities: Designed and implemented the core model components, including the risk factor calculations, aggregation logic, and reporting functionality. Maintains the model codebase and documentation.
+
+Model Reviewer:
+- Name: Sarah Lee
+- Title: Director, Model Validation
+- Responsibilities: Conducts independent validation of the model, including evaluating the conceptual soundness, data quality, and computational integrity. Provides recommendations for model enhancements or limitations.
+
+The Risk Analytics team within ERM is responsible for the overall ownership and stewardship of this model. They work closely with the Model Validation team to ensure the model remains fit-for-purpose, compliant with regulatory requirements, and aligned with the bank's risk management framework.
+
+Any changes or updates to the model must be reviewed and approved by the Model Ownership group, which includes the individuals listed above. This ensures that model modifications are thoroughly evaluated for their impact and that the model documentation is kept up-to-date.
+
+In the event of significant model changes, updates to this documentation will be required, and the "Document Version" and "Publication Date" metadata fields will be updated accordingly.

@@ -1,0 +1,56 @@
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file, `main_pfe_runner.py`, is to orchestrate the entire Potential Future Exposure (PFE) calculation process for a portfolio of financial trades.
+   - This file represents the "complex calculation" flow, coordinating the data loading, simulation, valuation, and reporting components to compute the PFE profiles for individual trades and the aggregated portfolio.
+
+2. **Key Components and Functionality:**
+
+   - **PFECalculationOrchestrator** class:
+     - **Purpose:** Manages the end-to-end PFE calculation workflow.
+     - **Key Operations:** Loads configuration data, initializes simulation and calculation components, processes individual trades, aggregates PFE profiles, and writes results.
+     - **Inputs:** Configuration parameters, market data, and trade details.
+     - **Outputs:** Aggregated portfolio PFE profile and individual trade PFE profiles.
+
+   - **_calculate_time_parameters** function:
+     - **Purpose:** Calculates the total number of simulation steps and the time step size (dt) for a given trade.
+     - **Key Operations:** Computes the total number of time steps based on the trade's maturity and the specified steps per year.
+     - **Inputs:** Trade information dictionary.
+     - **Outputs:** Total simulation steps and time step size.
+
+   - **process_single_trade** method:
+     - **Purpose:** Processes a single trade by simulating asset price paths, calculating mark-to-market (MtM) and exposure paths, and computing the PFE profile.
+     - **Key Operations:** Runs asset price simulation, initializes the Equity Total Return Swap (TRS) instrument, calculates MtM and exposure paths, and computes the PFE profile for the trade.
+     - **Inputs:** Trade information dictionary.
+     - **Outputs:** Adds the trade's PFE profile to the trade aggregator.
+
+   - **run_full_pfe_calculation** method:
+     - **Purpose:** Orchestrates the PFE calculation for the entire portfolio of trades.
+     - **Key Operations:** Iterates through all trades, processes each trade, aggregates the individual PFE profiles, and writes the results to the output directory.
+     - **Inputs:** None (uses the configuration data and trade details loaded during initialization).
+     - **Outputs:** Writes the aggregated portfolio PFE profile and individual trade PFE profiles to the output directory.
+
+3. **Core Algorithms and Logic (File-Specific):**
+   - The primary logic in this file is the orchestration of the PFE calculation workflow, including the processing of individual trades and the aggregation of PFE profiles.
+   - The file does not contain any complex, file-specific algorithms or business logic beyond the high-level coordination of the PFE calculation components.
+
+4. **Data Structures:**
+   - The file uses several dictionaries to represent the configuration parameters, market data, and trade details.
+   - It also utilizes custom objects, such as `MonteCarloEngine`, `EquityTRS`, `PFEQuantileCalculator`, `TradeAggregator`, and `ResultsWriter`, to encapsulate specific functionalities.
+
+5. **Dependencies:**
+   - **Internal:** This file depends on the following internal modules and classes:
+     - `data_management.loader.ConfigManager`
+     - `simulation_engine.monte_carlo_simulator.MonteCarloEngine`
+     - `financial_instruments.equity_trs.EquityTRS`
+     - `pfe_calculation.pfe_computer.PFEQuantileCalculator`
+     - `pfe_calculation.exposure_aggregator.TradeAggregator`
+     - `reporting.output_writer.ResultsWriter`
+   - **External:** The file utilizes the following external libraries:
+     - `time`: For measuring the execution time of the PFE calculation.
+     - `os`: For managing file paths and the output directory.
+     - `numpy`: For numerical computations.
+
+6. **Error Handling and Logging:**
+   - The file includes basic error handling by wrapping the `process_single_trade` method in a try-except block to handle any exceptions that may occur during the processing of individual trades.
+   - The file uses print statements for logging purposes,

@@ -1,0 +1,24 @@
+DRAFT SUBSECTION: 1.4. Regulatory Context (ID: intro_regulatory)
+
+1.4. Regulatory Context
+
+The model and its documentation adhere to the following key regulatory requirements and guidelines:
+
+OSFI Guideline E-23 - Operational Risk Management
+This model is designed to support the bank's compliance with OSFI Guideline E-23, which outlines the regulator's expectations for effective operational risk management. Specifically, the model's risk calculation and reporting capabilities contribute to the bank's ability to:
+
+- Identify, measure, monitor, and control/mitigate key operational risks (Guideline Section 4.1)
+- Implement a risk assessment process to evaluate the nature and extent of the bank's operational risk exposures (Guideline Section 4.2)
+- Maintain a risk register that documents the bank's material operational risks and associated controls (Guideline Section 4.3)
+- Regularly report on the bank's operational risk profile to senior management and the board (Guideline Section 4.5)
+
+SR 11-7 - Supervisory Guidance on Model Risk Management
+The model development, implementation, and documentation processes adhere to the principles outlined in the Federal Reserve's Supervisory Guidance on Model Risk Management (SR 11-7). Key aspects include:
+
+- Maintaining detailed model documentation, including the model's purpose, scope, methodology, assumptions, limitations, and validation procedures (SR 11-7 Section IV.A)
+- Implementing effective model validation practices to ensure the model's conceptual soundness, ongoing monitoring, and intended use (SR 11-7 Section VI)
+- Establishing appropriate controls, including model risk management policies and procedures, roles and responsibilities, and change management processes (SR 11-7 Section V)
+
+In addition, the model's design and usage align with the bank's internal policies and procedures for model risk management, which are informed by the above regulatory guidelines. This includes adherence to the bank's model risk appetite, model inventory and classification, and model performance monitoring requirements.
+
+The comprehensive documentation provided for this model, including the details outlined in this section, is intended to facilitate regulatory review, audit, and senior stakeholder oversight, as per the bank's standard model governance practices.

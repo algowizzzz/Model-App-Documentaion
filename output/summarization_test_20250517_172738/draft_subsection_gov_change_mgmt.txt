@@ -1,0 +1,37 @@
+DRAFT SUBSECTION: 7.3. Change Management Process (ID: gov_change_mgmt)
+
+7.3. Change Management Process
+
+The change management process outlines the procedures for requesting, approving, implementing, and documenting changes to the model. This process ensures that any modifications to the model are properly reviewed, tested, and documented to maintain the model's integrity, traceability, and compliance with regulatory requirements.
+
+The key steps in the change management process are as follows:
+
+1. **Change Request Initiation**:
+   - Model owners, developers, or other authorized stakeholders can initiate a change request to the model.
+   - The change request should include a detailed description of the proposed change, the rationale, and the expected impact on the model's performance, outputs, and compliance.
+
+2. **Change Review and Approval**:
+   - The change request is submitted to the model governance committee or designated approvers for review.
+   - The committee evaluates the change request based on factors such as the impact on model performance, compliance, and risk, as well as the feasibility and resource requirements.
+   - The committee may request additional information or analysis from the change requestor before making a decision.
+   - Once approved, the change is assigned a unique identifier and logged in the change management system.
+
+3. **Change Implementation**:
+   - The approved change is implemented by the model development team, following the organization's software development lifecycle and testing procedures.
+   - The implementation process includes updating the model code, configuration files, and any related documentation.
+   - Comprehensive testing is conducted to ensure the change does not introduce any unintended consequences or errors.
+
+4. **Change Documentation**:
+   - All changes to the model, including the rationale, approval, and implementation details, are thoroughly documented.
+   - The model documentation, including the Hierarchical Summary, is updated to reflect the changes.
+   - The change management log is updated with the details of the implemented change, such as the change request ID, description, implementation date, and the name of the individual who implemented the change.
+
+5. **Change Validation and Deployment**:
+   - After the change is implemented and documented, the model is validated to ensure it continues to meet the intended objectives and regulatory requirements.
+   - Once the validation is successful, the updated model is deployed to the production environment, replacing the previous version.
+
+6. **Ongoing Monitoring and Maintenance**:
+   - The model is continuously monitored for any issues or unexpected behavior after the change is deployed.
+   - Any further adjustments or refinements to the model are handled through the established change management process.
+
+The change management process is a critical component of the model governance framework, ensuring that any modifications to the model are properly reviewed, approved, and documented. This process helps maintain the model's integrity, traceability, and compliance with regulatory requirements over time.

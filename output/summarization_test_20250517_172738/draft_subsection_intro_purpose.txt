@@ -1,0 +1,21 @@
+DRAFT SUBSECTION: 1.1. Purpose of the Model (ID: intro_purpose)
+
+1.1. Purpose of the Model
+
+The primary purpose of this model is to implement a comprehensive risk calculation and reporting system. The model is designed to address the critical business need of assessing and managing the risk exposure associated with various financial instruments and portfolios.
+
+The key objectives of this model are:
+
+1. **Risk Factor Calculation**: The model provides the capability to define and calculate the impact of individual risk factors. Each risk factor is represented by the `RiskFactor` class, which captures the name, weight, value, and category of the risk factor. The model allows for the aggregation and analysis of these risk factors to derive a holistic risk assessment.
+
+2. **Risk Score Calculation**: The `RiskCalculator` class is the core component responsible for calculating the total risk score based on the provided list of risk factors. It performs a weighted sum of the risk factors, normalizing the total impact to a 0-1 scale. The model also provides the ability to break down the risk scores by category, enabling a more granular understanding of the risk profile.
+
+3. **Risk Reporting**: The `create_risk_report` function generates a comprehensive risk report based on the `RiskCalculator` instance. The report includes the total risk score, the breakdown of risk by category, and the overall risk status (high-risk or low-risk) based on a predefined risk threshold.
+
+The primary use cases for this model include:
+
+- **Regulatory Capital Calculation**: The risk calculation and reporting capabilities of this model can be leveraged to determine the regulatory capital requirements for specific trade types or portfolios, as mandated by various financial regulations.
+- **Portfolio Risk Management**: The model can be used to assess the overall risk exposure of a financial portfolio, enabling risk managers to make informed decisions about portfolio composition, hedging strategies, and risk mitigation measures.
+- **Counterparty Credit Risk Assessment**: The risk factors and calculations provided by this model can be utilized to evaluate the credit risk associated with specific counterparties, supporting credit risk management and exposure monitoring.
+
+By providing a robust and flexible risk calculation and reporting framework, this model serves as a critical component within a broader system or application focused on risk management, regulatory compliance, and portfolio optimization.

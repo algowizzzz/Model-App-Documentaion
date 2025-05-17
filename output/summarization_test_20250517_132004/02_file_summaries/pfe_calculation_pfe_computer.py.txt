@@ -1,0 +1,36 @@
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to provide a class for calculating the Potential Future Exposure (PFE) at a given quantile from a set of exposure paths.
+   - This file appears to be a standalone component responsible for a specific calculation step within a broader risk management or counterparty credit risk modeling system.
+
+2. **Key Components and Functionality:**
+   - **PFEQuantileCalculator** (class)
+     - **Purpose:** Calculate the PFE profile (a vector of PFE values over time) at a specified quantile from exposure paths.
+     - **Key Operations:**
+       - Initializes with a quantile value between 0 and 1.
+       - Calculates the PFE at each time step as the specified quantile of positive exposures across paths.
+       - Ensures PFE values are non-negative.
+     - **Inputs:** A 2D NumPy array representing exposure paths (time steps, paths).
+     - **Outputs:** A 1D NumPy array representing the PFE profile over time.
+
+3. **Core Algorithms and Logic:**
+   - The core algorithm implemented is the calculation of the PFE profile at a given quantile using NumPy's `np.percentile` function.
+   - The PFE at each time step is computed as the specified quantile (e.g., 95th percentile) of positive exposures across all paths for that time step.
+   - A non-negativity constraint is enforced on the PFE values using `np.maximum`.
+
+4. **Data Structures:**
+   - The primary data structure used is a 2D NumPy array representing exposure paths, with rows representing time steps and columns representing individual paths.
+   - The output is a 1D NumPy array representing the PFE profile over time.
+
+5. **Dependencies:**
+   - **Internal:** None.
+   - **External:** NumPy (for array operations and percentile calculation).
+
+6. **Error Handling and Logging:**
+   - A `ValueError` is raised if the input quantile is not between 0 and 1 (exclusive).
+   - A `ValueError` is raised if the input exposure paths array is not 2D.
+   - Print statements are used for logging the initialization of the `PFEQuantileCalculator` and the successful calculation of the PFE profile.
+
+7. **Assumptions and Limitations (File-Specific):**
+   - The file assumes that the input exposure paths array has a specific shape: (num_time_steps + 1, num_paths), where the first row represents exposures at time 0 (usually 0).
+   - The file does not handle any missing or invalid values in the input exposure paths array.
+   - The PFE calculation assumes that exposures are non-negative, although it enforces non-negativity on the output PFE profile.

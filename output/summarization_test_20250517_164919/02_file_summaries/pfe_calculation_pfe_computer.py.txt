@@ -1,0 +1,35 @@
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file, `pfe_calculation/pfe_computer.py`, is to provide a class `PFEQuantileCalculator` that calculates the Potential Future Exposure (PFE) profile at a given quantile based on a set of exposure paths.
+   - This file is a key component within the broader model or system, as it encapsulates the core logic for computing the PFE, which is a crucial risk metric used in various financial applications.
+
+2. **Key Components and Functionality:**
+   - `PFEQuantileCalculator` class:
+     - **Purpose:** Calculates the PFE profile at a specified quantile from a set of exposure paths.
+     - **Key Operations:** Computes the quantile of positive exposures across paths for each time step, resulting in the PFE profile.
+     - **Inputs:** An array of exposure values, where each row represents the exposures at a specific time step and each column represents a different path.
+     - **Outputs:** A numpy array representing the PFE profile, where each element corresponds to the PFE value at a specific time step.
+
+3. **Core Algorithms and Logic (File-Specific):**
+   - The core algorithm implemented in this file is the calculation of the PFE profile using the `np.percentile` function. This function is used to compute the specified quantile of the positive exposures across all paths for each time step, resulting in the PFE profile.
+   - The logic also ensures that the PFE values are non-negative, even though the percentile of non-negative exposures should already be non-negative.
+
+4. **Data Structures:**
+   - The primary data structure used in this file is a 2D numpy array `exposure_paths`, which represents the exposure values over time and across multiple paths.
+
+5. **Dependencies:**
+   - **Internal:** This file does not have any direct dependencies on other modules, classes, or functions within the codebase.
+   - **External:** This file relies on the `numpy` library for numerical operations, such as computing the percentile of exposure values.
+
+6. **Error Handling and Logging:**
+   - The file includes explicit error handling by raising a `ValueError` if the provided quantile is not between 0 and 1 (exclusive).
+   - The file also includes logging functionality, where it prints messages to indicate the initialization of the `PFEQuantileCalculator` and the successful calculation of the PFE profile.
+
+7. **Assumptions and Limitations (Strictly File-Specific):**
+   - Assumptions:
+     - The input `exposure_paths` array is a 2D numpy array with the first dimension representing the time steps and the second dimension representing the paths.
+     - The first row of the `exposure_paths` array (i.e., `exposure_paths[0,:]`) represents the exposures at time step 0, which are typically assumed to be 0.
+   - Limitations:
+     - The file does not handle cases where the input `exposure_paths` array has a different shape or dimensionality than expected.
+     - The file does not provide any functionality for handling missing or invalid data in the input `exposure_paths` array.

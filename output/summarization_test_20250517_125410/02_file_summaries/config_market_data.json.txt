@@ -1,0 +1,14 @@
+The `config/market_data.json` file is a configuration file that stores market data for two equity instruments, `EQ_A` and `EQ_B`. The main purpose of this file is to provide a centralized location for storing and managing the market data required for financial calculations or simulations involving these equity instruments.
+
+The file is structured as a JSON object, where each key (`EQ_A` and `EQ_B`) represents an equity instrument. The value associated with each key is another JSON object containing the following properties:
+
+1. `current_price`: The current market price of the equity instrument.
+2. `volatility`: The volatility of the equity instrument, which is a measure of its price fluctuations over time.
+3. `risk_free_rate`: The risk-free rate of return, typically based on government bond yields.
+4. `dividend_yield`: The dividend yield of the equity instrument, which represents the annual dividend payments as a percentage of the current price.
+
+This file does not contain any functions, classes, or methods. It is a simple data structure that stores market data in a structured format (JSON) for easy access and manipulation by other parts of the application or financial models.
+
+The relationships or dependencies in this file are implicit. Any part of the application or financial model that requires market data for the equity instruments `EQ_A` and `EQ_B` will likely depend on or reference this file to retrieve the necessary information.
+
+There are no notable algorithms or patterns used in this file. It is a straightforward data storage file in a widely-used format (JSON) for representing structured data.

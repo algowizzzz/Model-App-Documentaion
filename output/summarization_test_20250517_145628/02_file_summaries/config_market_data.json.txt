@@ -1,0 +1,34 @@
+**SUMMARY:**
+
+1. **Overall Purpose and Role:**
+   - This file serves as a configuration file for storing market data parameters required by the broader financial modeling system or application.
+   - Its primary role is to provide a centralized location for defining and managing the market data inputs necessary for various calculations, simulations, or analyses performed within the system.
+
+2. **Key Components and Functionality:**
+   - The file does not contain any classes, functions, or methods. It is a JSON data file consisting of key-value pairs representing market data parameters for two equity instruments, "EQ_A" and "EQ_B".
+   - Each equity instrument is represented as an object with the following properties:
+     - **Purpose:** Store market data parameters specific to the equity instrument.
+     - **Key Operations:** None (data storage only).
+     - **Inputs:** None (data is hard-coded).
+     - **Outputs:** Market data parameters for each equity instrument, including current price, volatility, risk-free rate, and dividend yield.
+
+3. **Core Algorithms and Logic (File-Specific):**
+   - This file does not implement any core algorithms or significant business logic directly. It serves as a data storage file for market data parameters.
+
+4. **Data Structures:**
+   - The file utilizes a JSON object structure, where each equity instrument is represented as a nested object with key-value pairs for its market data parameters.
+
+5. **Dependencies:**
+   - **Internal:** None (the file is a standalone data file).
+   - **External:** None (the file does not import or utilize any external libraries or packages).
+
+6. **Error Handling and Logging:**
+   - The file does not contain any explicit error handling mechanisms or logging functionalities, as it is a static data file.
+
+7. **Assumptions and Limitations (Strictly File-Specific):**
+   - **Assumptions:**
+     - The market data parameters provided in the file are accurate and up-to-date.
+     - The file structure and parameter names are consistent with the expectations of the broader system or application that consumes this data.
+   - **Limitations:**
+     - The market data parameters are hard-coded within the file, which may require manual updates or a separate process to keep the data current.
+     - The file only includes market data for two equity instruments, limiting its applicability to scenarios involving a larger set of instruments or asset classes.

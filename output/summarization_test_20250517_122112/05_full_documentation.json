@@ -1,0 +1,90 @@
+{
+  "template": {
+    "name": "Custom Summary Template",
+    "version": "1.0",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "required": true,
+        "description": "High-level overview of the codebase",
+        "subsections": [
+          {
+            "id": "purpose",
+            "title": "Purpose",
+            "required": true
+          },
+          {
+            "id": "architecture",
+            "title": "Architecture",
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "components",
+        "title": "Key Components",
+        "required": true,
+        "description": "Detailed description of major code components",
+        "subsections": [
+          {
+            "id": "classes",
+            "title": "Classes",
+            "required": true
+          },
+          {
+            "id": "functions",
+            "title": "Functions",
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "relationships",
+        "title": "Component Relationships",
+        "required": true,
+        "description": "How different parts of the code interact"
+      }
+    ],
+    "metadata": {
+      "author": "Documentation Agent",
+      "last_updated": "2024-03-21",
+      "description": "Template for generating structured code summaries"
+    }
+  },
+  "sections": {
+    "overview": {
+      "title": "Overview",
+      "content": "Hierarchical Summary:\n\nI. Overview\n   A. Main Modules and Purposes\n      1. `styles.css`: CSS file for styling web pages\n      2. `test_sample.py`: Python script for testing and demonstration purposes\n      3. `config.json`: Configuration file for a project named \"test-project\"\n      4. `query.sql`: SQL script for creating a table and querying user data\n      5. `readme.md`: Documentation file providing an overview and instructions for the project\n      6. `complex_module.py`: Python module for calculating and aggregating risk scores\n      7. `data.xml`: XML file for storing and organizing structured data\n      8. `invalid_syntax.py`: Python file demonstrating examples of invalid syntax\n      9. `app.js`: JavaScript file showcasing classes, functions, and module exports\n      10. `templates/invalid_template.json`: Template for documenting a software project or system (with syntax errors)\n      11. `templates/valid_template.json`: Valid JSON template for structuring documentation\n\n",
+      "subsections": {
+        "purpose": {
+          "title": "Purpose",
+          "content": "Detailed content for Purpose"
+        },
+        "architecture": {
+          "title": "Architecture",
+          "content": "Detailed content for Architecture"
+        }
+      }
+    },
+    "components": {
+      "title": "Key Components",
+      "content": "II. Web Development Components\n   A. `styles.css`\n      1. Defines styles for a container and header element\n      2. Utilizes CSS classes, flex layout, and media queries for responsive design\n\nVIII. JavaScript Components\n   A. `app.js`\n      1. JavaScript file showcasing classes, functions, and module exports\n      2. Demonstrates the handling of non-Python files in a parseable manner\n\n",
+      "subsections": {
+        "classes": {
+          "title": "Classes",
+          "content": "Detailed content for Classes"
+        },
+        "functions": {
+          "title": "Functions",
+          "content": "Detailed content for Functions"
+        }
+      }
+    },
+    "relationships": {
+      "title": "Component Relationships",
+      "content": "III. JavaScript Components\n   A. `app.js`\n      1. JavaScript file showcasing classes, functions, and module exports\n      2. Demonstrates the handling of non-Python files in a parseable manner\n\nIX. Relationships and Architecture\n   A. The `config.json` file lists external dependencies for the \"test-project\"\n   B. The `query.sql` file depends on the existence of the `users` table\n   C. The `complex_module.py` module utilizes the `RiskFactor` and `RiskCalculator` classes for risk calculation\n   D. The `templates/valid_template.json` file defines the structure and requirements for documentation\n   E. The `app.js` file exports components for use in other parts of the application or by external modules\n   F. The codebase follows modular design principles, separating concerns into different files and modules\n   G. The use of JSON, XML, and SQL demonstrates the integration of different data formats and technologies\n\nThis hierarchical summary groups related files and components together, identifies the main modules and their purposes, explains the relationships between different parts of the codebase, and highlights the overall architecture and design patterns. It starts with a high-level overview and breaks down into logical components, providing a structured representation of the codebase.",
+      "subsections": {}
+    }
+  }
+}

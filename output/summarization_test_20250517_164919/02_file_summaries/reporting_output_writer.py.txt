@@ -1,0 +1,44 @@
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file, `output_writer.py`, is to handle the writing of Potential Future Exposure (PFE) results to JSON files.
+   - This file is a component within a broader model or system that generates and processes PFE data. Its specific role is to provide a centralized and standardized mechanism for persisting the PFE results to the file system.
+
+2. **Key Components and Functionality:**
+   - `ResultsWriter` class:
+     - **Purpose:** Responsible for writing aggregated and individual PFE profiles to a JSON file.
+     - **Key Operations:** Creates the output directory if it doesn't exist, prepares the data for JSON serialization, and writes the PFE results to a JSON file.
+     - **Inputs:** The output directory path, the simulation ID, the aggregated PFE profile, and a dictionary of individual PFE profiles.
+     - **Outputs:** Writes the PFE results to a JSON file in the specified output directory.
+   - `_prepare_data_for_json` method:
+     - **Purpose:** Converts NumPy arrays to lists for proper JSON serialization.
+     - **Key Operations:** Recursively traverses the input data structure (which can be a NumPy array, dictionary, or list) and converts any NumPy arrays to lists.
+     - **Inputs:** The data to be prepared for JSON serialization.
+     - **Outputs:** The prepared data, with NumPy arrays converted to lists.
+
+3. **Core Algorithms and Logic (File-Specific):**
+   - The primary logic in this file is the `write_pfe_results` method of the `ResultsWriter` class, which handles the creation of the output directory (if it doesn't exist), the preparation of the PFE data for JSON serialization, and the writing of the PFE results to a JSON file.
+
+4. **Data Structures:**
+   - The file uses the following significant data structures:
+     - `np.ndarray`: Used to represent the aggregated PFE profile and individual PFE profiles.
+     - `dict`: Used to represent the mapping of trade IDs to their corresponding individual PFE profiles.
+
+5. **Dependencies:**
+   - **Internal:** This file does not have any direct dependencies on other modules, classes, or functions within the codebase.
+   - **External:** The file depends on the following external libraries:
+     - `json`: Used for serializing the PFE results to a JSON file.
+     - `os`: Used for creating the output directory and handling file paths.
+     - `numpy` (`np`): Used for working with the PFE profile data represented as NumPy arrays.
+
+6. **Error Handling and Logging:**
+   - The file implements explicit error handling using try-except blocks to catch `OSError` and `TypeError` exceptions that may occur during the creation of the output directory or the JSON serialization process.
+   - The file uses print statements to log the creation of the output directory and the successful writing of the PFE results to the JSON file.
+
+7. **Assumptions and Limitations (Strictly File-Specific):**
+   - Assumptions:
+     - The input data (aggregated PFE profile and individual PFE profiles) is provided in the expected format (NumPy arrays).
+     - The output directory path is valid and accessible.
+   - Limitations:
+     - The file does not handle any validation or preprocessing of the input data. It assumes the data is in the correct format and structure.
+     - The file does not provide any functionality for reading or loading the PFE results from the JSON file. It is solely focused on the writing aspect.

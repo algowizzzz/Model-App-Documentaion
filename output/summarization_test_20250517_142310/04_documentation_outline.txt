@@ -1,0 +1,74 @@
+```json
+{
+  "Executive Summary": {
+    "Title": "Executive Summary",
+    "Description": "A high-level overview of the model, its purpose, key methodologies, primary results (e.g., PFE outcomes if applicable), overall model soundness, and any significant limitations or recommendations. Should be understandable by a non-technical senior audience.",
+    "Key Information to Extract/Draft": [
+      "Summarize the model's purpose of calculating Potential Future Exposure (PFE) for Equity Total Return Swaps (TRS) using Monte Carlo simulation",
+      "Briefly explain the key methodologies: Monte Carlo simulation, Geometric Brownian Motion (GBM) for asset price paths, valuation of Equity TRS instruments",
+      "Highlight primary results/outputs: PFE profiles at specified quantile for individual trades and aggregated portfolio",
+      "Assess overall model soundness based on validation findings (to be detailed in later sections)",
+      "Note any significant limitations or weaknesses identified (drawn from later sections)"
+    ]
+  },
+
+  "1. Introduction": {
+    "Title": "1. Introduction",
+    "Description": "Background, purpose, and scope of the model.",
+    "Subsections": [
+      {
+        "1.1. Purpose of the Model": {
+          "Title": "1.1. Purpose of the Model",
+          "Description": "Clearly state the business problem the model addresses and its objectives (e.g., PFE calculation for specific trade types, regulatory capital calculation).",
+          "Key Information to Extract/Draft": [
+            "Restate the purpose of calculating Potential Future Exposure (PFE) for Equity Total Return Swap (TRS) portfolios",
+            "Explain the business context and need for PFE calculation (e.g. risk management, regulatory capital requirements)"
+          ]
+        },
+
+        "1.2. Scope and Applicability": {
+          "Title": "1.2. Scope and Applicability",
+          "Description": "Define the products, portfolios, or processes the model applies to. Specify any known exclusions or boundaries.",
+          "Key Information to Extract/Draft": [
+            "Specify that the model applies to portfolios of Equity Total Return Swaps (TRS)",
+            "Note any other product types or asset classes currently excluded from the model's scope"
+          ]
+        },
+
+        "1.3. Intended Users": {
+          "Title": "1.3. Intended Users",
+          "Description": "Identify the primary users of the model and its outputs.",
+          "Key Information to Extract/Draft": [
+            "List the expected users of the model outputs (e.g. risk management, trading desks, regulatory reporting teams)"
+          ]
+        },
+
+        "1.4. Regulatory Context": {
+          "Title": "1.4. Regulatory Context",
+          "Description": "Mention any specific regulatory requirements or guidelines the model and its documentation adhere to (e.g., SR 11-7, OSFI E-23).",
+          "Key Information to Extract/Draft": [
+            "Identify relevant regulatory guidelines or requirements for PFE calculation and capital treatment of exposures",
+            "Requires further information beyond summary"
+          ]
+        }
+      }
+    ]
+  },
+
+  "2. Model Methodology": {
+    "Title": "2. Model Methodology", 
+    "Description": "Detailed explanation of the theoretical basis, mathematical formulation, assumptions, and limitations of the chosen methodology.",
+    "Subsections": [
+      {
+        "2.1. Theoretical Basis": {
+          "Title": "2.1. Theoretical Basis",
+          "Description": "Describe the financial or mathematical theories underpinning the model (e.g., Geometric Brownian Motion, Black-Scholes, Monte Carlo simulation principles).",
+          "Key Information to Extract/Draft": [
+            "Explain the principles of Monte Carlo simulation for risk analysis",
+            "Detail the Geometric Brownian Motion (GBM) model used for simulating asset price paths"
+          ],
+          "Cross-Reference": "Link to the implementation details of the GBM model and Monte Carlo simulation in section 4."
+        },
+
+        "2.2. Mathematical Formulation": {
+          "Title": "2

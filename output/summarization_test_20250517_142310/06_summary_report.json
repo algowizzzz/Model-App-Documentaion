@@ -1,0 +1,16 @@
+{
+  "timestamp": "2025-05-17T14:39:24.789329",
+  "codebase_directory": "MonteCarloPFE",
+  "template_used": "templates/bmo_model_documentation_template.json",
+  "files_processed": 17,
+  "sections_generated": 12,
+  "output_files": {
+    "template": "01_template.json",
+    "file_summaries": "02_file_summaries/",
+    "all_summaries": "02_all_summaries.txt",
+    "hierarchical_summary": "03_hierarchical_summary.txt",
+    "documentation_outline": "04_documentation_outline.txt",
+    "full_documentation": "05_full_documentation.json",
+    "summary_report": "06_summary_report.json"
+  }
+}

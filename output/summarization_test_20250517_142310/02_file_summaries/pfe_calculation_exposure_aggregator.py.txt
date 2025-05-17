@@ -1,0 +1,35 @@
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to provide functionality for aggregating Potential Future Exposure (PFE) profiles across multiple trades.
+   - Within the broader model or system, this file likely serves as a component responsible for consolidating and combining PFE calculations from individual trades into an aggregated portfolio-level view.
+
+2. **Key Components and Functionality:**
+   - **TradeAggregator** (class)
+     - **Purpose:** Manages the aggregation of PFE profiles across multiple trades.
+     - **Key Operations:**
+       - Stores individual trade PFE profiles in a dictionary.
+       - Provides a method to retrieve all stored individual PFE profiles.
+       - Implements a simple summation method to aggregate PFE profiles across trades.
+     - **Inputs:** Trade ID (string) and corresponding PFE profile (NumPy array).
+     - **Outputs:** Dictionary of individual trade PFE profiles, aggregated PFE profile (NumPy array).
+
+3. **Core Algorithms and Logic:**
+   - The `calculate_simple_sum_pfe` method implements a basic aggregation approach by summing the PFE profiles of all trades. It checks for consistent profile lengths and performs a NumPy array summation across trades.
+   - The method acknowledges that this simple summation is generally not how portfolio PFE is calculated due to netting effects, but serves as a basic example.
+
+4. **Data Structures:**
+   - The primary data structure used is a Python dictionary (`self.all_trade_pfe_profiles`) to store individual trade PFE profiles, with trade IDs as keys and NumPy arrays as values.
+   - NumPy arrays are used to represent PFE profiles.
+
+5. **Dependencies:**
+   - **Internal:** None.
+   - **External:** NumPy library for numerical operations and array manipulation.
+
+6. **Error Handling and Logging:**
+   - The `add_trade_pfe_profile` method prints a warning if attempting to overwrite an existing PFE profile for a trade ID.
+   - The `calculate_simple_sum_pfe` method raises a `ValueError` if the PFE profiles have different lengths, preventing incorrect summation.
+   - The file uses standard `print` statements for logging and status updates.
+
+7. **Assumptions and Limitations (File-Specific):**
+   - The file assumes that PFE profiles are represented as NumPy arrays of consistent length across trades.
+   - The simple summation approach implemented in `calculate_simple_sum_pfe` is acknowledged as a limitation, as it does not account for netting effects in portfolio PFE calculation.
+   - The file does not implement more complex aggregation methods, such as netting or advanced portfolio PFE calculations, as stated in the class docstring.

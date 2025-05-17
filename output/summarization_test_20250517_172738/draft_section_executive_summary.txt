@@ -1,0 +1,29 @@
+DRAFT SECTION: Executive Summary (ID: executive_summary)
+
+Executive Summary
+
+This document provides a comprehensive overview of a risk calculation model developed by BMO. The model's primary purpose is to assess and report on the overall risk exposure of a portfolio or set of financial instruments. 
+
+The key methodologies and algorithms used in this model are:
+
+1. **RiskFactor Class**: This class represents a single risk factor, encapsulating its name, weight, value, and category. It is responsible for calculating the weighted impact of the risk factor.
+
+2. **RiskCalculator Class**: This class handles the aggregation and calculation of the total risk score based on a list of RiskFactor instances. It performs a weighted sum of all risk factors, normalizing the total impact to a 0-1 scale. It also provides a breakdown of risk scores by category.
+
+3. **create_risk_report Function**: This function generates a comprehensive risk report based on the output of the RiskCalculator class. It calculates the total risk, risk breakdown by category, and the overall status (high-risk or low-risk) based on a defined risk threshold.
+
+The primary outputs of the model are the total risk score, the risk breakdown by category, and the overall risk status. These results are intended to provide a clear and concise assessment of the portfolio's risk profile, which can be used for various risk management and regulatory reporting purposes.
+
+The model has been assessed to be generally sound, with a robust risk calculation methodology and comprehensive reporting capabilities. However, there are a few notable limitations:
+
+1. The model is limited to the specific risk factors and categories defined within the codebase and may not be suitable for more complex or dynamic risk assessment scenarios.
+2. The model does not handle any external data sources or dependencies beyond the risk factors and threshold provided to the RiskCalculator class.
+3. The error handling and logging functionalities are limited, which may impact the model's ability to provide detailed diagnostics and troubleshooting capabilities.
+
+To enhance the model's capabilities, the following recommendations are suggested:
+
+1. Expand the risk factor definitions and categories to better accommodate a wider range of risk types and portfolios.
+2. Integrate the model with external data sources, such as market data or counterparty information, to improve the accuracy and relevance of the risk assessments.
+3. Implement more robust error handling and logging mechanisms to improve the model's overall maintainability and support.
+
+Overall, the risk calculation model provides a solid foundation for assessing and reporting on the risk exposure of financial portfolios. With the identified enhancements, the model can be further strengthened to meet the evolving needs of BMO's risk management and regulatory requirements.

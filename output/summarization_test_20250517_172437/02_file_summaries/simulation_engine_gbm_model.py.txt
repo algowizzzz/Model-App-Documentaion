@@ -1,0 +1,33 @@
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to implement a Geometric Brownian Motion (GBM) process for simulating asset price paths.
+   - This file serves as a key component of the broader simulation engine, providing the core functionality for generating stochastic asset price trajectories.
+
+2. **Key Components and Functionality:**
+
+   - **Class: `GBMProcess`**
+     - **Purpose:** Encapsulates the GBM process for simulating asset price paths.
+     - **Key Operations:** Generates multiple asset price paths based on the given initial price, drift, volatility, and time step.
+     - **Inputs:** Initial asset price, drift (expected rate of return), volatility, and time step.
+     - **Outputs:** An array of simulated asset price paths.
+
+3. **Core Algorithms and Logic (File-Specific):**
+   - The core logic of the `GBMProcess` class is based on the Geometric Brownian Motion (GBM) model, which is a widely used stochastic process for modeling asset price dynamics.
+   - The `generate_paths()` method implements the GBM formula to calculate the asset prices at each time step, using the provided parameters and generating random shocks from a standard normal distribution.
+
+4. **Data Structures:**
+   - The `GBMProcess` class uses a NumPy array to store the simulated asset price paths.
+
+5. **Dependencies:**
+   - **Internal:** This file does not have any direct internal dependencies.
+   - **External:** This file relies on the `numpy` library for numerical computations and random number generation.
+
+6. **Error Handling and Logging:**
+   - The `GBMProcess` class performs basic input validation, raising a `ValueError` if the number of steps or paths is non-positive.
+   - The class also includes print statements to log the initialization of the GBM process and the generation of the price paths.
+
+7. **Assumptions and Limitations (Strictly File-Specific):**
+   - The `GBMProcess` class assumes that the input parameters (initial price, drift, volatility, and time step) are valid and within reasonable ranges.
+   - The implementation of the GBM process assumes that the asset price follows a lognormal distribution, which may not always be the case for certain asset classes or market conditions.
+   - The file does not handle any edge cases or provide advanced error handling or logging mechanisms beyond the basic checks and print statements.

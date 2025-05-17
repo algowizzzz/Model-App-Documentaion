@@ -27,7 +27,7 @@ ModelDocumentation/model-doc-agent/venv/
 Data/control/venv/
 
 # Generated output
-output/
+# output/
 
 # Data directories with embedded git repos
 Data/control/

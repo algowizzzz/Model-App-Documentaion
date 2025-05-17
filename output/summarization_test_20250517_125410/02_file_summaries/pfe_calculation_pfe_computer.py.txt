@@ -1,0 +1,17 @@
+The main purpose of this file is to provide a class `PFEQuantileCalculator` that calculates the Potential Future Exposure (PFE) profile at a given quantile from a set of exposure paths. The PFE profile represents the quantile of positive exposures across all paths at each time step.
+
+The key components are:
+
+1. `PFEQuantileCalculator` class:
+   - Initializes with a quantile value between 0 and 1 (e.g., 0.95 for 95th percentile).
+   - `calculate_pfe_profile` method: Calculates the PFE profile from exposure paths. It takes a 2D numpy array of exposure values (time steps x paths) and returns a 1D array of PFE values over time.
+
+The `calculate_pfe_profile` method uses the `numpy.percentile` function to calculate the specified quantile of positive exposures across paths for each time step. It ensures that the resulting PFE values are non-negative.
+
+The file has no external dependencies other than the NumPy library for array operations.
+
+The main algorithm used is the calculation of quantiles across exposure paths for each time step. This is achieved by leveraging NumPy's `percentile` function, which efficiently computes quantiles along a specified axis of a multi-dimensional array.
+
+The file also includes a `main` section that demonstrates the usage of the `PFEQuantileCalculator` class with example exposure paths and different quantile values (95th and 50th percentiles).
+
+Overall, this file provides a concise and efficient implementation for calculating the PFE profile, which is a common risk metric in financial risk management.

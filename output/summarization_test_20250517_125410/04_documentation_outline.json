@@ -1,0 +1,97 @@
+{
+  "template": {
+    "name": "Custom Summary Template",
+    "version": "1.0",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "required": true,
+        "description": "High-level overview of the codebase",
+        "subsections": [
+          {
+            "id": "purpose",
+            "title": "Purpose",
+            "required": true
+          },
+          {
+            "id": "architecture",
+            "title": "Architecture",
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "components",
+        "title": "Key Components",
+        "required": true,
+        "description": "Detailed description of major code components",
+        "subsections": [
+          {
+            "id": "classes",
+            "title": "Classes",
+            "required": true
+          },
+          {
+            "id": "functions",
+            "title": "Functions",
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "relationships",
+        "title": "Component Relationships",
+        "required": true,
+        "description": "How different parts of the code interact"
+      }
+    ],
+    "metadata": {
+      "author": "Documentation Agent",
+      "last_updated": "2024-03-21",
+      "description": "Template for generating structured code summaries"
+    }
+  },
+  "outline": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "content_outline": "Hierarchical Summary:\n\nI. Overview\nThis codebase is a Python project for calculating Potential Future Exposure (PFE) for a portfolio of Equity Total Return Swaps (TRS) using Monte Carlo simulation. The main purpose is to estimate the potential future credit exposure arising from these derivative trades by simulating the underlying equity prices and valuing the trades across multiple scenarios.\n\n",
+      "subsections": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "content_outline": "Outline for Purpose"
+        },
+        {
+          "id": "architecture",
+          "title": "Architecture",
+          "content_outline": "Outline for Architecture"
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "title": "Key Components",
+      "content_outline": "II. Main Modules\n1. Data Management\n   - Purpose: Load and manage input data such as trade details, market data, and simulation parameters from JSON files.\n   - Components: `data_management/loader.py`, `config/trades.json`, `config/market_data.json`, `config/simulation_params.json`\n\n2. Simulation Engine\n   - Purpose: Implement the Monte Carlo simulation and the Geometric Brownian Motion (GBM) model for simulating underlying equity price paths.\n   - Components: `simulation_engine/monte_carlo_simulator.py`, `simulation_engine/gbm_model.py`\n\n3. Financial Instruments\n   - Purpose: Define and value financial instruments like Equity TRS.\n   - Components: `financial_instruments/equity_trs.py`\n\n4. PFE Calculation\n   - Purpose: Calculate exposures and aggregate PFE profiles for individual trades and the portfolio.\n   - Components: `pfe_calculation/pfe_computer.py`, `pfe_calculation/exposure_aggregator.py`\n\n5. Reporting\n   - Purpose: Write the output PFE results to files.\n   - Components: `reporting/output_writer.py`\n\n",
+      "subsections": [
+        {
+          "id": "classes",
+          "title": "Classes",
+          "content_outline": "Outline for Classes"
+        },
+        {
+          "id": "functions",
+          "title": "Functions",
+          "content_outline": "Outline for Functions"
+        }
+      ]
+    },
+    {
+      "id": "relationships",
+      "title": "Component Relationships",
+      "content_outline": "III. Relationships and Architecture\n1. Data Management\n   - `data_management/loader.py` provides a centralized way to load configuration data from JSON files.\n   - `ConfigManager` class follows the Singleton pattern to manage the loading of all required configuration data.\n\n2. Simulation Engine\n   - `MonteCarloEngine` class orchestrates Monte Carlo simulations for various assets.\n   - `GBMProcess` class implements the Geometric Brownian Motion (GBM) model for simulating asset price paths.\n   - The simulation engine relies on the GBM model and market data loaded by the data management module.\n\n3. Financial Instruments\n   - `EquityTRS` class represents and values an Equity Total Return Swap (TRS) contract.\n   - It calculates the mark-to-market (MtM) value and exposure of an Equity TRS based on the underlying equity price paths.\n\n4. PFE Calculation\n   - `PFEQuantileCalculator` class calculates the PFE profile at a given quantile from a set of exposure paths.\n   - `TradeAggregator` class aggregates PFE profiles across multiple trades (currently using a simple summation approach).\n\n5. Reporting\n   - `ResultsWriter` class handles writing aggregated and individual PFE profiles to JSON files.\n\nIV. Main Workflow\n1. Load input data from JSON files using the data management module.\n2. Simulate multiple price paths for each underlying asset using the GBM model in the simulation engine.\n3. Value the Equity TRS trades for each simulated price path and time step using the `EquityTRS` class.\n4. Calculate exposures as the positive mark-to-market values for each trade and path.\n5. Compute the PFE profile for each trade by taking a percentile of the exposures across all paths using `PFEQuantileCalculator`.\n6. Optionally, aggregate the PFE profiles across all trades using `TradeAggregator`.\n7. Write the individual and aggregated PFE profiles to output files using `ResultsWriter`.\n\nV. Design Patterns\n1. Singleton Pattern: `ConfigManager` class follows the Singleton pattern to ensure a single instance manages the configuration data.\n2. Object-Oriented Design: The codebase follows an object-oriented design approach, with classes encapsulating specific functionalities (e.g., `EquityTRS`, `GBMProcess`, `PFEQuantileCalculator`).\n3. Modular Architecture: The codebase is organized into modular components (data management, simulation engine, financial instruments, PFE calculation, reporting), promoting code reusability and maintainability.\n4. Separation of Concerns: Each module focuses on a specific responsibility, adhering to the principle of",
+      "subsections": []
+    }
+  ]
+}

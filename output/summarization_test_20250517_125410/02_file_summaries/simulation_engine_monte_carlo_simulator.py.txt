@@ -1,0 +1,13 @@
+The `monte_carlo_simulator.py` file contains a class `MonteCarloEngine` that orchestrates Monte Carlo simulations for various assets. The main purpose of this file is to provide a modular and extensible framework for running Monte Carlo simulations, particularly for financial applications such as option pricing.
+
+The key components of this file are:
+
+1. `MonteCarloEngine` class: This class serves as the entry point for running Monte Carlo simulations. It initializes with the number of paths to simulate and provides a `run_asset_simulation` method to simulate price paths for a given asset.
+
+2. `run_asset_simulation` method: This method takes asset market data (current price, risk-free rate, dividend yield, and volatility), the total number of time steps, and the time delta (time increment per step). It utilizes the `GBMProcess` class (imported from `gbm_model`) to generate price paths based on the Geometric Brownian Motion (GBM) model.
+
+The `MonteCarloEngine` class has a dependency on the `GBMProcess` class from the `gbm_model` module. This dependency is used to generate price paths based on the GBM model, which is a widely used stochastic process for modeling asset prices in finance.
+
+The file also includes a test section (`if __name__ == '__main__'`) that demonstrates how to instantiate the `MonteCarloEngine` class and run a simulation for a specific asset with provided market data.
+
+Overall, this file provides a modular and extensible framework for running Monte Carlo simulations, particularly for financial applications involving asset pricing and option valuation. It leverages the GBM model as the underlying stochastic process for generating asset price paths.

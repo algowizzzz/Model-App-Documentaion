@@ -1,0 +1,48 @@
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to orchestrate and execute the entire Potential Future Exposure (PFE) calculation process for a portfolio of equity total return swaps (TRS).
+   - It serves as the main entry point and driver for the PFE calculation system, coordinating the various components involved in loading data, simulating asset price paths, valuing financial instruments, calculating PFE profiles, and generating output reports.
+
+2. **Key Components and Functionality:**
+   - **PFECalculationOrchestrator (Class):**
+     - **Purpose:** Manages the overall PFE calculation workflow and coordinates the interactions between different components.
+     - **Key Operations:**
+       - Initializes and loads configuration data, market data, and trade information.
+       - Instantiates required objects (Monte Carlo engine, PFE calculator, trade aggregator, output writer).
+       - Orchestrates the processing of individual trades by calling `process_single_trade`.
+       - Aggregates individual trade PFE profiles and writes the results to an output file.
+     - **Inputs:** Configuration file path, simulation parameters, market data, and trade details.
+     - **Outputs:** Aggregated PFE profile and individual trade PFE profiles written to an output file.
+   - `process_single_trade` (Method):
+     - **Purpose:** Processes a single trade by simulating asset price paths, valuing the TRS instrument, calculating the PFE profile, and adding it to the trade aggregator.
+     - **Key Operations:**
+       - Simulates asset price paths using the Monte Carlo engine.
+       - Initializes the EquityTRS instrument and calculates its mark-to-market (MtM) and exposure paths.
+       - Calculates the PFE profile for the trade using the PFE calculator.
+       - Adds the trade's PFE profile to the trade aggregator.
+     - **Inputs:** Trade information dictionary.
+     - **Outputs:** None (updates the trade aggregator with the trade's PFE profile).
+   - `run_full_pfe_calculation` (Method):
+     - **Purpose:** Executes the complete PFE calculation process for all trades in the portfolio.
+     - **Key Operations:**
+       - Iterates over all trades and calls `process_single_trade` for each one.
+       - Aggregates individual trade PFE profiles using the trade aggregator.
+       - Writes the aggregated PFE profile and individual trade PFE profiles to an output file.
+     - **Inputs:** None (uses configuration and trade data loaded during initialization).
+     - **Outputs:** None (writes results to an output file).
+
+3. **Core Algorithms and Logic:**
+   - The core algorithm implemented in this file is the Monte Carlo simulation of asset price paths using the Geometric Brownian Motion (GBM) process. This is performed by the `MonteCarloEngine` class, which is utilized within the `process_single_trade` method.
+   - The calculation of the PFE profile for each trade involves simulating asset price paths, valuing the TRS instrument at each time step, calculating the exposure paths, and then applying the specified quantile calculation to obtain the PFE profile. This process is orchestrated by the `process_single_trade` method.
+   - The aggregation of individual trade PFE profiles is performed using a simple summation approach implemented in the `TradeAggregator` class.
+
+4. **Data Structures:**
+   - The file primarily utilizes dictionaries to store and manage configuration parameters, market data, and trade information.
+   - The `market_data_map` is a dictionary that maps asset IDs to their corresponding market data.
+   - The `trades` variable is a list of dictionaries, where each dictionary represents the details of a specific trade.
+
+5. **Dependencies:**
+   - **Internal:**
+     - `data_management.loader.ConfigManager`: Responsible for loading configuration data.
+     - `simulation_engine.monte_carlo_simulator.MonteCarloEngine`: Performs Monte Carlo simulations of asset price paths.
+     - `financial_instruments.equity_trs.EquityTRS`: Represents and values the equity total return swap (TRS) instrument.
+     - `pfe_calculation.pfe_computer.PFEQuantileCalculator`: Calculates the PF

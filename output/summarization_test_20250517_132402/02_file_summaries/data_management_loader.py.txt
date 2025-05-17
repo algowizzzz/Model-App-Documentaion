@@ -1,0 +1,52 @@
+**1. Overall Purpose and Role:**
+The primary purpose of this file is to provide a centralized mechanism for loading and managing configuration data required by the broader model or system. It serves as a data loader and configuration manager, responsible for reading and parsing JSON files containing essential data such as trades, market data, and simulation parameters.
+
+**2. Key Components and Functionality:**
+
+**Function: load_json_data(file_path: str)**
+- **Purpose:** Load data from a JSON file specified by the provided file path.
+- **Key Operations:** Opens the specified file, reads its contents, and parses the JSON data using the `json.load` function.
+- **Inputs:** `file_path` (str) - The path to the JSON file to be loaded.
+- **Outputs:** The parsed JSON data as a Python object (e.g., dict, list).
+
+**Function: get_trades(config_dir: str = "config")**
+- **Purpose:** Load trade data from a JSON file within the specified configuration directory.
+- **Key Operations:** Constructs the file path by joining the `config_dir` and "trades.json", then calls `load_json_data` to load and return the trade data.
+- **Inputs:** `config_dir` (str) - The directory path where the configuration files are located (default: "config").
+- **Outputs:** The parsed trade data from the "trades.json" file.
+
+**Function: get_market_data(config_dir: str = "config")**
+- **Purpose:** Load market data from a JSON file within the specified configuration directory.
+- **Key Operations:** Constructs the file path by joining the `config_dir` and "market_data.json", then calls `load_json_data` to load and return the market data.
+- **Inputs:** `config_dir` (str) - The directory path where the configuration files are located (default: "config").
+- **Outputs:** The parsed market data from the "market_data.json" file.
+
+**Function: get_simulation_params(config_dir: str = "config")**
+- **Purpose:** Load simulation parameters from a JSON file within the specified configuration directory.
+- **Key Operations:** Constructs the file path by joining the `config_dir` and "simulation_params.json", then calls `load_json_data` to load and return the simulation parameters.
+- **Inputs:** `config_dir` (str) - The directory path where the configuration files are located (default: "config").
+- **Outputs:** The parsed simulation parameters from the "simulation_params.json" file.
+
+**Class: ConfigManager**
+- **Purpose:** A class to manage the loading and storage of configuration data from multiple JSON files.
+- **Key Operations:** Initializes with a configuration directory path, provides a `load_all` method to load and store trades, market data, and simulation parameters.
+- **Inputs:** `config_dir` (str) - The directory path where the configuration files are located (default: "config").
+- **Outputs:** An instance of the `ConfigManager` class with loaded configuration data accessible through its attributes (`trades`, `market_data`, `sim_params`).
+
+**3. Core Algorithms and Logic:**
+The core logic of this file revolves around reading and parsing JSON data from files. The `load_json_data` function implements error handling for common exceptions that may occur during file operations and JSON parsing, such as `FileNotFoundError`, `JSONDecodeError`, and other unexpected exceptions.
+
+**4. Data Structures:**
+The file primarily deals with JSON data, which is loaded and parsed into Python dictionaries or lists, depending on the structure of the JSON data in the respective files.
+
+**5. Dependencies:**
+- **Internal:** None.
+- **External:**
+  - `json` (built-in Python module) - Used for parsing JSON data.
+  - `os` (built-in Python module) - Used for file path operations.
+
+**6. Error Handling and Logging:**
+- **Error Handling:** The `load_json_data` function implements try-except blocks to catch and handle specific exceptions, such as `FileNotFoundError`, `JSONDecodeError`, and other unexpected exceptions. Appropriate error messages are raised with relevant information.
+- **Logging:** The file does not implement any explicit logging functionality. However, it includes `print` statements to provide feedback on successful data loading and initialization of the `ConfigManager` class.
+
+**7

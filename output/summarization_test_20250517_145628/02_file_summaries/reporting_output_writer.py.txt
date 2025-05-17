@@ -1,0 +1,44 @@
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to handle the writing of Potential Future Exposure (PFE) results to output files.
+   - It plays a role in the reporting and output generation component of a broader system or model related to risk analysis or portfolio simulations.
+
+2. **Key Components and Functionality:**
+   - **Class: ResultsWriter**
+     - **Purpose:** Manages the creation of an output directory and the writing of PFE results to a JSON file.
+     - **Key Operations:**
+       - Initializes the output directory and handles directory creation.
+       - Converts NumPy arrays to lists for JSON serialization.
+       - Writes aggregated and individual PFE profiles to a JSON file.
+     - **Inputs:**
+       - `output_directory` (str): Path to the output directory.
+       - `simulation_id` (str): Identifier for the simulation run.
+       - `aggregated_pfe_profile` (np.ndarray or None): The aggregated PFE profile.
+       - `individual_pfe_profiles` (dict): Dictionary where keys are trade IDs, and values are PFE profiles (np.ndarray).
+     - **Outputs:**
+       - JSON file containing the PFE results, written to the specified output directory.
+
+3. **Core Algorithms and Logic (File-Specific):**
+   - The file does not implement any complex algorithms or significant business logic directly. Its primary responsibility is to handle the writing of PFE results to a JSON file in a structured format.
+
+4. **Data Structures:**
+   - The file utilizes a dictionary data structure (`individual_pfe_profiles`) to store individual PFE profiles, where the keys are trade IDs, and the values are NumPy arrays representing the PFE profiles.
+
+5. **Dependencies:**
+   - **Internal:** None specified.
+   - **External:**
+     - `json`: Standard Python library for working with JSON data.
+     - `os`: Standard Python library for interacting with the operating system, used for creating directories.
+     - `numpy`: Third-party library for numerical computing, used for handling NumPy arrays.
+
+6. **Error Handling and Logging:**
+   - The file implements try-except blocks to handle specific exceptions:
+     - `OSError`: Raised when there is an error creating the output directory.
+     - `IOError`: Raised when there is an error writing the PFE results to the JSON file.
+     - `TypeError`: Raised when there is an error serializing the PFE results to JSON.
+   - The file uses `print` statements to log information about the output directory creation and successful writing of PFE results.
+
+7. **Assumptions and Limitations (Strictly File-Specific):**
+   - The file assumes that the `output_directory` and `simulation_id` parameters are provided correctly.
+   - The file assumes that the `aggregated_pfe_profile` and `individual_pfe_profiles` parameters are in the expected formats (NumPy array and dictionary of NumPy arrays, respectively).
+   - The file does not handle any validation or error checking for the input data formats or values.
+   - The file is limited to writing PFE results to a JSON file and does not provide any functionality for further processing or analysis of the results.

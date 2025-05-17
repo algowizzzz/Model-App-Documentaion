@@ -1,0 +1,44 @@
+DRAFT SUBSECTION: 3.4. Data Lineage (ID: data_lineage)
+
+3.4. Data Lineage
+
+The data lineage for this model describes the flow of data from its original sources to its use in the model and ultimately the generation of the model outputs. This section provides a conceptual overview of the data lineage to ensure transparency and traceability of the data used in the model.
+
+Data Sources and Ingestion
+The primary data sources for this model are:
+
+- Internal trade data from the bank's transaction systems
+- Market data feeds from third-party data providers
+- Counterparty information from the bank's customer relationship management (CRM) system
+
+This data is ingested into the model's data processing pipeline through a combination of automated data feeds, scheduled batch extracts, and manual data uploads. The specific mechanisms for data ingestion vary depending on the source and format of the data.
+
+Data Transformation and Enrichment
+Once the raw data is ingested, it undergoes a series of transformation and enrichment steps to prepare it for use in the model. These steps include:
+
+- Cleansing and normalization: Handling missing values, outliers, and inconsistencies in the data
+- Aggregation and summarization: Consolidating granular trade-level data into portfolio-level metrics
+- Enrichment with additional attributes: Appending counterparty risk profiles, market risk factors, and other relevant data points to the core trade information
+
+The transformed and enriched data is then stored in a centralized data repository, which serves as the primary data source for the model.
+
+Model Input Data
+The `RiskCalculator` class within the `complex_module.py` file is the core component responsible for consuming the model input data. This class takes a list of `RiskFactor` objects as input, where each `RiskFactor` represents a specific risk attribute with its name, weight, value, and category.
+
+The `RiskFactor` objects are constructed based on the data retrieved from the centralized data repository. The specific risk factors and their associated data points are determined by the model's design and the risk assessment methodology implemented in the `RiskCalculator` class.
+
+Model Outputs and Reporting
+The `create_risk_report` function in the `complex_module.py` file generates a comprehensive risk report based on the output of the `RiskCalculator` class. This report includes the total risk score, a breakdown of risk scores by category, and an overall risk status (high-risk or low-risk) based on a predefined risk threshold.
+
+The risk report is the primary output of the model and is intended for use by the model's intended users, such as risk managers, portfolio analysts, and regulatory authorities.
+
+Data Lineage Summary
+In summary, the data lineage for this model can be described as follows:
+
+1. Data is ingested from various internal and external sources, including trade data, market data, and counterparty information.
+2. The raw data is transformed and enriched through a series of data processing steps to prepare it for use in the model.
+3. The transformed data is stored in a centralized data repository, which serves as the primary data source for the `RiskCalculator` class.
+4. The `RiskCalculator` class consumes the data from the repository and calculates the risk scores based on the provided `RiskFactor` objects.
+5. The `create_risk_report` function generates a comprehensive risk report using the output of the `RiskCalculator` class, which represents the final model output.
+
+This data lineage ensures transparency and traceability of the data used in the model, enabling effective model governance, regulatory compliance, and ongoing model monitoring and validation.

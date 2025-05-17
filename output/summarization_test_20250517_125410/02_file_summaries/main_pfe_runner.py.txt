@@ -1,0 +1,13 @@
+The `main_pfe_runner.py` file serves as the main entry point and orchestrator for a Monte Carlo simulation-based Potential Future Exposure (PFE) calculation process. Its primary purpose is to coordinate the various components involved in simulating asset price paths, valuing financial instruments, calculating exposure profiles, and aggregating PFE results across multiple trades.
+
+The key components are:
+
+1. `PFECalculationOrchestrator` class: This class orchestrates the entire PFE calculation workflow. It initializes and manages the dependencies, processes individual trades, and writes the final results.
+
+2. `process_single_trade` method: This method handles the PFE calculation for a single trade. It simulates asset price paths, values the financial instrument (EquityTRS), calculates exposure paths, and computes the PFE profile for the trade.
+
+3. `run_full_pfe_calculation` method: This method runs the PFE calculation for all trades, aggregates the individual PFE profiles, and writes the results to an output directory.
+
+The file relies on several external components, such as `ConfigManager` for loading configuration and market data, `MonteCarloEngine` for asset price simulation, `EquityTRS` for valuing equity total return swaps, `PFEQuantileCalculator` for calculating PFE profiles, `TradeAggregator` for aggregating individual PFE profiles, and `ResultsWriter` for writing the results to files.
+
+The main algorithm used is the Monte Carlo simulation method for generating asset price paths, which are then used to value the financial instruments and calculate exposure profiles. The PFE profiles are computed by applying a quantile calculation (e.g., 95th percentile) on the exposure paths. The individual PFE profiles are aggregated using a simple sum approach, although more sophisticated aggregation methods could be implemented.

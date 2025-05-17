@@ -1,0 +1,34 @@
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file, `output_writer.py`, is to handle the writing of Potential Future Exposure (PFE) results to JSON files.
+   - This file is a component within a broader model or system that generates and processes PFE profiles. It is responsible for the final step of persisting the PFE results to the file system.
+
+2. **Key Components and Functionality:**
+   - `ResultsWriter` class:
+     - **Purpose:** Provides functionality to write aggregated and individual PFE profiles to a JSON file.
+     - **Key Operations:** Creates the output directory if it doesn't exist, prepares the data for JSON serialization, and writes the PFE results to a JSON file.
+     - **Inputs:** The output directory path, the simulation ID, the aggregated PFE profile, and a dictionary of individual PFE profiles.
+     - **Outputs:** A JSON file containing the PFE results.
+
+3. **Core Algorithms and Logic (File-Specific):**
+   - The `_prepare_data_for_json` method is responsible for converting NumPy arrays to Python lists, ensuring proper serialization of the PFE data to JSON format.
+   - The `write_pfe_results` method handles the creation of the output file, including the file path construction and the actual writing of the JSON data.
+
+4. **Data Structures:**
+   - The `ResultsWriter` class uses a dictionary to store the individual PFE profiles, where the keys are trade IDs and the values are NumPy arrays.
+
+5. **Dependencies:**
+   - **Internal:** This file does not have any direct dependencies on other modules within the codebase.
+   - **External:** This file utilizes the following external libraries:
+     - `json`: For serializing the PFE results to JSON format.
+     - `os`: For interacting with the file system (creating directories, joining paths).
+     - `numpy`: For working with the PFE profile data, which is represented as NumPy arrays.
+
+6. **Error Handling and Logging:**
+   - The `ResultsWriter` class handles errors that may occur during the creation of the output directory and the writing of the JSON file.
+   - Logging is implemented using the built-in `print` function to provide feedback on the creation of the output directory and the successful writing of the PFE results.
+
+7. **Assumptions and Limitations (Strictly File-Specific):**
+   - This file assumes that the input data (aggregated PFE profile and individual PFE profiles) is provided in the expected format (NumPy arrays and dictionaries).
+   - The file does not have any specific limitations beyond the general assumptions and constraints of the JSON serialization process.

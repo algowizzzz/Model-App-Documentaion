@@ -1,0 +1,20 @@
+The `simulation_engine/gbm_model.py` file provides an implementation of the Geometric Brownian Motion (GBM) process for simulating asset prices over time. The main purpose of this file is to generate multiple paths of asset prices based on the GBM model, which is widely used in finance for modeling stock prices and other financial instruments.
+
+The key component of this file is the `GBMProcess` class, which encapsulates the GBM model and provides methods for generating asset price paths. The class has the following methods:
+
+1. `__init__` (constructor): Initializes the GBM process with the initial asset price, drift rate (expected rate of return), volatility, and time delta (time increment for each step).
+2. `generate_paths`: Generates multiple asset price paths based on the GBM model. It takes the number of time steps and the number of paths as input and returns a NumPy array containing the simulated asset prices for each path.
+
+The `generate_paths` method implements the GBM model using the following equation:
+
+```
+S(t+dt) = S(t) * exp((mu - 0.5 * sigma^2) * dt + sigma * sqrt(dt) * Z)
+```
+
+where `S(t)` is the asset price at time `t`, `mu` is the drift rate, `sigma` is the volatility, `dt` is the time delta, and `Z` is a standard normal random variable.
+
+The file also includes a simple test case in the `if __name__ == '__main__'` block, which creates a `GBMProcess` instance and generates a set of asset price paths for a one-year period with monthly time steps.
+
+The implementation relies on the NumPy library for efficient numerical computations and random number generation. The code follows a straightforward object-oriented design pattern, encapsulating the GBM model and its parameters within the `GBMProcess` class.
+
+Overall, this file provides a concise and reusable implementation of the Geometric Brownian Motion process for simulating asset prices, which can be useful in various financial modeling and risk management applications.

@@ -1,0 +1,29 @@
+DRAFT SUBSECTION: 1.4. Regulatory Context (ID: intro_regulatory)
+
+1.4. Regulatory Context
+
+The risk calculation and reporting functionality implemented in the `complex_module.py` file is designed to adhere to relevant regulatory guidelines and requirements. Specifically, this model and its documentation align with the following key regulations and industry standards:
+
+SR 11-7 (Supervisory Guidance on Model Risk Management)
+The model development and validation processes, as well as the ongoing monitoring and governance procedures, are aligned with the principles outlined in the Federal Reserve's Supervisory Guidance on Model Risk Management (SR 11-7). This includes:
+
+- Robust model validation, including evaluation of model assumptions, data integrity, and model performance.
+- Comprehensive documentation of the model's purpose, scope, methodology, limitations, and controls.
+- Clearly defined roles and responsibilities for model owners, developers, and validators.
+- Periodic review and recalibration of the model to ensure continued relevance and accuracy.
+
+OSFI E-23 (Guideline on Stress Testing)
+The risk calculation and reporting capabilities of this model are designed to support the bank's stress testing framework, as outlined in the Office of the Superintendent of Financial Institutions (OSFI) Guideline E-23 on Stress Testing. Key aspects include:
+
+- Ability to stress test the model's risk factors and inputs to assess the impact on overall risk profiles.
+- Generating comprehensive risk reports that can be used for regulatory reporting and senior management decision-making.
+- Ensuring the model's methodologies and assumptions are well-documented and justified, as required by the guideline.
+
+In addition to the above regulatory guidelines, the model and its documentation also adhere to BMO's internal model risk management policies and standards. This includes:
+
+- Formal model approval and ongoing review processes.
+- Clearly defined model governance structures and escalation procedures.
+- Comprehensive model documentation requirements, including this standardized template.
+- Alignment with BMO's data management, information security, and change management practices.
+
+By aligning with these regulatory requirements and industry best practices, the risk calculation model and its documentation demonstrate a strong commitment to model risk management and regulatory compliance. This ensures the model can be effectively used for its intended purposes, while also providing the necessary transparency and controls for audit and oversight purposes.

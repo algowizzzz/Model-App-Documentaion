@@ -1,0 +1,45 @@
+DETAILED DOCUMENTATION OUTLINE:
+
+{"name": "BMO Standard Model Documentation", "version": "1.0", "description": "Standard template for comprehensive model documentation at BMO, designed for regulatory scrutiny, audit, and senior stakeholder review.", "metadata_fields": [{"id": "doc_id", "title": "Document ID", "type": "text"}, {"id": "model_name", "title": "Model Name/Identifier", "type": "text"}, {"id": "model_version", "title": "Model Version", "type": "text"}, {"id": "doc_version", "title": "Document Version", "type": "text"}, {"id": "status", "title": "Document Status", "type": "text", "options": ["Draft", "In Review", "Approved", "Archived"]}, {"id": "publication_date", "title": "Publication Date", "type": "date"}, {"id": "authors", "title": "Author(s)", "type": "list_text"}, {"id": "reviewers", "title": "Reviewer(s)", "type": "list_text"}, {"id": "approver", "title": "Approver", "type": "text"}], "sections": [
+    {
+        "id": "executive_summary",
+        "title": "Executive Summary",
+        "description": "A high-level overview of the model, its purpose, key methodologies, primary results (e.g., PFE outcomes if applicable), overall model soundness, and any significant limitations or recommendations. Should be understandable by a non-technical senior audience.",
+        "required": true,
+        "prompts": [
+            "Provide a concise, high-level summary of the model's purpose, as described in the Hierarchical Summary. What are the key business objectives the model aims to address?",
+            "Summarize the core methodology used by the model, as outlined in the Hierarchical Summary (e.g., Monte Carlo simulation, Geometric Brownian Motion). Highlight the theoretical basis and key assumptions.",
+            "Based on the Hierarchical Summary, what are the primary model outputs and results (e.g., PFE profiles)? Discuss the overall soundness and reliability of these outputs.",
+            "Identify any significant limitations or weaknesses of the model, as hinted at in the Hierarchical Summary (e.g., data quality issues, inherent methodology limitations). Discuss potential impacts and any mitigating factors.",
+            "Conclude with a recommendation on the model's fitness for purpose and any future enhancements or development needs."
+        ]
+    },
+    {
+        "id": "introduction",
+        "title": "1. Introduction",
+        "description": "Background, purpose, and scope of the model.",
+        "required": true,
+        "subsections": [
+            {
+                "id": "intro_purpose",
+                "title": "1.1. Purpose of the Model",
+                "description": "Clearly state the business problem the model addresses and its objectives (e.g., PFE calculation for specific trade types, regulatory capital calculation).",
+                "required": true,
+                "prompts": [
+                    "Based on the Hierarchical Summary, what is the primary business problem or objective this model is designed to address? Clearly articulate the specific use case(s) for the model.",
+                    "What are the key outputs or metrics the model is expected to produce (e.g., PFE profiles for Equity TRS)? Discuss how these outputs support the stated business objectives."
+                ]
+            },
+            {
+                "id": "intro_scope",
+                "title": "1.2. Scope and Applicability",
+                "description": "Define the products, portfolios, or processes the model applies to. Specify any known exclusions or boundaries.",
+                "required": true,
+                "prompts": [
+                    "According to the Hierarchical Summary, what specific products, portfolios, or processes does this model cover? Clearly delineate the scope of the model's applicability.",
+                    "Are there any known exclusions, limitations, or boundaries to the model's scope, as hinted at in the Hierarchical Summary? If so, document these explicitly."
+                ]
+            },
+            {
+                "id": "intro_users",
+                "title": "1.3. Intended Users",

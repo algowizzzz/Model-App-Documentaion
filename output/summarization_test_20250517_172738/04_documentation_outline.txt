@@ -1,0 +1,50 @@
+DETAILED DOCUMENTATION OUTLINE:
+
+{"name": "BMO Standard Model Documentation", "version": "1.0", "description": "Standard template for comprehensive model documentation at BMO, designed for regulatory scrutiny, audit, and senior stakeholder review.", "metadata_fields": [{"id": "doc_id", "title": "Document ID", "type": "text"}, {"id": "model_name", "title": "Model Name/Identifier", "type": "text"}, {"id": "model_version", "title": "Model Version", "type": "text"}, {"id": "doc_version", "title": "Document Version", "type": "text"}, {"id": "status", "title": "Document Status", "type": "text", "options": ["Draft", "In Review", "Approved", "Archived"]}, {"id": "publication_date", "title": "Publication Date", "type": "date"}, {"id": "authors", "title": "Author(s)", "type": "list_text"}, {"id": "reviewers", "title": "Reviewer(s)", "type": "list_text"}, {"id": "approver", "title": "Approver", "type": "text"}], "sections": [
+    {
+        "id": "executive_summary",
+        "title": "Executive Summary",
+        "description": "A high-level overview of the model, its purpose, key methodologies, primary results (e.g., PFE outcomes if applicable), overall model soundness, and any significant limitations or recommendations. Should be understandable by a non-technical senior audience.",
+        "required": true,
+        "prompts": [
+            "Provide a concise summary of the model's purpose, as described in Section 1.1 of the Hierarchical Summary.",
+            "Identify the key methodologies and algorithms used in the model, as outlined in Sections 2.1 and 2.2 of the Hierarchical Summary.",
+            "Summarize the primary outputs or results of the model, such as PFE calculations, and their significance.",
+            "Assess the overall soundness of the model based on the information provided in the Hierarchical Summary. Highlight any areas of strength or potential concerns.",
+            "Outline the significant limitations of the model, drawing from the details in Sections 2.4 and 8 of the Hierarchical Summary.",
+            "Provide any high-level recommendations for future model enhancements or usage, based on the information gathered."
+        ]
+    },
+    {
+        "id": "introduction",
+        "title": "1. Introduction",
+        "description": "Background, purpose, and scope of the model.",
+        "required": true,
+        "subsections": [
+            {
+                "id": "intro_purpose",
+                "title": "1.1. Purpose of the Model",
+                "description": "Clearly state the business problem the model addresses and its objectives (e.g., PFE calculation for specific trade types, regulatory capital calculation).",
+                "required": true,
+                "prompts": [
+                    "Based on the information in Section 1.1 of the Hierarchical Summary, clearly articulate the specific business problem or objective that this model is designed to address.",
+                    "Describe the key use cases or applications of the model, such as PFE calculation, regulatory capital reporting, or other risk management purposes."
+                ]
+            },
+            {
+                "id": "intro_scope",
+                "title": "1.2. Scope and Applicability",
+                "description": "Define the products, portfolios, or processes the model applies to. Specify any known exclusions or boundaries.",
+                "required": true,
+                "prompts": [
+                    "Identify the specific products, portfolios, or processes that the model is designed to handle, as described in Section 1.2 of the Hierarchical Summary.",
+                    "Outline any known exclusions or boundaries of the model's scope, such as specific trade types, asset classes, or business lines that are not covered."
+                ]
+            },
+            {
+                "id": "intro_users",
+                "title": "1.3. Intended Users",
+                "description": "Identify the primary users of the model and its outputs.",
+                "required": false,
+                "prompts": [
+                

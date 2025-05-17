@@ -1,0 +1,46 @@
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file, `exposure_aggregator.py`, is to provide a mechanism for aggregating and managing Potential Future Exposure (PFE) profiles across multiple trades.
+   - This file is a key component within the broader `pfe_calculation` module, responsible for the specific task of consolidating and summarizing individual trade-level PFE profiles into a single aggregated PFE profile.
+
+2. **Key Components and Functionality:**
+   - **`TradeAggregator` Class:**
+     - **Purpose:** Aggregates PFE profiles across multiple trades.
+     - **Key Operations:** Stores individual trade PFE profiles, calculates a simple sum of all profiles, and provides access to the aggregated PFE profile.
+     - **Inputs:** Trade IDs and corresponding PFE profiles (as NumPy arrays).
+     - **Outputs:** The aggregated PFE profile (as a NumPy array).
+   - **`add_trade_pfe_profile(trade_id, pfe_profile)` Method:**
+     - **Purpose:** Stores the PFE profile for a single trade.
+     - **Key Operations:** Adds the provided PFE profile to the internal dictionary of all trade PFE profiles, overwriting any existing profile for the same trade ID.
+     - **Inputs:** Trade ID (as a string) and PFE profile (as a NumPy array).
+     - **Outputs:** None.
+   - **`get_all_individual_pfe_profiles()` Method:**
+     - **Purpose:** Provides access to the dictionary of all stored individual trade PFE profiles.
+     - **Key Operations:** Returns the internal dictionary of all trade PFE profiles.
+     - **Inputs:** None.
+     - **Outputs:** A dictionary mapping trade IDs to their corresponding PFE profiles (as NumPy arrays).
+   - **`calculate_simple_sum_pfe()` Method:**
+     - **Purpose:** Calculates a simple sum of all stored individual trade PFE profiles.
+     - **Key Operations:** Verifies that all stored PFE profiles have the same length, then sums the profiles along the axis corresponding to the time steps.
+     - **Inputs:** None.
+     - **Outputs:** The aggregated PFE profile (as a NumPy array), or `None` if no trade PFE profiles are available.
+
+3. **Core Algorithms and Logic (File-Specific):**
+   - The primary logic implemented in this file is the simple summation of individual trade PFE profiles to obtain an aggregated PFE profile. This is a basic aggregation approach, as the actual calculation of portfolio-level PFE would typically involve more complex netting effects, which are out of the scope of this "bare-minimum" example.
+
+4. **Data Structures:**
+   - The `TradeAggregator` class maintains an internal dictionary `self.all_trade_pfe_profiles` to store the individual trade PFE profiles, where the keys are trade IDs and the values are the corresponding NumPy arrays.
+   - The `self.aggregated_pfe_profile` attribute is a placeholder for a more complex aggregation, which is not implemented in this example.
+
+5. **Dependencies:**
+   - **Internal:** This file does not have any direct internal dependencies within the `pfe_calculation` module.
+   - **External:** The file utilizes the `numpy` library for working with NumPy arrays.
+
+6. **Error Handling and Logging:**
+   - The `TradeAggregator` class includes basic error handling by checking if all stored PFE profiles have the same length before attempting to sum them.
+   - The class also includes logging functionality, using `print()` statements to provide information about the aggregation process, such as when a PFE profile is added or when the simple sum is calculated.
+
+7. **Assumptions and Limitations (Strictly File-Specific):**
+   - This file assumes that the input PFE profiles are provided as NumPy arrays and that all profiles have the same length.
+   - The `calculate_simple_sum_pfe()` method implements a basic summation of PFE profiles, which is generally not the correct way to calculate portfolio-level PFE due to netting effects. This is a limitation of the approach taken in this

@@ -1,0 +1,21 @@
+DRAFT SUBSECTION: 2.4. Limitations of the Methodology (ID: method_limitations)
+
+2.4. Limitations of the Methodology
+
+The risk calculation and reporting methodology implemented in the `complex_module.py` file has several inherent limitations that should be considered when using this model:
+
+1. **Reliance on Manually Defined Risk Factors**: The model relies on a predefined set of risk factors, each with manually assigned weights and values. This approach may not be suitable for dynamic or rapidly changing risk environments, as the risk factors and their parameters would need to be manually updated. Automating the identification, weighting, and categorization of risk factors could improve the model's adaptability.
+
+2. **Lack of External Data Integration**: The current implementation of the `RiskCalculator` class does not integrate with any external data sources or real-time market data. The risk factors and their values are assumed to be provided directly to the class. Integrating the model with external data feeds, such as market prices, economic indicators, or industry-specific risk data, could enhance the model's ability to capture and respond to changing risk conditions.
+
+3. **Limited Scope and Applicability**: The model is designed to handle a specific set of products, portfolios, or processes, as outlined in the scope definition. It may not be suitable for use in other business domains or for more complex risk management scenarios that require a broader range of risk factors, interdependencies, or advanced modeling techniques.
+
+4. **Potential Bias in Risk Factor Weighting**: The assignment of weights to individual risk factors is a manual process, which introduces the potential for human bias or subjectivity. The model does not currently provide a systematic approach for determining optimal risk factor weights based on historical data or expert knowledge. Implementing a more rigorous weighting methodology, such as statistical analysis or machine learning techniques, could help mitigate this limitation.
+
+5. **Lack of Uncertainty Quantification**: The current model does not provide any explicit quantification of the uncertainty or confidence levels associated with the calculated risk scores. This makes it difficult to assess the reliability and robustness of the risk assessments, especially in the face of data limitations or model assumptions. Incorporating techniques for uncertainty quantification, such as sensitivity analysis or Monte Carlo simulations, could enhance the model's transparency and decision-making support.
+
+6. **Limited Validation and Backtesting**: The documentation does not provide details on the validation or backtesting procedures used to evaluate the model's performance and accuracy. Rigorous validation, including out-of-sample testing, stress testing, and comparison to industry benchmarks, is essential to ensure the model's reliability and suitability for regulatory and audit purposes.
+
+7. **Potential Scalability Challenges**: As the number of risk factors or the complexity of the risk calculations increases, the performance and computational efficiency of the `RiskCalculator` class may become a concern. The current implementation may not be scalable to handle large-scale risk management scenarios or real-time risk monitoring applications.
+
+It is important to acknowledge these limitations and address them through ongoing model development, enhancement, and validation efforts. Continuous improvement, integration with external data sources, and the implementation of more advanced risk modeling techniques can help strengthen the reliability and robustness of the risk calculation and reporting methodology.

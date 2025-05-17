@@ -1,0 +1,25 @@
+DRAFT SUBSECTION: 4.4. Code Version Control (ID: impl_version_control)
+
+4.4. Code Version Control
+
+The codebase for this model is managed using a version control system, specifically Git. The Git repository serves as the central source of truth for the model's code, configuration files, and supporting documentation.
+
+The overall Git workflow and branching strategy are as follows:
+
+1. **Main Branch**: The `main` branch represents the stable, production-ready version of the codebase. All approved and tested changes are merged into this branch.
+
+2. **Development Branch**: The `develop` branch is used for active development and integration of new features or bug fixes. This is where most day-to-day coding work is performed.
+
+3. **Feature Branches**: For each new feature or bug fix, a dedicated feature branch is created off the `develop` branch. These feature branches follow a naming convention, such as `feature/new-risk-factor` or `fix/invalid-data-handling`.
+
+4. **Pull Requests**: When a feature or bug fix is ready for integration, a pull request is created from the feature branch to the `develop` branch. This allows for code review, testing, and approval before merging the changes.
+
+5. **Merging and Deployment**: Once a pull request is approved, the feature branch is merged into the `develop` branch. Periodically, the `develop` branch is then merged into the `main` branch, triggering a deployment of the updated model to the production environment.
+
+6. **Versioning**: The model's version is tracked using a semantic versioning scheme (e.g., `1.2.3`), where the major version represents significant architectural changes, the minor version represents new feature additions, and the patch version represents bug fixes or minor improvements. The current model version is specified in the `model_version` metadata field.
+
+7. **Tagging and Releases**: Whenever a new version of the model is ready for release, a Git tag is created for the corresponding commit on the `main` branch. This tag represents a specific, deployable version of the model that can be referenced and tracked over time.
+
+8. **Backup and Archiving**: The Git repository is regularly backed up to a secure, off-site storage location. Additionally, important model versions are archived for long-term retention and regulatory compliance purposes.
+
+The version control practices described above ensure that the model's codebase is well-organized, traceable, and easily maintainable. The use of feature branches, pull requests, and a defined branching strategy promotes collaboration, code quality, and a structured development workflow. The versioning and tagging mechanisms enable the team to quickly identify, deploy, and revert to specific model versions as needed, supporting both ongoing development and regulatory requirements.

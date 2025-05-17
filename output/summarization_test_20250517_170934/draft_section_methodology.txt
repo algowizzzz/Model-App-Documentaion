@@ -1,0 +1,51 @@
+DRAFT SECTION: 2. Model Methodology (ID: methodology)
+
+2. Model Methodology
+
+2.1. Theoretical Basis
+
+The core theoretical foundation of the risk calculation model implemented in the `complex_module.py` file is based on the concept of risk factors and their weighted aggregation. The model represents individual risk factors as instances of the `RiskFactor` class, each with a name, weight, value, and category. The key theoretical principles underlying this approach are:
+
+1. **Risk Factor Representation**: The model assumes that the overall risk associated with a system or portfolio can be decomposed into a set of discrete risk factors, each of which contributes to the total risk exposure.
+
+2. **Weighted Aggregation**: The model applies a weighted sum approach to calculate the total risk score, where each risk factor's contribution is proportional to its assigned weight. This reflects the relative importance or impact of different risk factors on the overall risk profile.
+
+3. **Risk Categorization**: The model organizes risk factors into categories (e.g., market risk, credit risk, operational risk) to provide a structured view of the risk breakdown and enable targeted risk management strategies.
+
+2.2. Mathematical Formulation
+
+The mathematical formulation of the risk calculation model is as follows:
+
+1. **RiskFactor Class**:
+   - The `RiskFactor` class represents a single risk factor with the following attributes:
+     - `name`: The name or identifier of the risk factor.
+     - `weight`: The weight or importance of the risk factor, a value between 0 and 1.
+     - `value`: The numerical value or magnitude of the risk factor.
+     - `category`: The category or type of the risk factor (e.g., market, credit, operational).
+   - The `RiskFactor` class provides a `get_weighted_impact()` method that calculates the weighted impact of the risk factor as the product of its weight and value.
+
+2. **RiskCalculator Class**:
+   - The `RiskCalculator` class is responsible for aggregating the risk factors and calculating the overall risk score.
+   - The `__init__()` method takes a list of `RiskFactor` instances and a risk threshold value as input.
+   - The `calculate_total_risk()` method computes the total risk score by summing the weighted impacts of all risk factors and normalizing the result to the range [0, 1].
+   - The `get_risk_breakdown()` method calculates the risk scores for each category by summing the weighted impacts of the risk factors within each category.
+   - The `_validate_factors()` method checks the validity of the input risk factors, ensuring that the weights are within the valid range (0 to 1) and the values are non-negative.
+
+3. **create_risk_report Function**:
+   - The `create_risk_report()` function takes a `RiskCalculator` instance as input and generates a comprehensive risk report.
+   - The function calculates the total risk score, the risk breakdown by category, and the overall risk status (high-risk or low-risk) based on the provided risk threshold.
+   - The risk report is returned as a dictionary containing the timestamp, total risk score, risk breakdown, and risk status.
+
+2.3. Assumptions and Justifications
+
+The key assumptions made in the design and implementation of the risk calculation model are:
+
+1. **Risk Factor Representation**: The model assumes that the overall risk can be adequately represented by a set of discrete risk factors, each with a name, weight, value, and category. This assumption simplifies the risk modeling process but may not capture all nuances of real-world risk dynamics.
+
+2. **Weight Validity**: The model assumes that the weights assigned to risk factors are valid, i.e., they are between 0 and 1. This ensures that the weighted aggregation of risk factors produces a meaningful total risk score.
+
+3. **Non-negative Risk Factor Values**: The model assumes that the values of risk factors are non-negative. This is a reasonable assumption, as negative risk values would not make sense in the context of the model.
+
+4. **Risk Factor Independence**: The model assumes that the risk factors are independent and their impacts can be linearly aggregated. In reality, risk factors may exhibit complex interdependencies, which are not explicitly captured by this model.
+
+5. **Risk Categorization**: The model assumes that risk factors can be meaningfully categorized into distinct categories (e.g., market, credit, operational). This categorization enables the analysis of risk breakdown by type, but may oversimpl

@@ -1,0 +1,25 @@
+DRAFT SUBSECTION: 2.4. Limitations of the Methodology (ID: method_limitations)
+
+2.4. Limitations of the Methodology
+
+The methodology employed in this model has several inherent limitations that should be considered when interpreting the model's outputs and applying it in a real-world context.
+
+Scope Limitations:
+- The model is designed to handle a specific set of products, portfolios, and processes as defined in Section 1.2. It does not cover all possible trade types, asset classes, or business lines that may be relevant to the organization. Applying the model outside of its intended scope could lead to inaccurate or unreliable results.
+- The model relies on the availability and quality of the data provided in the `data.xml` file. If this data source is incomplete, inaccurate, or not representative of the actual portfolio, the model's calculations and risk assessments will be impacted accordingly.
+- The `complex_module.py` file, which contains the core risk calculation logic, does not provide mechanisms for handling updates, modifications, or versioning of the risk factor data. This means that the model may not be able to adapt to changes in the underlying risk landscape over time without manual intervention.
+
+Algorithmic Limitations:
+- The risk calculation algorithms implemented in the `RiskCalculator` class make several assumptions about the normalization and weighting of risk factors. These assumptions may not hold true in all market conditions or for all types of risk exposures.
+- The `_validate_factors` method in the `RiskCalculator` class only checks for invalid weights and values in the risk factors. It does not perform any advanced validation or consistency checks, which could lead to the inclusion of erroneous or incompatible risk factors in the calculations.
+- The `create_risk_report` function provides a predefined structure for the risk report, without any options for customizing the format or content. This may limit the usefulness of the report for certain stakeholders or use cases.
+
+Computational Limitations:
+- The model does not appear to have any mechanisms for handling large or complex portfolios efficiently. The performance and scalability of the risk calculation algorithms have not been thoroughly evaluated, which could be a concern for organizations with extensive trading books or frequent portfolio changes.
+- The model does not provide any explicit error handling or logging functionalities. In the event of unexpected inputs, edge cases, or system failures, the model may not be able to gracefully handle and report such issues, potentially leading to unreliable results or a lack of transparency.
+
+Regulatory and Governance Limitations:
+- The model documentation does not mention any specific regulatory requirements or guidelines that the model is designed to address. It is unclear whether the model's methodology and outputs would be compliant with relevant industry regulations or internal risk management policies.
+- The model does not appear to have a formal governance structure, such as defined model approval and review processes, model risk management practices, or ongoing monitoring and validation procedures. This could impact the model's reliability, transparency, and auditability over time.
+
+Overall, while the model provides a comprehensive risk calculation framework, the limitations outlined above should be carefully considered when deploying the model in a production environment or relying on its outputs for critical business decisions. Ongoing model validation, enhancement, and integration with other risk management systems may be necessary to address these limitations and ensure the model's fitness for purpose.

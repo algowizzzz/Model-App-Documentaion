@@ -1,0 +1,39 @@
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file, `monte_carlo_simulator.py`, is to provide a Monte Carlo simulation engine for generating price paths for various assets.
+   - This file is a key component within the broader `simulation_engine` module, responsible for the core simulation functionality required for Potential Future Exposure (PFE) calculations.
+
+2. **Key Components and Functionality:**
+
+   - **Class: `MonteCarloEngine`**
+     - **Purpose:** Orchestrates the Monte Carlo simulations for different assets.
+     - **Key Operations:** Initializes the simulation parameters, runs the asset price path simulations using the `GBMProcess` class, and returns the simulated price paths.
+     - **Inputs:** A dictionary of simulation parameters, including the number of paths to simulate, and a dictionary of asset market data (current price, risk-free rate, dividend yield, volatility).
+     - **Outputs:** A numpy array containing the simulated price paths for the asset.
+
+   - **Function: `run_asset_simulation`**
+     - **Purpose:** Simulates the price paths for a single asset using the Geometric Brownian Motion (GBM) process.
+     - **Key Operations:** Calculates the drift term based on the risk-free rate and dividend yield, creates a `GBMProcess` instance, and generates the price paths.
+     - **Inputs:** A dictionary of asset market data and the total number of time steps and time delta for the simulation.
+     - **Outputs:** A numpy array containing the simulated price paths for the asset.
+
+3. **Core Algorithms and Logic (File-Specific):**
+   - The primary algorithm implemented in this file is the Geometric Brownian Motion (GBM) process, which is used to generate the simulated price paths for the assets. The GBM process is a widely used model for simulating the behavior of asset prices, particularly in the context of financial risk management and derivatives pricing.
+
+4. **Data Structures:**
+   - The file primarily uses dictionaries to represent the simulation parameters and asset market data.
+   - The simulated price paths are returned as a numpy array.
+
+5. **Dependencies:**
+   - **Internal:** This file depends on the `GBMProcess` class defined in the `gbm_model.py` file within the same `simulation_engine` module.
+   - **External:** The file utilizes the numpy library for numerical computations and array manipulation.
+
+6. **Error Handling and Logging:**
+   - The file includes basic logging functionality, using the `print` statements to output information about the initialization of the `MonteCarloEngine` and the completion of the asset simulation.
+   - No explicit error handling mechanisms are observed in the provided code.
+
+7. **Assumptions and Limitations (Strictly File-Specific):**
+   - The code assumes that the input `asset_market_data` dictionary contains the necessary information (current price, risk-free rate, dividend yield, volatility) required for the GBM simulation.
+   - The implementation assumes that the `GBMProcess` class correctly generates the price paths based on the provided parameters.
+   - The file does not handle any potential errors or edge cases that may arise during the simulation process.

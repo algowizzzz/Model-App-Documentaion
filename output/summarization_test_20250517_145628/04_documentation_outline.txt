@@ -1,0 +1,59 @@
+```json
+{
+  "id": "executive_summary",
+  "title": "Executive Summary",
+  "description": "A high-level overview of the model, its purpose, key methodologies, primary results (e.g., PFE outcomes if applicable), overall model soundness, and any significant limitations or recommendations. Should be understandable by a non-technical senior audience.",
+  "required": true,
+  "outline": [
+    "Provide a concise, non-technical summary of the model's purpose, which is to calculate the Potential Future Exposure (PFE) of a portfolio of Equity Total Return Swaps (TRS) using Monte Carlo simulation.",
+    "Highlight the key methodological approaches employed, such as Geometric Brownian Motion (GBM) for asset price simulation and quantile calculation for PFE profiling.",
+    "Summarize the primary outputs and results, including the aggregated PFE profile across the portfolio and any notable risk metrics or insights derived.",
+    "Assess the overall soundness and appropriateness of the model for its intended purpose, considering its theoretical foundations, implementation robustness, and any identified limitations or weaknesses.",
+    "Present any significant recommendations or areas for potential improvement, such as enhancements to the simulation methodology, data quality controls, or reporting capabilities."
+  ]
+},
+{
+  "id": "introduction",
+  "title": "1. Introduction",
+  "description": "Background, purpose, and scope of the model.",
+  "required": true,
+  "subsections": [
+    {
+      "id": "intro_purpose",
+      "title": "1.1. Purpose of the Model",
+      "description": "Clearly state the business problem the model addresses and its objectives (e.g., PFE calculation for specific trade types, regulatory capital calculation).",
+      "required": true,
+      "outline": [
+        "Explicitly state that the model's primary objective is to calculate the Potential Future Exposure (PFE) for a portfolio of Equity Total Return Swaps (TRS).",
+        "Explain the importance and regulatory context of PFE calculation, such as its role in determining counterparty credit risk and capital requirements.",
+        "Describe the specific business need or use case that necessitated the development of this PFE calculation model for Equity TRS portfolios."
+      ]
+    },
+    {
+      "id": "intro_scope",
+      "title": "1.2. Scope and Applicability",
+      "description": "Define the products, portfolios, or processes the model applies to. Specify any known exclusions or boundaries.",
+      "required": true,
+      "outline": [
+        "Clearly define that the model's scope is limited to Equity Total Return Swaps (TRS) and does not currently support other derivative products or asset classes.",
+        "Specify any known limitations or exclusions in terms of the types of Equity TRS contracts that can be handled (e.g., single-stock vs. basket, specific payoff structures, etc.).",
+        "Mention if the model is designed to handle portfolios of any size or if there are practical limitations on the number or complexity of trades that can be processed."
+      ]
+    },
+    {
+      "id": "intro_users",
+      "title": "1.3. Intended Users",
+      "description": "Identify the primary users of the model and its outputs.",
+      "required": false,
+      "outline": [
+        "Identify the primary intended users of the model and its outputs, such as risk management teams, trading desks, or regulatory reporting functions.",
+        "Clarify if the model's outputs are intended for internal risk management purposes, regulatory reporting, or both."
+      ]
+    },
+    {
+      "id": "intro_regulatory",
+      "title": "1.4. Regulatory Context",
+      "description": "Mention any specific regulatory requirements or guidelines the model and its documentation adhere to (e.g., SR 11-7, OSFI E-23).",
+      "required": false,
+      "outline": [
+        "Specify any relevant regulatory guidelines or requirements that the model and its documentation aim to comply with, such as SR 11-7 (Supervisory Guidance on Model Risk Management) or OSFI E-23 (Enterprise-Wide Model Risk Management for Deposit-Taking Institutions).",

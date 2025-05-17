@@ -1,0 +1,41 @@
+The codebase appears to be a system for calculating Potential Future Exposure (PFE) for Equity Total Return Swaps (TRS) using Monte Carlo simulations. The overall architecture and design patterns can be summarized as follows:
+
+1. **Main Entry Point and Orchestration**
+   - `main_pfe_runner.py`: This file serves as the main entry point and orchestrator for the PFE calculation process. It manages the overall workflow, including loading configuration data, initializing required components, processing individual trades, and aggregating and writing the results.
+
+2. **Configuration and Data Management**
+   - `config/`: This directory contains JSON files for storing trade details, market data, and simulation parameters.
+   - `data_management/`: This module is responsible for loading and managing the configuration data from the JSON files.
+     - `loader.py`: Provides functions for loading trade data, market data, and simulation parameters from JSON files.
+     - `ConfigManager` (class): A centralized class for managing and storing the loaded configuration data.
+
+3. **Simulation Engine**
+   - `simulation_engine/`: This module handles the Monte Carlo simulation of asset price paths.
+     - `monte_carlo_simulator.py`: Orchestrates the Monte Carlo simulations for various assets.
+     - `gbm_model.py`: Implements the Geometric Brownian Motion (GBM) process for simulating asset price paths.
+
+4. **Financial Instruments**
+   - `financial_instruments/`: This module contains classes for representing and valuing financial instruments.
+     - `equity_trs.py`: Defines the `EquityTRS` class for modeling and valuing Equity Total Return Swaps.
+
+5. **PFE Calculation**
+   - `pfe_calculation/`: This module is responsible for calculating exposure paths, PFE profiles, and aggregating PFE across trades.
+     - `pfe_computer.py`: Defines the `PFEQuantileCalculator` class for calculating PFE profiles from exposure paths.
+     - `exposure_aggregator.py`: Provides the `TradeAggregator` class for managing and aggregating individual trade PFE profiles.
+
+6. **Reporting**
+   - `reporting/`: This module handles the writing of PFE results to output files.
+     - `output_writer.py`: Defines the `ResultsWriter` class for creating an output directory and writing aggregated and individual PFE profiles to a JSON file.
+
+The overall workflow and relationships between different parts of the codebase can be summarized as follows:
+
+1. The `main_pfe_runner.py` file acts as the main entry point and orchestrator for the PFE calculation process.
+2. It loads the required configuration data (trades, market data, simulation parameters) from JSON files using the `data_management` module.
+3. For each trade, the `main_pfe_runner.py` retrieves the market data for the underlying asset and initializes the Monte Carlo simulation engine from the `simulation_engine` module.
+4. The Monte Carlo engine simulates asset price paths using the GBM process implemented in `gbm_model.py`.
+5. The `EquityTRS` class from `financial_instruments` is used to value the TRS instrument and calculate mark-to-market (MtM) and exposure paths based on the simulated asset price paths.
+6. The `PFEQuantileCalculator` from `pfe_calculation` is used to compute the PFE profile for the trade based on the exposure paths.
+7. The individual trade PFE profiles are stored and aggregated using the `TradeAggregator` from `pfe_calculation`.
+8. After processing all trades, the aggregated PFE profile and individual trade PFE profiles are written to an output file using the `ResultsWriter` from the `reporting` module.
+
+The codebase follows a modular design pattern, where each module or package is responsible for a specific set of functionalities. The main orchestration and workflow are handled in `main_pfe_runner.py`, while other modules provide reusable components for specific tasks, such as data management, simulation, financial instrument valuation, PFE calculation, and reporting.

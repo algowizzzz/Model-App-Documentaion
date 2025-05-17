@@ -1,0 +1,50 @@
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to orchestrate and execute the entire Potential Future Exposure (PFE) calculation process for a portfolio of equity total return swaps (TRS).
+   - It serves as the main entry point and driver for the PFE calculation system, coordinating the various components involved in simulating asset price paths, valuing financial instruments, calculating exposure profiles, and aggregating results.
+
+2. **Key Components and Functionality:**
+   - **PFECalculationOrchestrator (Class):**
+     - **Purpose:** Manages the overall PFE calculation workflow.
+     - **Key Operations:**
+       - Initializes and loads configuration data, market data, and trade information.
+       - Instantiates required components (Monte Carlo engine, PFE calculator, trade aggregator, output writer).
+       - Orchestrates the processing of individual trades by calling `process_single_trade`.
+       - Aggregates individual trade PFE profiles and writes the results to an output file.
+     - **Inputs:** Configuration path, simulation parameters, market data, and trade details.
+     - **Outputs:** Aggregated PFE profile and individual trade PFE profiles written to an output file.
+   - `_calculate_time_parameters (Method):`
+     - **Purpose:** Calculates the total time steps and time delta for a given trade based on its maturity and time steps per year.
+     - **Inputs:** Trade information dictionary.
+     - **Outputs:** Total time steps (integer) and time delta (float).
+   - `process_single_trade (Method):`
+     - **Purpose:** Processes a single trade by simulating asset price paths, valuing the TRS instrument, calculating exposure paths, and computing the PFE profile.
+     - **Key Operations:**
+       - Retrieves market data for the underlying asset.
+       - Simulates asset price paths using the Monte Carlo engine.
+       - Initializes the EquityTRS instrument and calculates mark-to-market (MtM) and exposure paths.
+       - Computes the PFE profile for the trade using the PFE calculator.
+       - Adds the trade's PFE profile to the trade aggregator.
+     - **Inputs:** Trade information dictionary.
+     - **Outputs:** None (updates the trade aggregator with the trade's PFE profile).
+   - `run_full_pfe_calculation (Method):`
+     - **Purpose:** Executes the complete PFE calculation process for all trades in the portfolio.
+     - **Key Operations:**
+       - Iterates over all trades and calls `process_single_trade` for each one.
+       - Aggregates individual trade PFE profiles using the trade aggregator.
+       - Writes the aggregated PFE profile and individual trade PFE profiles to an output file using the output writer.
+     - **Inputs:** None (uses configuration and trade data loaded during initialization).
+     - **Outputs:** None (writes results to an output file).
+
+3. **Core Algorithms and Logic:**
+   - The core algorithm implemented in this file is the Monte Carlo simulation of asset price paths using the Geometric Brownian Motion (GBM) process. This is performed by the `MonteCarloEngine` component, which is used to generate underlying asset price paths for valuing the TRS instruments.
+   - The PFE calculation process involves simulating asset price paths, valuing the financial instruments (TRS) based on the simulated paths, calculating exposure paths, and then computing the PFE profile using a quantile-based approach (e.g., 95th percentile).
+   - The aggregation of individual trade PFE profiles is currently implemented as a simple sum across all trades, but more sophisticated aggregation methods could be implemented in the `TradeAggregator` component.
+
+4. **Data Structures:**
+   - The primary data structures used in this file are dictionaries for storing configuration parameters, market data, and trade details.
+   - The `market_data_map` is a dictionary that maps asset IDs to their corresponding market data objects.
+   - The `trades` list contains dictionaries representing individual trade details, such as trade ID, underlying asset ID, maturity, and time steps per year.
+
+5. **Dependencies:**
+   - **Internal:**
+     - `data_management.loader.ConfigManager`: Responsible for loading configuration data, market

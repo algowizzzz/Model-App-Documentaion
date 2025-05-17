@@ -1,0 +1,52 @@
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to orchestrate and execute the entire Potential Future Exposure (PFE) calculation process for a portfolio of equity total return swaps (TRS).
+   - It serves as the main entry point and driver for the PFE calculation pipeline, coordinating various components such as data loading, simulation, valuation, PFE computation, and result reporting.
+
+2. **Key Components and Functionality:**
+   - **PFECalculationOrchestrator (Class):**
+     - **Purpose:** Manages the end-to-end PFE calculation workflow.
+     - **Key Operations:** Initializes required components, processes individual trades, aggregates PFE profiles, and writes results.
+     - **Inputs:** Configuration directory path.
+     - **Outputs:** Aggregated and individual PFE profiles written to an output directory.
+
+   - `__init__(self, config_path)`:
+     - **Purpose:** Initializes the orchestrator and its dependencies.
+     - **Key Operations:** Loads configuration data, initializes simulation engine, PFE calculator, trade aggregator, and output writer.
+     - **Inputs:** Configuration directory path.
+     - **Outputs:** None.
+
+   - `_calculate_time_parameters(self, trade_info)`:
+     - **Purpose:** Calculates time-related parameters for a given trade.
+     - **Key Operations:** Computes the total time steps and time delta based on trade maturity and time steps per year.
+     - **Inputs:** Trade information dictionary.
+     - **Outputs:** Total time steps and time delta.
+
+   - `process_single_trade(self, trade_info)`:
+     - **Purpose:** Processes a single trade by simulating, valuing, and calculating its PFE profile.
+     - **Key Operations:** Simulates asset price paths, calculates mark-to-market and exposure paths, computes PFE profile, and adds it to the aggregator.
+     - **Inputs:** Trade information dictionary.
+     - **Outputs:** None.
+
+   - `run_full_pfe_calculation(self)`:
+     - **Purpose:** Executes the complete PFE calculation process for all trades.
+     - **Key Operations:** Iterates through trades, processes each trade, aggregates PFE profiles, and writes results to an output directory.
+     - **Inputs:** None.
+     - **Outputs:** None.
+
+3. **Core Algorithms and Logic:**
+   - The core algorithm implemented in this file is the Monte Carlo simulation of asset price paths using the `MonteCarloEngine` class. It generates multiple scenarios of future asset prices, which are then used to calculate mark-to-market values, exposures, and ultimately the PFE profile for each trade.
+   - The PFE calculation itself is performed by the `PFEQuantileCalculator` class, which computes the PFE profile based on the specified quantile (e.g., 95th percentile) of the exposure distribution.
+   - The `TradeAggregator` class is responsible for aggregating individual trade PFE profiles into a portfolio-level PFE profile, using a simple summation approach in this implementation.
+
+4. **Data Structures:**
+   - The primary data structure used is a dictionary (`self.market_data_map`) that maps asset IDs to their corresponding market data objects.
+   - Trade information is represented as dictionaries (`self.trades`), containing details such as trade ID, underlying asset ID, maturity, and time steps per year.
+   - The `PFEQuantileCalculator` and `TradeAggregator` classes likely use internal data structures to store and manipulate PFE profiles and exposure paths.
+
+5. **Dependencies:**
+   - **Internal:**
+     - `data_management.loader.ConfigManager`: Responsible for loading configuration data.
+     - `simulation_engine.monte_carlo_simulator.MonteCarloEngine`: Performs Monte Carlo simulation of asset price paths.
+     - `financial_instruments.equity_trs.EquityTRS`: Represents an equity total return swap (TRS) instrument and calculates mark-to-market and exposure paths.
+     - `pfe_calculation.pfe_computer.PFEQuantileCalculator`: Computes the PFE profile from exposure paths.
+     - `pfe_calculation.exposure

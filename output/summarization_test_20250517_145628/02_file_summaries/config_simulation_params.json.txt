@@ -1,0 +1,44 @@
+**1. Overall Purpose and Role:**
+The file `config/simulation_params.json` serves as a configuration file that specifies parameters for a simulation process. Its primary purpose is to provide a centralized location for defining key simulation settings, enabling easy modification and control over the simulation behavior.
+
+This file likely plays a role within a broader risk management or financial modeling system, specifically contributing to the configuration and execution of simulations or scenario analyses.
+
+**2. Key Components and Functionality:**
+The file does not contain any classes, functions, or methods. Instead, it consists of a JSON object with the following key-value pairs:
+
+- `simulation_id` (string):
+    - **Purpose:** Uniquely identifies the specific simulation run.
+    - **Value:** `"PFE_Run_Complex_Test_001"`
+
+- `num_paths` (integer):
+    - **Purpose:** Specifies the number of simulation paths or scenarios to be generated.
+    - **Value:** `100`
+
+- `pfe_quantile` (float):
+    - **Purpose:** Defines the quantile or confidence level for calculating the Potential Future Exposure (PFE).
+    - **Value:** `0.95`
+
+- `output_directory` (string):
+    - **Purpose:** Specifies the directory path where simulation results or outputs will be stored.
+    - **Value:** `"pfe_results"`
+
+**3. Core Algorithms and Logic (File-Specific):**
+This file does not contain any core algorithms or significant business logic. It serves as a configuration file, providing input parameters for the simulation process.
+
+**4. Data Structures:**
+The file utilizes a JSON object as its primary data structure, containing key-value pairs for the simulation parameters.
+
+**5. Dependencies:**
+- **Internal:** None (assuming this is a standalone configuration file).
+- **External:** None.
+
+**6. Error Handling and Logging:**
+The file does not implement any explicit error handling mechanisms or logging functionalities, as it is a static configuration file.
+
+**7. Assumptions and Limitations (Strictly File-Specific):**
+- **Assumptions:**
+    - The simulation process expects and correctly interprets the provided configuration parameters.
+    - The specified `output_directory` path is valid and accessible for writing simulation results.
+- **Limitations:**
+    - The configuration parameters are hard-coded within the file, limiting the ability to dynamically modify them without editing the file directly.
+    - The file does not provide any validation or error checking for the provided parameter values, potentially allowing invalid or inconsistent configurations.

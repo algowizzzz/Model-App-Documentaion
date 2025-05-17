@@ -1,0 +1,29 @@
+DRAFT SUBSECTION: 2.1. Theoretical Basis (ID: method_theory)
+
+2.1. Theoretical Basis
+
+The risk calculation and reporting functionality implemented in the `complex_module.py` file is underpinned by several key financial and mathematical theories and principles. These theoretical foundations enable the model to systematically assess and quantify the risk associated with a portfolio of financial instruments.
+
+Weighted Risk Factor Aggregation
+The core of the risk calculation logic is the `RiskCalculator` class, which aggregates the impact of individual risk factors into a total risk score. This approach is based on the principle of weighted sum, where each risk factor is assigned a weight that reflects its relative importance or contribution to the overall risk. The weighted impacts of the risk factors are then summed to derive the total risk score, which is normalized to a 0-1 scale.
+
+This weighted aggregation method is commonly used in risk management frameworks, as it allows for the integration of multiple risk drivers and their respective magnitudes into a single, holistic risk assessment. The specific weights assigned to each risk factor can be determined based on historical data, expert judgment, or a combination of both, depending on the model's objectives and the risk profile of the underlying portfolio.
+
+Risk Factor Categorization
+The `RiskCalculator` class also provides the capability to break down the total risk score into a risk profile by category. This functionality is based on the concept of risk factor categorization, where individual risk factors are grouped into distinct categories (e.g., market risk, credit risk, operational risk) based on their nature and source of risk.
+
+By analyzing the risk breakdown by category, the model can provide valuable insights into the composition of the overall risk and identify the key risk drivers within the portfolio. This information can be particularly useful for risk management decision-making, as it allows for targeted risk mitigation strategies and the allocation of resources to address the most significant risk exposures.
+
+Validation and Threshold-based Risk Assessment
+The `RiskCalculator` class includes a validation mechanism to ensure the integrity of the input risk factors. This validation process checks for invalid weights and values, which is crucial for maintaining the reliability and accuracy of the risk calculations.
+
+Additionally, the model incorporates a risk threshold parameter, which is used to classify the overall risk status as either "high-risk" or "low-risk". This threshold-based assessment is a common approach in risk management, as it provides a clear and actionable categorization of the risk profile, enabling appropriate risk mitigation strategies and regulatory reporting.
+
+In summary, the theoretical foundations underpinning the risk calculation and reporting functionality in the `complex_module.py` file include:
+
+1. Weighted sum aggregation of risk factors to derive a total risk score.
+2. Risk factor categorization to analyze the composition of the overall risk.
+3. Validation of input risk factors to ensure data integrity.
+4. Threshold-based risk assessment to classify the overall risk status.
+
+These theoretical principles are essential for the model's ability to systematically quantify, analyze, and report on the risk associated with a portfolio of financial instruments, in alignment with industry best practices and regulatory requirements.

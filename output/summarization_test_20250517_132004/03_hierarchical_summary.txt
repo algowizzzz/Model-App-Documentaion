@@ -1,0 +1,45 @@
+The Monte Carlo PFE Calculator for Equity TRS codebase is structured into several modules, each responsible for a specific aspect of the Potential Future Exposure (PFE) calculation process. The overall architecture follows a modular design pattern, with components organized based on their functionality. Here's a hierarchical summary of the codebase:
+
+1. **Main Entry Point**
+   - `main_pfe_runner.py`: This file serves as the main entry point and orchestrator for the PFE calculation process. It coordinates the interactions between various components, including data loading, simulation, instrument valuation, PFE calculation, and result reporting.
+
+2. **Data Management**
+   - `data_management/`: This module handles the loading and management of input data required for the PFE calculation.
+     - `loader.py`: Provides functions for loading configuration data (trades, market data, simulation parameters) from JSON files.
+     - `ConfigManager`: A class that encapsulates the loading and management of all configuration data.
+
+3. **Simulation Engine**
+   - `simulation_engine/`: This module is responsible for simulating asset price paths using the Monte Carlo method.
+     - `monte_carlo_simulator.py`: Contains the `MonteCarloEngine` class, which orchestrates Monte Carlo simulations for various assets.
+     - `gbm_model.py`: Implements the Geometric Brownian Motion (GBM) process for generating asset price paths.
+
+4. **Financial Instruments**
+   - `financial_instruments/`: This module defines and values financial instruments, specifically the Equity Total Return Swap (TRS).
+     - `equity_trs.py`: Contains the `EquityTRS` class, which represents and values the Equity TRS instrument.
+
+5. **PFE Calculation**
+   - `pfe_calculation/`: This module handles the calculation of PFE profiles from exposure paths.
+     - `pfe_computer.py`: Provides the `PFEQuantileCalculator` class for calculating the PFE profile at a specified quantile.
+     - `exposure_aggregator.py`: Contains the `TradeAggregator` class for aggregating PFE profiles across multiple trades.
+
+6. **Reporting**
+   - `reporting/`: This module is responsible for writing the PFE calculation results to output files.
+     - `output_writer.py`: Implements the `ResultsWriter` class for creating an output directory and writing aggregated and individual PFE profiles to a JSON file.
+
+The main workflow of the PFE calculation process can be summarized as follows:
+
+1. The `main_pfe_runner.py` file initializes the `PFECalculationOrchestrator` class, which loads the required configuration data (trades, market data, simulation parameters) using the `ConfigManager` from the `data_management` module.
+
+2. For each trade, the `process_single_trade` method is called:
+   - The `MonteCarloEngine` from the `simulation_engine` module is used to simulate asset price paths based on the provided market data and simulation parameters.
+   - The `EquityTRS` instrument from the `financial_instruments` module is initialized and valued using the simulated price paths, generating mark-to-market (MtM) and exposure paths.
+   - The `PFEQuantileCalculator` from the `pfe_calculation` module calculates the PFE profile for the trade based on the exposure paths.
+   - The trade's PFE profile is added to the `TradeAggregator` from the `pfe_calculation` module.
+
+3. After processing all trades, the `TradeAggregator` aggregates the individual trade PFE profiles using a simple summation approach.
+
+4. The `ResultsWriter` from the `reporting` module creates an output directory and writes the aggregated PFE profile and individual trade PFE profiles to a JSON file.
+
+The codebase follows a modular design pattern, with each module encapsulating a specific responsibility within the PFE calculation process. The main entry point (`main_pfe_runner.py`) orchestrates the interactions between these modules, facilitating the overall workflow.
+
+It's important to note that the provided codebase appears to be a simplified or conceptual implementation, as mentioned in some of the docstrings and comments. In a production environment, additional considerations such as error handling, logging, performance optimization, and more advanced aggreg

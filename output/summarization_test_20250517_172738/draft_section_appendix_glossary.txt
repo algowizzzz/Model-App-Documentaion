@@ -1,0 +1,51 @@
+DRAFT SECTION: Appendix A: Glossary of Terms (ID: appendix_glossary)
+
+Appendix A: Glossary of Terms
+
+This appendix provides definitions of key technical terms, acronyms, and business-specific jargon used throughout the model documentation.
+
+Algorithms: The step-by-step procedures and computational methods used to perform specific tasks or calculations within the model.
+
+Asset Class: A group of financial instruments that share similar characteristics, risk profiles, and behaviors, such as equities, fixed income, commodities, or foreign exchange.
+
+Business Line: A distinct operational or functional unit within an organization, such as Retail Banking, Corporate Banking, or Capital Markets.
+
+Calibration: The process of adjusting the parameters or inputs of a model to improve its accuracy and alignment with observed data or real-world outcomes.
+
+Correlation: A statistical measure that indicates the degree of relationship or interdependence between two or more variables.
+
+Data Structures: The way data is organized and stored within the model, such as arrays, lists, dictionaries, or custom classes.
+
+Dependency: A relationship where one component or module within the model relies on or requires the functionality of another component or module.
+
+Exposure: The maximum potential loss that can be incurred by a party due to the default or non-performance of a counterparty or the underlying asset.
+
+Hierarchical Summary: A comprehensive overview of the codebase that provides a high-level understanding of the different components, their relationships, and their respective roles within the broader model or system.
+
+Interpolation: The process of estimating a value within a range of known data points by using a mathematical function or algorithm.
+
+Margin: The amount of collateral or equity required to be posted by a party to cover potential losses in a financial transaction.
+
+Model Validation: The process of evaluating the accuracy, reliability, and appropriateness of a model for its intended use, typically involving a combination of statistical tests, sensitivity analyses, and expert reviews.
+
+Netting: The process of offsetting positive and negative exposures between two or more parties to arrive at a net exposure or settlement amount.
+
+Operational Risk: The risk of loss resulting from inadequate or failed internal processes, people, and systems, or from external events.
+
+Optimization: The process of finding the best solution or set of parameters that minimizes or maximizes a specific objective function, subject to various constraints.
+
+Probability of Default (PD): The likelihood that a borrower or counterparty will default on their financial obligations within a given time horizon.
+
+Regulatory Capital: The amount of capital that a financial institution is required to hold to meet regulatory requirements and ensure its solvency and stability.
+
+Risk Factor: A variable or parameter that contributes to the overall risk exposure of a financial instrument or portfolio, such as interest rates, exchange rates, or commodity prices.
+
+Risk Threshold: The maximum level of risk that an organization is willing to accept or tolerate, often used as a trigger for risk mitigation or escalation actions.
+
+Sensitivity Analysis: The process of evaluating how changes in the input variables or assumptions of a model affect its outputs or results.
+
+Stress Testing: The process of assessing the resilience of a financial institution or portfolio to potential adverse events or extreme market conditions.
+
+Validation Error: A discrepancy or issue identified during the model validation process, which may indicate the need for model refinement, recalibration, or other corrective actions.
+
+Weighting: The relative importance or contribution assigned to a specific risk factor or component within the overall risk calculation or assessment.

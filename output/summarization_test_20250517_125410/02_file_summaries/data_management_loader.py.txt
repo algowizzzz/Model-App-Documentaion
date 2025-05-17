@@ -1,0 +1,22 @@
+The `data_management/loader.py` file is responsible for loading various types of data from JSON files, primarily for use in a trading or financial simulation application. The main purpose of this file is to provide a centralized and consistent way to load and manage configuration data required for the application.
+
+Key Components:
+
+1. `load_json_data(file_path: str)`: A utility function that loads data from a specified JSON file. It handles file not found and JSON decoding errors, and returns the loaded data as a Python object.
+
+2. `get_trades(config_dir: str)`, `get_market_data(config_dir: str)`, and `get_simulation_params(config_dir: str)`: These functions use `load_json_data` to load specific types of data (trades, market data, and simulation parameters, respectively) from JSON files located in the specified configuration directory.
+
+3. `ConfigManager` class: This class provides a convenient way to manage the loading of all required configuration data. It has an `__init__` method to set the configuration directory and initialize data attributes, and a `load_all` method that calls the respective `get_*` functions to load all configuration data.
+
+Important Relationships and Dependencies:
+
+- The `load_json_data` function is used by the `get_trades`, `get_market_data`, and `get_simulation_params` functions to load data from JSON files.
+- The `ConfigManager` class depends on the `get_trades`, `get_market_data`, and `get_simulation_params` functions to load the required configuration data.
+- The file uses the built-in `json` and `os` modules for JSON handling and file path operations, respectively.
+
+Notable Algorithms or Patterns:
+
+- The `load_json_data` function follows a try-except pattern to handle different types of exceptions that may occur during file loading and JSON decoding.
+- The `ConfigManager` class follows the Singleton pattern, as it is designed to have a single instance managing the configuration data for the entire application.
+
+Overall, this file provides a modular and extensible approach to loading and managing configuration data from JSON files, which can be easily integrated into a larger application or system.

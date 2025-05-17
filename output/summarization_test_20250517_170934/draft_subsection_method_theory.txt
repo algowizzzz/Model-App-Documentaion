@@ -1,0 +1,21 @@
+DRAFT SUBSECTION: 2.1. Theoretical Basis (ID: method_theory)
+
+2.1. Theoretical Basis
+
+This section outlines the key financial and mathematical theories that underpin the risk calculation model implemented in the `complex_module.py` file.
+
+The model is built upon the concept of risk factors, which represent individual sources of risk that contribute to the overall risk profile of a portfolio or set of financial instruments. The `RiskFactor` class encapsulates the attributes of a single risk factor, including its name, weight, value, and category.
+
+The core of the model's theoretical basis lies in the `RiskCalculator` class, which is responsible for aggregating the individual risk factors into a comprehensive risk assessment. The `RiskCalculator` implements the following key theoretical principles:
+
+1. **Weighted Risk Aggregation**: The model calculates the total risk score by performing a weighted sum of the individual risk factors. Each risk factor is assigned a weight, which represents its relative importance or contribution to the overall risk. The weighted impacts of the risk factors are then summed to arrive at the total risk score.
+
+2. **Risk Normalization**: To ensure the total risk score is on a consistent 0-1 scale, the model normalizes the weighted sum of the risk factors by dividing it by the sum of the weights. This normalization step ensures that the total risk score can be interpreted as a percentage of the maximum possible risk.
+
+3. **Risk Breakdown by Category**: In addition to the total risk score, the `RiskCalculator` also provides a breakdown of the risk scores by category. This is achieved by grouping the risk factors by their assigned categories and summing the weighted impacts within each category.
+
+4. **Risk Factor Validation**: The `RiskCalculator` class includes a validation step to ensure the integrity of the input risk factors. It checks that the weight of each risk factor is within the valid range of 0 to 1, and that the value of each risk factor is non-negative. This validation helps maintain the consistency and reliability of the risk assessment.
+
+The theoretical foundation of the model is further complemented by the `create_risk_report` function, which generates a comprehensive risk report. This report includes the total risk score, the risk breakdown by category, and a status indicator (high-risk or low-risk) based on a predefined risk threshold.
+
+Overall, the risk calculation model implemented in the `complex_module.py` file is grounded in well-established financial and mathematical principles, such as weighted risk aggregation, normalization, and risk factor categorization. These theoretical foundations ensure the model provides a robust and reliable risk assessment, which can be used for various risk management and regulatory reporting purposes.

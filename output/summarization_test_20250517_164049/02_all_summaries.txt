@@ -1,0 +1,69 @@
+
+
+================================================================================File: README.md
+
+Error summarizing README.md: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: main_pfe_runner.py
+
+Error summarizing main_pfe_runner.py: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: reporting/output_writer.py
+
+Error summarizing reporting/output_writer.py: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: reporting/__init__.py
+
+Error summarizing reporting/__init__.py: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: config/trades.json
+
+Error summarizing config/trades.json: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: config/market_data.json
+
+Error summarizing config/market_data.json: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: config/simulation_params.json
+
+Error summarizing config/simulation_params.json: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: data_management/__init__.py
+
+Error summarizing data_management/__init__.py: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: data_management/loader.py
+
+Error summarizing data_management/loader.py: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: simulation_engine/monte_carlo_simulator.py
+
+Error summarizing simulation_engine/monte_carlo_simulator.py: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: simulation_engine/__init__.py
+
+Error summarizing simulation_engine/__init__.py: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: simulation_engine/gbm_model.py
+
+Error summarizing simulation_engine/gbm_model.py: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: financial_instruments/equity_trs.py
+
+Error summarizing financial_instruments/equity_trs.py: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: financial_instruments/__init__.py
+
+Error summarizing financial_instruments/__init__.py: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: pfe_calculation/pfe_computer.py
+
+Error summarizing pfe_calculation/pfe_computer.py: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: pfe_calculation/exposure_aggregator.py
+
+Error summarizing pfe_calculation/exposure_aggregator.py: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+
+File: pfe_calculation/__init__.py
+
+Error summarizing pfe_calculation/__init__.py: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}

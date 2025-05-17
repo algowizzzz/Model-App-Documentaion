@@ -1,0 +1,56 @@
+2025-05-17T15:22:21.619709 - Error during end-to-end test: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2025-06-01 at 00:00 UTC.'}}
+Traceback (most recent call last):
+  File "/Users/saadahmed/Desktop/Apps/BMO/ModelDocumentation/test_end_to_end_summarization.py", line 112, in run_end_to_end_test
+    hierarchical_summary_text = generate_hierarchical_summary(file_summaries)
+  File "/Users/saadahmed/Desktop/Apps/BMO/ModelDocumentation/src/summarization/engine.py", line 130, in generate_hierarchical_summary
+    return generate_text(prompt).strip()
+           ~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/saadahmed/Desktop/Apps/BMO/ModelDocumentation/src/utils/llm_factory.py", line 55, in generate_text
+    response = llm.invoke(messages)
+  File "/Users/saadahmed/Desktop/Apps/BMO/ModelDocumentation/ModelDocumentation/model-doc-agent/venv/lib/python3.13/site-packages/langchain_core/language_models/chat_models.py", line 371, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/saadahmed/Desktop/Apps/BMO/ModelDocumentation/ModelDocumentation/model-doc-agent/venv/lib/python3.13/site-packages/langchain_core/language_models/chat_models.py", line 956, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/saadahmed/Desktop/Apps/BMO/ModelDocumentation/ModelDocumentation/model-doc-agent/venv/lib/python3.13/site-packages/langchain_core/language_models/chat_models.py", line 775, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/saadahmed/Desktop/Apps/BMO/ModelDocumentation/ModelDocumentation/model-doc-agent/venv/lib/python3.13/site-packages/langchain_core/language_models/chat_models.py", line 1021, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/saadahmed/Desktop/Apps/BMO/ModelDocumentation/ModelDocumentation/model-doc-agent/venv/lib/python3.13/site-packages/langchain_anthropic/chat_models.py", line 1204, in _generate
+    data = self._client.messages.create(**payload)
+  File "/Users/saadahmed/Desktop/Apps/BMO/ModelDocumentation/ModelDocumentation/model-doc-agent/venv/lib/python3.13/site-packages/anthropic/_utils/_utils.py", line 283, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/saadahmed/Desktop/Apps/BMO/ModelDocumentation/ModelDocumentation/model-doc-agent/venv/lib/python3.13/site-packages/anthropic/resources/messages/messages.py", line 954, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/v1/messages",
+        ^^^^^^^^^^^^^^^
+    ...<25 lines>...
+        stream_cls=Stream[RawMessageStreamEvent],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/saadahmed/Desktop/Apps/BMO/ModelDocumentation/ModelDocumentation/model-doc-agent/venv/lib/python3.13/site-packages/anthropic/_base_client.py", line 1290, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/saadahmed/Desktop/Apps/BMO/ModelDocumentation/ModelDocumentation/model-doc-agent/venv/lib/python3.13/site-packages/anthropic/_base_client.py", line 1085, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2025-06-01 at 00:00 UTC.'}}

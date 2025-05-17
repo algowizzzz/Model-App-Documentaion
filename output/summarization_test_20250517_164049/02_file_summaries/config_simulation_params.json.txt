@@ -1,0 +1,1 @@
+Error summarizing config/simulation_params.json: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}

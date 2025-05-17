@@ -1,0 +1,149 @@
+# Code Documentation
+
+Generated on: 2025-05-17 12:56:31
+Codebase: `MonteCarloPFE`
+
+## Table of Contents
+
+- [Overview](#overview)
+  - [Purpose](#purpose)
+  - [Architecture](#architecture)
+- [Key Components](#key-components)
+  - [Classes](#classes)
+  - [Functions](#functions)
+- [Component Relationships](#component-relationships)
+
+## Project Metadata
+
+| Property | Value |
+|----------|-------|
+| Files Processed | 17 |
+| Sections Generated | 3 |
+| Template Version | 1.0 |
+| Template Author | Documentation Agent |
+
+## Overview
+
+Hierarchical Summary:
+
+I. Overview
+
+This codebase is a Python project for calculating Potential Future Exposure (PFE) for a portfolio of Equity Total Return Swaps (TRS) using Monte Carlo simulation. The main purpose is to estimate the potential future credit exposure arising from these derivative trades by simulating the underlying equity prices and valuing the trades across multiple scenarios.
+
+### Purpose
+
+Detailed content for Purpose
+
+### Architecture
+
+Detailed content for Architecture
+
+## Key Components
+
+II. Main Modules
+
+1. Data Management
+
+- Purpose: Load and manage input data such as trade details, market data, and simulation parameters from JSON files.
+
+- Components: `data_management/loader.py`, `config/trades.json`, `config/market_data.json`, `config/simulation_params.json`
+
+2. Simulation Engine
+
+- Purpose: Implement the Monte Carlo simulation and the Geometric Brownian Motion (GBM) model for simulating underlying equity price paths.
+
+- Components: `simulation_engine/monte_carlo_simulator.py`, `simulation_engine/gbm_model.py`
+
+3. Financial Instruments
+
+- Purpose: Define and value financial instruments like Equity TRS.
+
+- Components: `financial_instruments/equity_trs.py`
+
+4. PFE Calculation
+
+- Purpose: Calculate exposures and aggregate PFE profiles for individual trades and the portfolio.
+
+- Components: `pfe_calculation/pfe_computer.py`, `pfe_calculation/exposure_aggregator.py`
+
+5. Reporting
+
+- Purpose: Write the output PFE results to files.
+
+- Components: `reporting/output_writer.py`
+
+### Classes
+
+Detailed content for Classes
+
+### Functions
+
+Detailed content for Functions
+
+## Component Relationships
+
+III. Relationships and Architecture
+
+1. Data Management
+
+- `data_management/loader.py` provides a centralized way to load configuration data from JSON files.
+
+- `ConfigManager` class follows the Singleton pattern to manage the loading of all required configuration data.
+
+2. Simulation Engine
+
+- `MonteCarloEngine` class orchestrates Monte Carlo simulations for various assets.
+
+- `GBMProcess` class implements the Geometric Brownian Motion (GBM) model for simulating asset price paths.
+
+- The simulation engine relies on the GBM model and market data loaded by the data management module.
+
+3. Financial Instruments
+
+- `EquityTRS` class represents and values an Equity Total Return Swap (TRS) contract.
+
+- It calculates the mark-to-market (MtM) value and exposure of an Equity TRS based on the underlying equity price paths.
+
+4. PFE Calculation
+
+- `PFEQuantileCalculator` class calculates the PFE profile at a given quantile from a set of exposure paths.
+
+- `TradeAggregator` class aggregates PFE profiles across multiple trades (currently using a simple summation approach).
+
+5. Reporting
+
+- `ResultsWriter` class handles writing aggregated and individual PFE profiles to JSON files.
+
+IV. Main Workflow
+
+1. Load input data from JSON files using the data management module.
+
+2. Simulate multiple price paths for each underlying asset using the GBM model in the simulation engine.
+
+3. Value the Equity TRS trades for each simulated price path and time step using the `EquityTRS` class.
+
+4. Calculate exposures as the positive mark-to-market values for each trade and path.
+
+5. Compute the PFE profile for each trade by taking a percentile of the exposures across all paths using `PFEQuantileCalculator`.
+
+6. Optionally, aggregate the PFE profiles across all trades using `TradeAggregator`.
+
+7. Write the individual and aggregated PFE profiles to output files using `ResultsWriter`.
+
+V. Design Patterns
+
+1. Singleton Pattern: `ConfigManager` class follows the Singleton pattern to ensure a single instance manages the configuration data.
+
+2. Object-Oriented Design: The codebase follows an object-oriented design approach, with classes encapsulating specific functionalities (e.g., `EquityTRS`, `GBMProcess`, `PFEQuantileCalculator`).
+
+3. Modular Architecture: The codebase is organized into modular components (data management, simulation engine, financial instruments, PFE calculation, reporting), promoting code reusability and maintainability.
+
+4. Separation of Concerns: Each module focuses on a specific responsibility, adhering to the principle of
+
+## Appendix: Individual File Summaries
+
+Detailed summaries for each file can be found in the following locations:
+
+- All summaries: `02_all_summaries.txt`
+- Individual summaries: `02_file_summaries/`
+- Hierarchical summary: `03_hierarchical_summary.txt`

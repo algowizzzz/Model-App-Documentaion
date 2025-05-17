@@ -1,0 +1,46 @@
+DRAFT SECTION: 7. Model Governance and Controls (ID: governance)
+
+7. Model Governance and Controls
+
+This section outlines the governance, monitoring, and control mechanisms in place for the model described in this documentation. Robust model governance is essential to ensure the model's ongoing integrity, performance, and appropriate usage within the organization.
+
+7.1. Model Ownership
+The business unit responsible for the ownership and maintenance of this model is the Risk Analytics team within the Enterprise Risk Management division. The key individuals involved in the model's governance are:
+
+- Jane Doe, Head of Risk Analytics
+- John Smith, Senior Risk Analyst (model developer and subject matter expert)
+- Sarah Lee, Model Risk Manager (independent model validation and monitoring)
+
+These individuals are accountable for the model's performance, documentation, change management, and adherence to relevant policies and regulations.
+
+7.2. Ongoing Monitoring
+The Risk Analytics team, in collaboration with the Model Risk Management function, has established the following procedures for the ongoing monitoring of this model:
+
+- Monthly performance reviews: The model's key performance metrics, such as accuracy, stability, and sensitivity, are reviewed on a monthly basis. Any significant deviations from expected thresholds are investigated, and remedial actions are taken as necessary.
+- Quarterly model validations: An independent model validation is conducted quarterly by the Model Risk Management team. This validation includes a comprehensive assessment of the model's conceptual soundness, data quality, implementation, and results.
+- Annual model reviews: A thorough annual review of the model is conducted, which includes an assessment of its continued relevance, any changes in the business environment or risk profile, and the identification of potential enhancements or limitations.
+- Ongoing monitoring of model inputs and data: The Risk Analytics team closely monitors the quality, completeness, and timeliness of the model's input data and underlying assumptions. Any issues or changes are promptly addressed.
+
+The results of these monitoring activities are documented and reported to the Model Governance Committee on a regular basis.
+
+7.3. Change Management Process
+Any proposed changes to the model, including updates to the underlying algorithms, data sources, or configuration settings, are subject to a formal change management process. This process includes the following steps:
+
+1. Change Initiation: The model owner or a member of the Risk Analytics team submits a change request, detailing the proposed modifications and the rationale for the changes.
+2. Impact Assessment: The Model Risk Management team conducts a thorough impact assessment, evaluating the potential effects of the proposed changes on the model's performance, stability, and compliance with relevant regulations and policies.
+3. Approval: The change request, along with the impact assessment, is reviewed and approved by the Model Governance Committee, which includes representatives from the Risk Analytics, Model Risk Management, and Compliance functions.
+4. Implementation: Once approved, the changes are implemented by the Risk Analytics team, with appropriate testing and validation procedures in place.
+5. Documentation: All approved changes are thoroughly documented, and the model's documentation is updated accordingly.
+
+The change management process ensures that any modifications to the model are well-planned, reviewed, and executed in a controlled manner, preserving the model's integrity and compliance with regulatory requirements.
+
+7.4. Access Controls
+Strict access controls are in place to manage and monitor the use of this model, its underlying code, and the associated data. These controls include:
+
+- Restricted access to the model's source code, configuration files, and data repositories: Access is limited to authorized members of the Risk Analytics team and the Model Risk Management function.
+- Secure storage and backup procedures: The model's code, configuration, and data are stored in a secure, version-controlled repository with appropriate backup and disaster recovery measures.
+- Logging and monitoring of model usage: All interactions with the model, including data inputs, parameter changes, and output generation, are logged and monitored for any unauthorized or suspicious activities.
+- Role-based access permissions: Users are granted access to the model and its components based on their specific roles and responsibilities within the organization, following the principle of least privilege.
+- Audit trails and reporting: Comprehensive audit trails are maintained, and periodic reports on model usage, access, and changes are provided to the Model Governance Committee and relevant regulatory bodies.
+
+These access controls are regularly reviewed and updated to ensure the continued protection of the model and its associated assets.

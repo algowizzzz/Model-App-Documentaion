@@ -1,0 +1,45 @@
+
+
+================================================================================File: styles.css
+
+Error summarizing styles.css: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2025-06-01 at 00:00 UTC.'}}
+
+File: test_sample.py
+
+Error summarizing test_sample.py: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2025-06-01 at 00:00 UTC.'}}
+
+File: config.json
+
+Error summarizing config.json: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2025-06-01 at 00:00 UTC.'}}
+
+File: query.sql
+
+Error summarizing query.sql: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2025-06-01 at 00:00 UTC.'}}
+
+File: readme.md
+
+Error summarizing readme.md: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2025-06-01 at 00:00 UTC.'}}
+
+File: complex_module.py
+
+Error summarizing complex_module.py: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2025-06-01 at 00:00 UTC.'}}
+
+File: data.xml
+
+Error summarizing data.xml: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2025-06-01 at 00:00 UTC.'}}
+
+File: invalid_syntax.py
+
+Error summarizing invalid_syntax.py: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2025-06-01 at 00:00 UTC.'}}
+
+File: app.js
+
+Error summarizing app.js: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2025-06-01 at 00:00 UTC.'}}
+
+File: templates/invalid_template.json
+
+Error summarizing templates/invalid_template.json: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2025-06-01 at 00:00 UTC.'}}
+
+File: templates/valid_template.json
+
+Error summarizing templates/valid_template.json: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2025-06-01 at 00:00 UTC.'}}

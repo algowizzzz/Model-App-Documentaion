@@ -1,0 +1,46 @@
+DRAFT SUBSECTION: 7.3. Change Management Process (ID: gov_change_mgmt)
+
+7.3. Change Management Process
+
+The change management process outlines the procedures for requesting, approving, implementing, and documenting changes to the model. This process ensures that any modifications to the model are properly reviewed, tested, and documented to maintain the integrity and traceability of the model throughout its lifecycle.
+
+7.3.1. Change Request Initiation
+The change management process begins with the initiation of a change request. Model users, developers, or stakeholders can submit a change request to propose modifications to the model. The change request should include the following information:
+
+- Description of the proposed change
+- Rationale or business justification for the change
+- Potential impact of the change on the model's outputs, performance, or regulatory compliance
+- Estimated timeline and resources required to implement the change
+
+7.3.2. Change Review and Approval
+All change requests are reviewed by the model governance committee, which is responsible for evaluating the proposed changes. The committee will assess the following factors:
+
+- Alignment of the change with the model's intended purpose and scope
+- Potential risks or unintended consequences of the change
+- Availability of resources and technical feasibility of the implementation
+- Impact on model validation, testing, and documentation
+
+If the change is deemed appropriate and necessary, the committee will approve the request and assign a priority level (e.g., high, medium, low) based on the urgency and potential impact of the change.
+
+7.3.3. Change Implementation
+Once a change request is approved, the model development team will be responsible for implementing the necessary modifications. This may involve updating the model's code, algorithms, data sources, or other components. The team will follow a structured implementation process that includes the following steps:
+
+1. Development of the change in a controlled environment (e.g., a separate branch or sandbox)
+2. Thorough testing of the change to ensure it does not introduce errors or negatively impact the model's performance
+3. Documentation of the change, including a description of the modification, the rationale, and the testing procedures and results
+4. Approval of the change implementation by the model governance committee
+
+7.3.4. Change Deployment and Documentation
+After the change has been successfully implemented and tested, it will be deployed to the production environment. The model documentation will be updated to reflect the changes, including:
+
+- Updating the model version number and release date
+- Describing the nature of the change and the rationale for it
+- Documenting the testing procedures and results
+- Identifying any impacts on the model's outputs, performance, or regulatory compliance
+
+The updated model documentation will be reviewed and approved by the model governance committee before being published and made available to relevant stakeholders.
+
+7.3.5. Ongoing Monitoring and Maintenance
+The model governance committee will continue to monitor the model's performance and behavior after the change has been implemented. If any issues or unintended consequences are identified, the committee may initiate a new change request to address them, following the same change management process.
+
+The change management process ensures that any modifications to the model are thoroughly reviewed, tested, and documented, maintaining the model's integrity and traceability throughout its lifecycle. This process is a critical component of the model's overall governance and risk management framework.

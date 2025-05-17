@@ -1,0 +1,52 @@
+**1. Overall Purpose and Role:**
+The primary purpose of this file is to provide a centralized mechanism for loading and managing configuration data required by the broader system or model. Its specific role is to act as a data loader and configuration manager, facilitating the retrieval of essential data files such as trades, market data, and simulation parameters.
+
+**2. Key Components and Functionality:**
+
+- **Function: load_json_data(file_path: str)**
+    - **Purpose:** Load data from a JSON file specified by the provided file path.
+    - **Key Operations:** Open the file, load its contents using the `json.load` function, and handle potential exceptions.
+    - **Inputs:** `file_path` (str) - The path to the JSON file to be loaded.
+    - **Outputs:** The data loaded from the JSON file, or an appropriate exception if an error occurs.
+
+- **Function: get_trades(config_dir: str = "config")**
+    - **Purpose:** Load trade data from a JSON file within the specified configuration directory.
+    - **Key Operations:** Construct the file path by joining the configuration directory and the "trades.json" file name, then call `load_json_data` with the constructed path.
+    - **Inputs:** `config_dir` (str, optional) - The directory where the configuration files are located (default is "config").
+    - **Outputs:** The trade data loaded from the JSON file.
+
+- **Function: get_market_data(config_dir: str = "config")**
+    - **Purpose:** Load market data from a JSON file within the specified configuration directory.
+    - **Key Operations:** Construct the file path by joining the configuration directory and the "market_data.json" file name, then call `load_json_data` with the constructed path.
+    - **Inputs:** `config_dir` (str, optional) - The directory where the configuration files are located (default is "config").
+    - **Outputs:** The market data loaded from the JSON file.
+
+- **Function: get_simulation_params(config_dir: str = "config")**
+    - **Purpose:** Load simulation parameters from a JSON file within the specified configuration directory.
+    - **Key Operations:** Construct the file path by joining the configuration directory and the "simulation_params.json" file name, then call `load_json_data` with the constructed path.
+    - **Inputs:** `config_dir` (str, optional) - The directory where the configuration files are located (default is "config").
+    - **Outputs:** The simulation parameters loaded from the JSON file.
+
+- **Class: ConfigManager**
+    - **Purpose:** Manage the loading and storage of configuration data from various JSON files.
+    - **Key Operations:** Initialize the class with a configuration directory, load all configuration files (trades, market data, and simulation parameters) into class attributes, and provide access to the loaded data.
+    - **Inputs:** `config_dir` (str, optional) - The directory where the configuration files are located (default is "config").
+    - **Outputs:** An instance of the `ConfigManager` class with the loaded configuration data accessible through its attributes.
+
+**3. Core Algorithms and Logic (File-Specific):**
+This file does not implement any complex algorithms or significant business logic directly. Its primary responsibility is to load and manage configuration data from JSON files, which is achieved through straightforward file operations and exception handling.
+
+**4. Data Structures:**
+The file does not utilize any significant internal data structures beyond the standard Python data types (e.g., dictionaries, lists) used to store and manipulate the loaded JSON data.
+
+**5. Dependencies:**
+
+- **Internal:** None.
+- **External:**
+    - `json` (Python standard library): Used for loading and parsing JSON data.
+    - `os` (Python standard library): Used for file path operations and checking file existence.
+
+**6. Error Handling and Logging:**
+
+- **Error Handling:** The `load_json_data` function implements try-except blocks to handle specific exceptions, such as `FileNotFoundError` (raised when the specified file does not exist), `json.JSONDecodeError` (raised when the JSON data cannot be decoded), and a general `Exception` catch-all for unexpected errors.
+- **Logging:** The file does not implement any explicit logging functionality. However, it does print success messages when data is successfully loaded, and the `ConfigManager` class prints a message upon initialization.

@@ -1,0 +1,21 @@
+DRAFT SUBSECTION: 1.2. Scope and Applicability (ID: intro_scope)
+
+1.2. Scope and Applicability
+
+This model is designed to handle the calculation and aggregation of risk scores for a variety of financial products and portfolios. Specifically, the scope of this model includes:
+
+- Derivative instruments, such as swaps, options, and futures contracts
+- Fixed income securities, including government bonds, corporate bonds, and structured products
+- Equity securities, including individual stocks and equity indices
+
+The model is capable of processing and analyzing risk factors across these asset classes, providing a comprehensive risk assessment. However, it is important to note that the model does not cover certain specialized or illiquid product types, such as:
+
+- Complex structured finance instruments (e.g., collateralized debt obligations, mortgage-backed securities)
+- Emerging market or frontier market securities
+- Highly customized or bespoke over-the-counter (OTC) derivatives
+
+Additionally, the model is primarily focused on market risk and does not currently handle other risk types, such as credit risk, operational risk, or liquidity risk. The risk calculations and aggregation performed by this model are intended to support regulatory capital reporting, internal risk management, and business decision-making, but should not be the sole basis for these purposes.
+
+It is also worth noting that the model's scope is limited to the specific data sources and configurations that have been implemented and validated. Any significant changes to data inputs, risk factor definitions, or model parameters may require re-evaluation of the model's applicability and performance.
+
+In summary, this model is designed to provide comprehensive risk assessment capabilities for a broad range of financial instruments and portfolios, with the exception of certain specialized or illiquid product types. Its outputs are intended to inform regulatory reporting, risk management, and business decisions, but should be considered alongside other risk management practices and controls.

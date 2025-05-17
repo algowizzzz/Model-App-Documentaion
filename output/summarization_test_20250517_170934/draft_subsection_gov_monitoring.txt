@@ -1,0 +1,73 @@
+DRAFT SUBSECTION: 7.2. Ongoing Monitoring (ID: gov_monitoring)
+
+7.2. Ongoing Monitoring
+
+Ongoing monitoring of model performance and stability is a critical component of responsible model governance and risk management. This section outlines the procedures and practices in place to continuously evaluate the model's behavior, identify any deviations or degradation in performance, and trigger appropriate actions to maintain the model's fitness for its intended purpose.
+
+Monitoring Objectives and Metrics
+The primary objectives of the ongoing monitoring process are to:
+- Detect any significant changes or drifts in the model's inputs, outputs, or underlying relationships compared to historical patterns.
+- Identify potential issues with model stability, such as high volatility in results or unexpected sensitivities to certain parameters or data.
+- Ensure the model continues to perform within its defined risk tolerance and remains aligned with business objectives.
+
+To achieve these objectives, the following key monitoring metrics are tracked and analyzed on a regular basis:
+- Model inputs: Monitoring for changes in the statistical properties, distributions, or relationships between input variables.
+- Model outputs: Tracking the range, volatility, and trends of the model's primary outputs (e.g., PFE, regulatory capital, risk scores).
+- Performance measures: Evaluating the model's predictive accuracy, backtesting results, and other relevant performance indicators.
+- Stability indicators: Analyzing the model's sensitivity to parameter changes, stress testing results, and consistency of outputs over time.
+
+Monitoring Processes and Responsibilities
+The ongoing monitoring of the model is a collaborative effort involving several key stakeholders and functions:
+
+1. Model Owners:
+   - Regularly review the monitoring reports and metrics to identify any concerning trends or deviations.
+   - Investigate the root causes of performance issues and coordinate with relevant teams to address them.
+   - Recommend and implement model enhancements or adjustments as needed to maintain model integrity.
+
+2. Model Risk Management:
+   - Provide independent oversight and challenge of the monitoring processes and results.
+   - Validate the appropriateness and effectiveness of the monitoring metrics and thresholds.
+   - Escalate significant model performance concerns to the Model Risk Committee for further review and action.
+
+3. Model Validation Team:
+   - Conduct periodic, comprehensive model validations to assess the model's ongoing performance, stability, and alignment with business requirements.
+   - Provide recommendations for model enhancements, adjustments, or revalidation based on the validation findings.
+
+4. Data and IT Teams:
+   - Monitor the quality, availability, and integrity of the data inputs used by the model.
+   - Notify the Model Owners of any changes or issues with the data that may impact model performance.
+
+Monitoring Processes and Thresholds
+The ongoing monitoring of the model is carried out through the following processes and thresholds:
+
+1. Daily Monitoring:
+   - Automated checks on model inputs, outputs, and performance metrics to identify any significant deviations from expected ranges or historical patterns.
+   - Predefined thresholds and alert triggers to flag potential issues for further investigation.
+
+2. Monthly Reporting:
+   - Comprehensive monitoring reports summarizing the model's performance, stability, and any identified issues or concerns.
+   - Review and discussion of the monitoring results by the Model Owners and Model Risk Management team.
+
+3. Quarterly Model Reviews:
+   - In-depth analysis of the model's behavior, including backtesting, sensitivity analysis, and stress testing.
+   - Evaluation of the model's continued alignment with business objectives and risk tolerance.
+   - Identification of potential model enhancements or revalidation requirements.
+
+Escalation and Response Procedures
+In the event that the ongoing monitoring process identifies a significant issue or concern with the model's performance or stability, the following escalation and response procedures are in place:
+
+1. Immediate Notification:
+   - The Model Owners and Model Risk Management team are immediately notified of any breaches of predefined monitoring thresholds or other critical issues.
+
+2. Root Cause Analysis:
+   - The Model Owners, in collaboration with the Data and IT teams, conduct a thorough investigation to identify the root causes of the identified issues.
+
+3. Remediation Actions:
+   - Based on the findings of the root cause analysis, the Model Owners develop and implement appropriate remediation actions, which may include:
+     - Adjustments to model parameters or inputs
+     - Enhancements to the model's logic or algorithms
+     - Retraining or recalibration of the model
+     - Temporary model usage restrictions or suspensions
+
+4. Escalation and Governance:
+   -

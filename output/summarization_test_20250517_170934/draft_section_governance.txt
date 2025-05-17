@@ -1,0 +1,46 @@
+DRAFT SECTION: 7. Model Governance and Controls (ID: governance)
+
+7. Model Governance and Controls
+
+Effective governance and controls are critical to ensuring the integrity, reliability, and appropriate usage of any model within BMO's risk management framework. This section outlines the key elements of model governance and controls in place for this model.
+
+7.1. Model Ownership
+The [Model Name] model is owned and maintained by the [Business Unit/Department] within BMO. The primary individuals responsible for the model are:
+
+- [Name, Title] - Model Owner and Subject Matter Expert
+- [Name, Title] - Model Developer and Analyst
+- [Name, Title] - Model Validation and Oversight
+
+This model ownership structure ensures clear accountability for the model's performance, ongoing monitoring, and any necessary changes or enhancements.
+
+7.2. Ongoing Monitoring
+The [Business Unit/Department] conducts regular reviews and monitoring of the [Model Name] model to assess its continued effectiveness and stability. This includes:
+
+- Periodic model performance reviews: The model's outputs and key metrics are analyzed on a [monthly/quarterly/annual] basis to identify any significant deviations from expected behavior or thresholds.
+- Backtesting and benchmarking: The model's results are compared against actual outcomes and/or industry benchmarks to validate its predictive accuracy and calibration.
+- Data quality checks: The integrity and completeness of input data used by the model are verified on an ongoing basis.
+- Change impact assessments: Any proposed changes to the model, its inputs, or underlying assumptions are thoroughly evaluated for their potential impact on model performance and risk profile.
+
+The results of these monitoring activities are documented and reviewed by the Model Governance Committee to ensure appropriate oversight and to inform any necessary model enhancements or revalidation.
+
+7.3. Change Management Process
+All changes to the [Model Name] model, including updates to code, data sources, methodologies, and assumptions, are subject to a formal change management process. This process includes the following key steps:
+
+1. Change Request: Model users or stakeholders submit a formal change request, detailing the proposed modification and the rationale.
+2. Impact Assessment: The Model Owner and development team evaluate the potential impact of the change on model performance, risk profile, and regulatory compliance.
+3. Approval: The change request is reviewed and approved by the Model Governance Committee, which includes representatives from the [Business Unit/Department], Model Risk Management, and other relevant stakeholders.
+4. Implementation: Once approved, the change is implemented by the development team, with appropriate testing and validation.
+5. Documentation: All changes are thoroughly documented, including the justification, implementation details, and any resulting model updates.
+
+This structured change management process ensures that model modifications are well-controlled, properly assessed, and aligned with BMO's risk management objectives.
+
+7.4. Access Controls
+Access to the [Model Name] model, including its code, data, and supporting systems, is restricted and tightly controlled. The following measures are in place:
+
+- Role-based permissions: Users are granted access to the model and its components based on their specific roles and responsibilities within the [Business Unit/Department] and BMO.
+- Two-factor authentication: Access to the model's systems and repositories requires two-factor authentication, providing an additional layer of security.
+- Logging and monitoring: All access attempts and activities related to the model are logged and monitored for any suspicious or unauthorized actions.
+- Physical security: The servers and infrastructure hosting the model are located in secure, access-controlled facilities with appropriate physical security measures.
+- Backup and disaster recovery: Regular backups of the model's code, data, and configurations are maintained, and a comprehensive disaster recovery plan is in place to ensure business continuity.
+
+These access controls and security measures help to protect the integrity and confidentiality of the [Model Name] model, ensuring that it is only used and modified by authorized personnel in accordance with BMO's risk management policies and procedures.

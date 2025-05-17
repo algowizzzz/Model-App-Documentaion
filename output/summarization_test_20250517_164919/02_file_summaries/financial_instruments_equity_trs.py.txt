@@ -1,0 +1,44 @@
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file, `equity_trs.py`, is to represent and value an Equity Total Return Swap (TRS) financial instrument.
+   - This file is a key component within a broader financial instruments module, responsible for the specific calculation and exposure management of Equity TRS contracts.
+
+2. **Key Components and Functionality:**
+   - `EquityTRS` class:
+     - **Purpose:** Encapsulates the logic for creating and valuing an Equity TRS instrument.
+     - **Key Operations:** Calculates the mark-to-market (MtM) value of the TRS based on the current underlying price paths, and computes the exposure (positive MtM) for the instrument.
+     - **Inputs:** Trade details, including notional, initial price at inception, and trade type (receive or pay equity return).
+     - **Outputs:** MtM values and exposure values for each time step and path.
+   - `calculate_mtm` method:
+     - **Purpose:** Calculates the MtM of the TRS based on the current underlying price paths.
+     - **Key Operations:** Computes the price ratio change between the current and initial prices, and applies the notional to derive the MtM values.
+     - **Inputs:** Current underlying price paths.
+     - **Outputs:** MtM values for each time step and path.
+   - `calculate_exposure` method:
+     - **Purpose:** Calculates the exposure from the MtM paths.
+     - **Key Operations:** Applies a maximum function to the MtM values to obtain the positive exposure.
+     - **Inputs:** MtM values.
+     - **Outputs:** Exposure values for each time step and path.
+
+3. **Core Algorithms and Logic (File-Specific):**
+   - The core logic in this file is the calculation of MtM and exposure for an Equity TRS instrument. The MtM is calculated as the change in the price ratio (current price to initial price) multiplied by the notional, with the trade type (receive or pay) determining the sign of the MtM. The exposure is then calculated as the maximum of 0 and the MtM, assuming positive MtM represents an amount owed to the counterparty.
+
+4. **Data Structures:**
+   - The file primarily uses NumPy arrays to represent the underlying price paths and the resulting MtM and exposure values.
+
+5. **Dependencies:**
+   - **Internal:** This file does not have any direct dependencies on other modules within the codebase.
+   - **External:** The file relies on the `numpy` library for array-based calculations and operations.
+
+6. **Error Handling and Logging:**
+   - The file includes explicit error handling by raising a `ValueError` if an invalid `trade_type` is provided.
+   - The file also includes logging functionality to print information about the created `EquityTRS` instrument and the calculated MtM and exposure values.
+
+7. **Assumptions and Limitations (Strictly File-Specific):**
+   - Assumptions:
+     - The funding leg (fixed or floating rate payments) is netted against the equity leg at each valuation date, and the focus is solely on the change in equity value.
+     - Positive MtM represents an amount owed to the counterparty.
+   - Limitations:
+     - The file does not handle more complex Equity TRS structures, such as those with multiple underlying assets, exotic payoff structures, or additional features like collateralization or netting.
+     - The file assumes that the underlying price paths are provided as input and does not include any functionality for generating or simulating these price paths.

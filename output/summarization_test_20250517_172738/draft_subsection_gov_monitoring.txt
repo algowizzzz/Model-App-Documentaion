@@ -1,0 +1,60 @@
+DRAFT SUBSECTION: 7.2. Ongoing Monitoring (ID: gov_monitoring)
+
+7.2. Ongoing Monitoring
+
+Ongoing monitoring of model performance and stability is a critical component of the model governance framework at BMO. This section outlines the procedures and processes in place to continuously evaluate the model's behavior, identify any deviations from expected performance, and initiate appropriate actions to maintain the model's integrity and effectiveness.
+
+Monitoring Objectives and Metrics
+The primary objectives of the ongoing monitoring process are to:
+- Ensure the model continues to perform as intended and within acceptable tolerance levels
+- Detect any significant changes or drifts in the model's inputs, outputs, or underlying assumptions
+- Identify potential issues or risks that may impact the model's reliability, accuracy, or compliance
+
+To achieve these objectives, the following key performance metrics are tracked and analyzed on a regular basis:
+- Model accuracy: Comparison of model outputs to actual outcomes or benchmark values
+- Model stability: Evaluation of changes in model outputs over time, considering factors such as volatility, sensitivity, and consistency
+- Data quality: Monitoring of input data sources for completeness, accuracy, and timeliness
+- Compliance: Verification of the model's adherence to regulatory requirements, internal policies, and risk appetite
+
+Monitoring Processes and Responsibilities
+The ongoing monitoring of the model is a collaborative effort involving multiple teams and functions within BMO, including:
+
+1. Model Owners:
+   - Responsible for the day-to-day monitoring of the model's performance and behavior
+   - Conduct regular reviews of the key performance metrics and escalate any significant issues or concerns
+   - Implement remedial actions or model enhancements as needed to address identified problems
+
+2. Model Risk Management Team:
+   - Provide independent oversight and validation of the model's performance
+   - Perform periodic model validations, including back-testing and stress testing, to assess the model's continued suitability
+   - Recommend changes or adjustments to the model's parameters, inputs, or methodology based on the validation findings
+
+3. Internal Audit:
+   - Conduct periodic audits to verify the effectiveness of the ongoing monitoring processes
+   - Assess the model's compliance with internal policies, regulatory requirements, and industry best practices
+   - Provide recommendations for improvements to the monitoring framework and governance structure
+
+Monitoring Frequency and Reporting
+The frequency of the ongoing monitoring activities is determined based on the model's complexity, criticality, and the volatility of the underlying data and market conditions. At a minimum, the key performance metrics are reviewed on a quarterly basis, with more frequent monitoring for high-impact or high-risk models.
+
+The results of the ongoing monitoring, including any identified issues, remedial actions, and model enhancements, are documented in a comprehensive monitoring report. This report is submitted to the Model Governance Committee for review and approval, ensuring appropriate oversight and decision-making.
+
+Escalation and Remediation Procedures
+In the event that the ongoing monitoring process identifies significant deviations from expected performance or the emergence of new risks, a well-defined escalation and remediation procedure is in place. This includes:
+
+1. Immediate notification to the Model Owners and the Model Risk Management Team
+2. Detailed root cause analysis to understand the underlying drivers of the performance issues
+3. Development and implementation of appropriate remedial actions, which may include:
+   - Adjustments to model parameters or inputs
+   - Enhancements to the model's methodology or algorithms
+   - Increased monitoring frequency or additional validation activities
+   - Temporary or permanent model decommissioning, if necessary
+
+The escalation and remediation process is designed to ensure timely and effective response to any model performance concerns, minimizing the potential impact on business operations, regulatory compliance, and risk management.
+
+Ongoing Monitoring Documentation and Governance
+All ongoing monitoring activities, findings, and remedial actions are thoroughly documented and maintained as part of the model's comprehensive documentation. This documentation is subject to regular review and approval by the Model Governance Committee, ensuring appropriate oversight and accountability.
+
+The Model Governance Committee is responsible for overseeing the ongoing monitoring processes, evaluating the effectiveness of the monitoring framework, and approving any significant changes or enhancements to the model's governance structure.
+
+By implementing a robust and comprehensive ongoing monitoring program, BMO ensures the continued reliability, accuracy, and compliance of its models, supporting informed decision-making and effective risk management across the organization.

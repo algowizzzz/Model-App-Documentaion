@@ -1,0 +1,23 @@
+The main purpose of this file is to provide a class `ResultsWriter` that handles writing Potential Future Exposure (PFE) results to JSON files. The key components are:
+
+1. `ResultsWriter` class:
+   - Initializes with an output directory and a simulation ID.
+   - Creates the output directory if it doesn't exist.
+   - Provides a method `write_pfe_results` to write aggregated and individual PFE profiles to a JSON file.
+
+2. `_prepare_data_for_json` method:
+   - Converts NumPy arrays and nested data structures to Python lists for JSON serialization.
+   - Recursively handles nested dictionaries and lists.
+
+The `write_pfe_results` method is the main entry point for writing PFE results. It takes two arguments:
+
+- `aggregated_pfe_profile`: A NumPy array representing the aggregated PFE profile.
+- `individual_pfe_profiles`: A dictionary where keys are trade IDs, and values are NumPy arrays representing individual PFE profiles.
+
+The method constructs a dictionary with the simulation ID, aggregated PFE profile, and individual trade PFE profiles. It then writes this data to a JSON file in the specified output directory.
+
+The file also includes a `main` function for testing purposes, which creates a `ResultsWriter` instance, generates sample PFE data, and calls the `write_pfe_results` method.
+
+The file has dependencies on the `json`, `os`, and `numpy` modules. It uses NumPy arrays to represent PFE profiles and handles the conversion of these arrays to JSON-serializable data structures using the `_prepare_data_for_json` method.
+
+Overall, the file follows a straightforward object-oriented design pattern, with the `ResultsWriter` class encapsulating the functionality for writing PFE results to files. The code is well-documented and includes error handling for common exceptions that may occur during file operations and data serialization.

@@ -1,0 +1,45 @@
+DRAFT SUBSECTION: 7.4. Access Controls (ID: gov_access_control)
+
+7.4. Access Controls
+
+This section outlines the access controls and security measures in place to manage and restrict access to the model code, data, and supporting systems.
+
+Access to the model components and related infrastructure is strictly controlled and limited to authorized personnel only. This is to ensure the integrity, confidentiality, and availability of the model and its associated data.
+
+The key access control mechanisms in place include:
+
+1. **User Authentication and Authorization**:
+   - All users accessing the model code, data, and systems must be properly authenticated and authorized.
+   - Access is granted based on the user's role and the principle of least privilege, ensuring that each user has the minimum permissions required to perform their assigned tasks.
+   - Authentication is enforced through secure login procedures, such as multi-factor authentication, to verify the identity of the user.
+
+2. **Role-Based Access Control (RBAC)**:
+   - The model access and permissions are managed through a well-defined RBAC system.
+   - Specific roles are established, each with a clearly defined set of permissions and access rights.
+   - Users are assigned to the appropriate roles based on their job functions and responsibilities within the organization.
+   - The RBAC system is regularly reviewed and updated to ensure that access privileges remain aligned with the evolving needs and risk profile of the organization.
+
+3. **Logging and Monitoring**:
+   - All access attempts, both successful and unsuccessful, to the model code, data, and systems are logged for audit and security monitoring purposes.
+   - The logs are regularly reviewed, and any suspicious or unauthorized activities are promptly investigated and addressed.
+   - Automated alerts and notifications are configured to flag potential security incidents or breaches, enabling a timely response.
+
+4. **Physical Access Controls**:
+   - The servers, databases, and other infrastructure hosting the model components are housed in secure, restricted-access facilities.
+   - Physical access to these facilities is controlled and limited to authorized personnel only, with appropriate security measures such as biometric authentication, access cards, and surveillance systems.
+
+5. **Backup and Disaster Recovery**:
+   - Regular backups of the model code, configuration files, and data are maintained to ensure the availability and recoverability of the system in the event of a disaster or data loss.
+   - Backup procedures and disaster recovery plans are documented, tested, and regularly reviewed to ensure their effectiveness.
+
+6. **Secure Software Development Lifecycle**:
+   - The model code and related components are developed, tested, and deployed following a secure software development lifecycle (SDLC) process.
+   - This includes secure coding practices, code reviews, vulnerability assessments, and rigorous testing to identify and mitigate potential security risks.
+   - Changes to the model code and infrastructure are managed through a controlled change management process, ensuring that any modifications are properly reviewed, tested, and approved before deployment.
+
+7. **Encryption and Data Protection**:
+   - Sensitive data, including model inputs, outputs, and configuration settings, are encrypted both at rest and in transit using industry-standard encryption algorithms and protocols.
+   - Access to encryption keys is strictly controlled and limited to authorized personnel.
+   - Data retention and disposal policies are in place to ensure the proper handling and secure deletion of data when it is no longer required.
+
+These access control measures are designed to protect the confidentiality, integrity, and availability of the model code, data, and supporting systems, in alignment with the organization's security policies and regulatory requirements. Regular reviews, audits, and updates to these controls are conducted to ensure their continued effectiveness and relevance.

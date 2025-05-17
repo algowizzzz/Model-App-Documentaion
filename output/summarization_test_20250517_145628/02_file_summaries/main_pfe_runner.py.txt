@@ -1,0 +1,51 @@
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to orchestrate and execute the entire Potential Future Exposure (PFE) calculation process for a portfolio of equity total return swap (TRS) trades.
+   - It serves as the main entry point and controller for the PFE calculation system, coordinating the various components involved in simulating asset price paths, valuing financial instruments, calculating exposure profiles, and aggregating results.
+
+2. **Key Components and Functionality:**
+
+   - **PFECalculationOrchestrator (Class):**
+     - **Purpose:** Orchestrates the end-to-end PFE calculation workflow.
+     - **Key Operations:**
+       - Initializes and manages dependencies (config manager, simulation engine, PFE calculator, trade aggregator, output writer).
+       - Processes individual trades by simulating asset paths, calculating mark-to-market (MtM) and exposure paths, computing PFE profiles, and aggregating results.
+       - Runs the full PFE calculation for all trades in the portfolio.
+       - Writes aggregated and individual PFE results to an output directory.
+     - **Inputs:** Configuration parameters, market data, and trade details.
+     - **Outputs:** Aggregated PFE profile and individual PFE profiles for each trade.
+   - **_calculate_time_parameters (Method):**
+     - **Purpose:** Helper method to calculate the total time steps and time delta (dt) for a given trade.
+     - **Key Operations:** Computes the total time steps based on maturity and time steps per year, and calculates the time delta (dt).
+     - **Inputs:** Trade information dictionary.
+     - **Outputs:** Total time steps (integer) and time delta (dt) (float).
+   - **process_single_trade (Method):**
+     - **Purpose:** Processes a single trade by simulating asset paths, calculating MtM and exposure paths, computing the PFE profile, and adding it to the trade aggregator.
+     - **Key Operations:**
+       - Retrieves market data for the underlying asset.
+       - Simulates asset price paths using the Monte Carlo engine.
+       - Initializes the EquityTRS instrument and calculates MtM and exposure paths.
+       - Computes the PFE profile for the trade using the PFE calculator.
+       - Adds the trade's PFE profile to the trade aggregator.
+     - **Inputs:** Trade information dictionary.
+     - **Outputs:** None (updates the trade aggregator with the trade's PFE profile).
+   - **run_full_pfe_calculation (Method):**
+     - **Purpose:** Runs the complete PFE calculation process for all trades in the portfolio.
+     - **Key Operations:**
+       - Iterates over all trades and calls `process_single_trade` for each one.
+       - Aggregates the individual PFE profiles using the trade aggregator's `calculate_simple_sum_pfe` method.
+       - Writes the aggregated PFE profile and individual PFE profiles to the output directory using the `ResultsWriter` class.
+     - **Inputs:** None (uses configuration and trade data loaded during initialization).
+     - **Outputs:** None (writes results to the output directory).
+
+3. **Core Algorithms and Logic (File-Specific):**
+   - This file does not implement any complex algorithms or business logic directly. It primarily orchestrates the execution flow by coordinating the various components involved in the PFE calculation process.
+   - The core algorithms for simulating asset paths, valuing financial instruments, calculating exposure profiles, and aggregating PFE results are implemented in separate modules and classes (e.g., `MonteCarloEngine`, `EquityTRS`, `PFEQuantileCalculator`, `TradeAggregator`).
+
+4. **Data Structures:**
+   - The file does not define or manipulate any significant internal data structures directly.
+   - It relies on data structures provided by the `ConfigManager` class (e.g., `sim_params`, `market_data_map`, `trades`) and the `TradeAggregator` class for storing individual PFE profiles.
+
+5. **Dependencies:**
+   - **Internal:**
+     - `data_management.loader.ConfigManager`: Manages configuration data and market data loading.
+     - `simulation_engine.monte

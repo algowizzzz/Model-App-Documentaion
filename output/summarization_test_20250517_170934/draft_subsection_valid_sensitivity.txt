@@ -1,0 +1,50 @@
+DRAFT SUBSECTION: 5.4. Sensitivity and Stress Testing (ID: valid_sensitivity)
+
+5.4. Sensitivity and Stress Testing
+
+Sensitivity and stress testing are essential components of model validation and risk management. This section outlines the analysis performed to assess the behavior of the model under various input and parameter changes, as well as extreme conditions.
+
+5.4.1. Sensitivity Analysis
+The sensitivity analysis examines how the model's outputs respond to changes in the input variables and model parameters. This helps identify the key drivers of the model's results and understand the relative importance of different factors.
+
+5.4.1.1. Input Variable Sensitivity
+The sensitivity of the model's outputs to changes in the input variables was assessed by systematically varying each input parameter within a reasonable range while holding all other inputs constant. This analysis was performed for the following key input variables:
+
+- Risk factor values: The impact of changes in the individual risk factor values on the overall risk score was evaluated. This included assessing the sensitivity to both increases and decreases in risk factor values.
+- Risk factor weights: The sensitivity of the model's outputs to changes in the assigned weights for each risk factor category was analyzed. This helped determine the relative importance of the different risk factor categories.
+- Risk threshold: The model's behavior was tested by varying the risk threshold used to classify high-risk and low-risk scenarios. This assessed the stability of the risk categorization as the threshold was adjusted.
+
+The results of the input variable sensitivity analysis are summarized in the following table:
+
+| Input Variable | Sensitivity Impact | Key Findings |
+| --- | --- | --- |
+| Risk factor values | Moderate to high | Increases in high-impact risk factors had a significant effect on the total risk score, while changes in lower-impact factors had a more muted impact. |
+| Risk factor weights | Moderate | Adjusting the weights of the risk factor categories influenced the relative contribution of each category to the overall risk assessment. |
+| Risk threshold | High | The risk categorization (high-risk vs. low-risk) was highly sensitive to the chosen risk threshold value, requiring careful calibration. |
+
+The sensitivity analysis provided valuable insights into the model's behavior and helped identify the key input variables that require close monitoring and robust validation.
+
+5.4.2. Stress Testing
+In addition to the sensitivity analysis, the model was subjected to stress testing to evaluate its performance under extreme or unlikely conditions. This involved simulating scenarios that push the model beyond its normal operating range to assess its robustness and identify potential weaknesses or vulnerabilities.
+
+The stress testing process included the following key elements:
+
+1. **Extreme Value Scenarios**: The model was tested with input values and parameter settings that represented extreme or tail-risk events, such as:
+   - Simultaneous increases in all risk factor values to their maximum plausible levels
+   - Significant decreases in the risk threshold, leading to a high-risk classification even for relatively low-risk portfolios
+   - Combinations of unfavorable input variables and parameter settings that could result in unrealistic or implausible risk assessments
+
+2. **Scenario Analysis**: The model's behavior was evaluated under hypothetical, but plausible, stress scenarios that could arise in the market or business environment, such as:
+   - Sudden and severe market downturns affecting multiple risk factor categories
+   - Regulatory changes that significantly impact the risk factor weightings or the risk threshold
+   - Operational disruptions or data quality issues that compromise the reliability of the input variables
+
+3. **Reverse Stress Testing**: The model was subjected to a reverse stress testing approach, where the goal was to identify the combination of input variables and parameter settings that would lead to the model breaching a pre-defined risk tolerance or failure threshold. This helped uncover the most vulnerable aspects of the model and inform mitigation strategies.
+
+The stress testing results were thoroughly analyzed, and the findings were used to enhance the model's robustness, improve the risk management framework, and inform the development of contingency plans. Key insights from the stress testing included:
+
+- The model was particularly vulnerable to simultaneous increases in high-impact risk factors, which could lead to unrealistically high-risk assessments.
+- Certain regulatory or market scenarios could significantly impact the risk factor weightings and the overall risk categorization, requiring close monitoring and adaptability.
+- The model's performance was highly dependent on the reliability and accuracy of the input data, highlighting the importance of robust data quality controls.
+
+The sensitivity and stress testing analyses provided a comprehensive understanding of the model's behavior, limitations, and potential vulnerabilities. The findings from these assessments were instrumental in strengthening the model's design, enhancing the risk management framework, and informing the development of appropriate mitigation strategies

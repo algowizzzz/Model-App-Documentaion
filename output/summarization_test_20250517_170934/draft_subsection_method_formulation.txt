@@ -1,0 +1,57 @@
+DRAFT SUBSECTION: 2.2. Mathematical Formulation (ID: method_formulation)
+
+2.2. Mathematical Formulation
+
+This section presents the key mathematical formulations, algorithms, and logical steps involved in the model's calculations. It defines all relevant variables and parameters.
+
+The model's core functionality is implemented in the `complex_module.py` file, which defines the `RiskFactor` class and the `RiskCalculator` class. These components handle the calculation and aggregation of risk scores based on a set of risk factors.
+
+2.2.1. Risk Factor Representation
+The `RiskFactor` class represents a single risk factor, with the following attributes:
+- `name`: The name or identifier of the risk factor.
+- `weight`: The weight or importance of the risk factor, a value between 0 and 1.
+- `value`: The numerical value of the risk factor, which must be greater than or equal to 0.
+- `category`: The category or type of the risk factor.
+
+The weighted impact of a risk factor is calculated as:
+```
+weighted_impact = weight * value
+```
+
+2.2.2. Risk Calculation and Aggregation
+The `RiskCalculator` class is responsible for the overall risk calculation and aggregation process. It takes a list of `RiskFactor` instances as input and performs the following steps:
+
+1. **Total Risk Score Calculation**:
+   - The total risk score is calculated as the sum of the weighted impacts of all risk factors:
+     ```
+     total_risk_score = sum(risk_factor.weighted_impact for risk_factor in risk_factors)
+     ```
+   - The total risk score is then normalized to the range [0, 1] by dividing it by the sum of all risk factor weights.
+
+2. **Risk Breakdown by Category**:
+   - The `get_risk_breakdown` method calculates the risk score for each category by summing the weighted impacts of the risk factors within each category.
+   - The risk breakdown is returned as a dictionary, where the keys are the category names, and the values are the corresponding risk scores.
+
+3. **Risk Factor Validation**:
+   - The `_validate_factors` method checks the risk factors for any invalid weights or values. It returns a list of validation error messages, if any.
+
+2.2.3. Risk Report Generation
+The `create_risk_report` function takes a `RiskCalculator` instance as input and generates a comprehensive risk report. The report includes the following information:
+- Timestamp of the report generation
+- Total risk score
+- Risk breakdown by category
+- Risk status (high-risk or low-risk) based on a predefined risk threshold
+
+The risk report is returned as a dictionary with the following structure:
+```
+{
+    "timestamp": datetime.now().isoformat(),
+    "total_risk": total_risk_score,
+    "risk_breakdown": risk_breakdown,
+    "status": "high-risk" if total_risk_score > risk_threshold else "low-risk"
+}
+```
+
+The mathematical formulations and algorithms described above provide the core logic for calculating and aggregating risk scores based on a set of risk factors. The `RiskFactor` class represents the individual risk factors, the `RiskCalculator` class handles the overall risk calculation and breakdown, and the `create_risk_report` function generates a comprehensive risk report.
+
+[Information regarding the specific risk threshold used in the risk status determination needs to be sourced/further investigated as it is not fully available in the provided codebase summaries.]

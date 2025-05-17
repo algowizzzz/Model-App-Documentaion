@@ -1,0 +1,64 @@
+The codebase can be organized into the following hierarchical structure:
+
+I. Monte Carlo PFE Calculator for Equity TRS
+   - **Purpose:** Calculate the Potential Future Exposure (PFE) for a portfolio of Equity Total Return Swaps (TRS) using Monte Carlo simulation.
+
+   A. Configuration and Data Management
+      1. `config/`
+         - **Purpose:** Store configuration data for trades, market data, and simulation parameters.
+         - Files:
+            - `trades.json`: Defines trade details (trade ID, underlying asset, notional, maturity, etc.).
+            - `market_data.json`: Stores market data parameters (current price, volatility, risk-free rate, dividend yield) for underlying assets.
+            - `simulation_params.json`: Specifies simulation settings (number of paths, PFE quantile, output directory).
+      2. `data_management/`
+         - **Purpose:** Load and manage configuration data from JSON files.
+         - Files:
+            - `loader.py`: Provides functions to load trades, market data, and simulation parameters from JSON files.
+            - `ConfigManager` (class): Manages the loading and storage of all configuration data.
+
+   B. Simulation Engine
+      1. `simulation_engine/`
+         - **Purpose:** Perform Monte Carlo simulations of asset price paths.
+         - Files:
+            - `monte_carlo_simulator.py`: Orchestrates Monte Carlo simulations for various assets using the Geometric Brownian Motion (GBM) process.
+            - `gbm_model.py`: Implements the GBM process for generating asset price paths.
+
+   C. Financial Instruments
+      1. `financial_instruments/`
+         - **Purpose:** Define and value financial instruments, such as Equity TRS.
+         - Files:
+            - `equity_trs.py`: Represents and values an Equity Total Return Swap (TRS) instrument, calculating mark-to-market and exposure values.
+
+   D. PFE Calculation
+      1. `pfe_calculation/`
+         - **Purpose:** Calculate PFE profiles from exposure paths and aggregate across trades.
+         - Files:
+            - `pfe_computer.py`: Computes the PFE profile at a specified quantile from exposure paths.
+            - `exposure_aggregator.py`: Manages the aggregation of PFE profiles across multiple trades (simple summation approach).
+
+   E. Reporting
+      1. `reporting/`
+         - **Purpose:** Handle the writing of PFE results to output files.
+         - Files:
+            - `output_writer.py`: Manages the creation of an output directory and writes aggregated and individual PFE profiles to a JSON file.
+
+   F. Main Execution
+      1. `main_pfe_runner.py`
+         - **Purpose:** Orchestrate and execute the end-to-end PFE calculation process.
+         - `PFECalculationOrchestrator` (class): Manages the workflow, including data loading, simulation, valuation, PFE computation, and result reporting.
+
+   G. Output
+      1. `pfe_results/`
+         - **Purpose:** Directory where the output PFE results will be written (created during execution).
+
+Relationships and Architecture:
+
+1. The `main_pfe_runner.py` file serves as the entry point and driver for the entire PFE calculation process. It orchestrates the workflow by utilizing various components and modules.
+
+2. The `ConfigManager` class in `data_management/loader.py` is responsible for loading and managing configuration data from JSON files in the `config/` directory. This data is consumed by other components, such as the simulation engine and financial instrument valuation.
+
+3. The `MonteCarloEngine` class in `simulation_engine/monte_carlo_simulator.py` orchestrates the Monte Carlo simulation of asset price paths using the GBM process implemented in `simulation_engine/gbm_model.py`. The simulated price paths are then used for valuing financial instruments and calculating exposures.
+
+4. The `EquityTRS` class in `financial_instruments/equity_trs.py` represents and values an Equity Total Return Swap instrument. It calculates the mark-to-market and exposure values based on the simulated price paths.
+
+5. The `PFEQuantileCalculator` class in `pfe

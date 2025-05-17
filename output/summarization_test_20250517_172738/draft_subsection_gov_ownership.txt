@@ -1,0 +1,18 @@
+DRAFT SUBSECTION: 7.1. Model Ownership (ID: gov_ownership)
+
+7.1. Model Ownership
+
+This section identifies the business unit and individuals responsible for the model described in this documentation.
+
+The [model_name] model is owned and maintained by the [business_unit] team within BMO. The key individuals involved in the model's development, implementation, and ongoing management are:
+
+- [model_owner_name], [model_owner_title] - Overall model owner, responsible for strategic direction and high-level decision-making.
+- [model_developer_name], [model_developer_title] - Lead model developer, responsible for the technical implementation and maintenance of the model.
+- [model_validator_name], [model_validator_title] - Independent model validator, responsible for reviewing the model's methodology, assumptions, and outputs.
+- [model_approver_name], [model_approver_title] - Senior stakeholder responsible for approving the model for use within BMO.
+
+The [business_unit] team works closely with other relevant stakeholders, such as the Risk Management, Finance, and Regulatory Compliance teams, to ensure the model aligns with BMO's overall risk management framework and regulatory requirements.
+
+Any changes or updates to the model, including modifications to the underlying code, configuration, or methodologies, must be reviewed and approved by the model owner and the independent model validator before being implemented. The model is subject to periodic independent validation and ongoing monitoring to ensure its continued effectiveness and compliance with BMO's model governance standards.
+
+If you have any questions or concerns regarding the model ownership or governance, please contact the model owner, [model_owner_name], at [model_owner_contact_info].

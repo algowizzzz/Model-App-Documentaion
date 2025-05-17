@@ -1,0 +1,23 @@
+DRAFT SUBSECTION: 1.2. Scope and Applicability (ID: intro_scope)
+
+1.2. Scope and Applicability
+
+The risk calculation and reporting model implemented in the `complex_module.py` file is designed to be applicable to a broad range of products, portfolios, and processes within Bank of Montreal's (BMO) risk management framework. The model is capable of handling multiple risk factors and calculating both detailed and summary risk assessments.
+
+Specifically, the model is applicable to the following:
+
+- **Products**: The model can be used to assess the risk associated with a variety of financial instruments and products, including (but not limited to) derivatives, fixed-income securities, and structured products. The model's flexibility allows it to be adapted to handle different asset classes and trade types.
+
+- **Portfolios**: The model can be used to calculate the overall risk profile of a portfolio of financial instruments. By aggregating the risk factors and scores for individual positions, the model can provide a comprehensive risk assessment at the portfolio level.
+
+- **Processes**: The primary use case for this model is to support BMO's regulatory capital reporting and risk management processes. The risk calculations and reporting functionality can be integrated into these processes to provide critical inputs and insights.
+
+However, it is important to note that the model has certain known exclusions and boundaries:
+
+- **Asset Classes**: While the model is designed to be broadly applicable, it may not be suitable for assessing the risk of certain specialized asset classes or instruments, such as illiquid or complex structured products, that are not explicitly covered in the current implementation.
+
+- **Business Lines**: The model is focused on the risk assessment needs of BMO's trading and capital markets business lines. It may not be directly applicable to other business units or risk management processes outside of this scope.
+
+- **Regulatory Compliance**: The model is intended to support BMO's regulatory capital reporting and risk management processes, but it does not necessarily guarantee full compliance with all applicable regulations. Additional validation and oversight may be required to ensure the model's outputs are compliant with regulatory requirements.
+
+It is recommended that users of this model carefully review the specific products, portfolios, and processes it is designed to handle, as well as any known exclusions or limitations, to ensure the model's applicability and suitability for their particular use case. If there are any concerns or questions about the model's scope and applicability, it is advised to consult with the model's development team or risk management experts within BMO.

@@ -1,0 +1,16 @@
+The `financial_instruments/equity_trs.py` file defines a class `EquityTRS` to represent and value an Equity Total Return Swap (TRS) contract. The main purpose of this file is to provide a way to calculate the mark-to-market (MtM) value and exposure of an Equity TRS based on the underlying equity price paths.
+
+The key components are:
+
+1. `EquityTRS` class:
+   - Initializes the TRS contract with trade details such as notional, initial price, and trade type (receive or pay equity return).
+   - `calculate_mtm` method: Calculates the MtM value of the TRS for a given set of underlying equity price paths.
+   - `calculate_exposure` method: Calculates the exposure (max(0, MtM)) from the MtM values, assuming positive MtM means the counterparty owes us.
+
+The `EquityTRS` class assumes that the funding leg (fixed or floating rate payments) is netted against the equity leg at each valuation date, and the focus is on the change in equity value. The MtM calculation is based on the ratio change of the underlying equity price compared to the initial price at inception, multiplied by the notional amount. The trade type (receive or pay equity return) determines the sign of the MtM value.
+
+The file uses NumPy for array operations and assumes that the underlying equity price paths are provided as a NumPy array with shape `(num_time_steps + 1, num_paths)`.
+
+The main algorithm used is the calculation of the MtM value based on the ratio change of the underlying equity price compared to the initial price at inception, multiplied by the notional amount. The exposure calculation follows a simple pattern of taking the maximum of 0 and the MtM value for each path and time step.
+
+Overall, this file provides a straightforward implementation for valuing and calculating the exposure of an Equity TRS contract, which can be useful in financial risk management and pricing applications.

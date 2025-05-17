@@ -1,0 +1,36 @@
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to implement a Geometric Brownian Motion (GBM) process for simulating asset price paths.
+   - This file serves as a key component of the broader simulation engine, providing the core functionality for generating stochastic asset price trajectories.
+
+2. **Key Components and Functionality:**
+   - `GBMProcess` class:
+     - **Purpose:** Encapsulates the GBM process for simulating asset price paths.
+     - **Key Operations:** Generates multiple asset price paths based on the given initial price, drift, volatility, and time step.
+     - **Inputs:** Initial price, drift, volatility, and time step.
+     - **Outputs:** An array of simulated asset prices, including the initial price.
+   - `generate_paths` method:
+     - **Purpose:** Generates multiple asset price paths using the GBM process.
+     - **Key Operations:** Calculates the drift and volatility terms, then iteratively generates the asset prices for each time step and path.
+     - **Inputs:** Number of time steps and number of paths to generate.
+     - **Outputs:** A 2D numpy array containing the simulated asset prices.
+
+3. **Core Algorithms and Logic (File-Specific):**
+   - The core algorithm implemented in this file is the Geometric Brownian Motion (GBM) process, which is used to simulate asset price paths. The GBM process is a widely used stochastic model for modeling the evolution of asset prices over time.
+   - The `generate_paths` method pre-calculates the drift and volatility terms for efficiency, then iteratively generates the asset prices for each time step and path using the GBM formula.
+
+4. **Data Structures:**
+   - The primary data structure used in this file is a 2D numpy array, which stores the simulated asset prices for each time step and path.
+
+5. **Dependencies:**
+   - **Internal:** This file does not have any direct internal dependencies.
+   - **External:** This file depends on the `numpy` library for numerical operations and random number generation.
+
+6. **Error Handling and Logging:**
+   - The file includes basic error handling by raising a `ValueError` if the number of steps or paths is non-positive.
+   - The file also includes logging functionality, printing messages to indicate the initialization of the `GBMProcess` instance and the generation of the price paths.
+
+7. **Assumptions and Limitations (Strictly File-Specific):**
+   - This file assumes that the input parameters (initial price, drift, volatility, and time step) are valid and within reasonable ranges for the GBM process.
+   - The implementation of the GBM process in this file does not consider any additional factors or adjustments, such as jumps, stochastic volatility, or mean reversion. The GBM process is a relatively simple model for asset price simulation.

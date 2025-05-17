@@ -1,0 +1,61 @@
+**1. Overall Purpose and Role:**
+The primary purpose of this file is to provide a centralized mechanism for loading and managing configuration data required by the broader system or model. It serves as a data loader and configuration manager, responsible for reading and parsing JSON files containing essential data such as trades, market data, and simulation parameters.
+
+**2. Key Components and Functionality:**
+
+**Function: load_json_data(file_path: str)**
+- **Purpose:** Load and parse data from a JSON file.
+- **Key Operations:** Opens the specified file, reads its contents, and deserializes the JSON data into a Python object.
+- **Inputs:** file_path (str) - The path to the JSON file to be loaded.
+- **Outputs:** The deserialized Python object containing the data from the JSON file.
+
+**Function: get_trades(config_dir: str = "config")**
+- **Purpose:** Load trade data from a JSON file.
+- **Key Operations:** Constructs the file path for the trades.json file within the specified config directory and calls load_json_data to load the data.
+- **Inputs:** config_dir (str) - The directory path where the trades.json file is located (default: "config").
+- **Outputs:** The deserialized Python object containing the trade data.
+
+**Function: get_market_data(config_dir: str = "config")**
+- **Purpose:** Load market data from a JSON file.
+- **Key Operations:** Constructs the file path for the market_data.json file within the specified config directory and calls load_json_data to load the data.
+- **Inputs:** config_dir (str) - The directory path where the market_data.json file is located (default: "config").
+- **Outputs:** The deserialized Python object containing the market data.
+
+**Function: get_simulation_params(config_dir: str = "config")**
+- **Purpose:** Load simulation parameters from a JSON file.
+- **Key Operations:** Constructs the file path for the simulation_params.json file within the specified config directory and calls load_json_data to load the data.
+- **Inputs:** config_dir (str) - The directory path where the simulation_params.json file is located (default: "config").
+- **Outputs:** The deserialized Python object containing the simulation parameters.
+
+**Class: ConfigManager**
+- **Purpose:** Manage the loading and storage of configuration data from multiple JSON files.
+- **Key Operations:** Initializes the ConfigManager with a specified config directory, provides a load_all method to load all configuration data (trades, market data, and simulation parameters) from their respective JSON files.
+- **Inputs:** config_dir (str) - The directory path where the configuration JSON files are located (default: "config").
+- **Outputs:** An instance of the ConfigManager class with the loaded configuration data stored as attributes.
+
+**3. Core Algorithms and Logic:**
+The core logic of this file revolves around reading and parsing JSON data from files. The load_json_data function implements error handling for common exceptions that may occur during file operations and JSON deserialization, such as FileNotFoundError, JSONDecodeError, and other unexpected exceptions.
+
+**4. Data Structures:**
+The file primarily deals with Python dictionaries and lists, which are the typical data structures resulting from deserializing JSON data.
+
+**5. Dependencies:**
+
+**Internal Dependencies:**
+- None
+
+**External Dependencies:**
+- json: A built-in Python module for working with JSON data.
+- os: A built-in Python module for interacting with the operating system, used here for file path operations.
+
+**6. Error Handling and Logging:**
+The load_json_data function implements explicit error handling using try-except blocks for the following exceptions:
+- FileNotFoundError: Raised when the specified JSON file is not found.
+- JSONDecodeError: Raised when the JSON data in the file cannot be deserialized correctly.
+- Exception: A catch-all block for any other unexpected exceptions that may occur during file loading.
+
+The file does not implement any explicit logging functionality.
+
+**7. Assumptions and Limitations (File-Specific):**
+- The file assumes that the JSON files containing the configuration data (trades, market data, and simulation parameters) are located in the specified config directory or a subdirectory relative to the script's execution path.
+- The file assumes that the JSON data in the files is well-formed and can be deseri

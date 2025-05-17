@@ -1,0 +1,48 @@
+**1. Overall Purpose and Role:**
+This file contains an implementation of the Geometric Brownian Motion (GBM) process for simulating asset prices over time. Its primary purpose is to provide a reusable component for generating multiple paths of asset price trajectories based on the GBM model. This simulation engine component can be utilized within broader financial modeling systems or applications that require asset price simulations, such as option pricing models, portfolio risk analysis, or Monte Carlo simulations.
+
+**2. Key Components and Functionality:**
+- **Class: GBMProcess**
+    - **Purpose:** Encapsulates the GBM process for simulating asset prices.
+    - **Key Operations:**
+        - Initializes the GBM process with given parameters (initial price, drift, volatility, time delta).
+        - Generates multiple asset price paths over specified time steps using the GBM equation.
+    - **Inputs:**
+        - Initial price (float): The starting price of the asset.
+        - Drift (float): The expected rate of return (e.g., risk-free rate - dividend yield).
+        - Volatility (float): The volatility of the asset price.
+        - Time delta (float): The time increment for each step (in years).
+        - Number of steps (int): The number of time steps to simulate for each path.
+        - Number of paths (int): The number of distinct paths to generate.
+    - **Outputs:**
+        - numpy.ndarray: An array of shape (num_steps + 1, num_paths) containing the simulated asset prices, including the initial price at t=0.
+
+**3. Core Algorithms and Logic:**
+The core algorithm implemented in this file is the Geometric Brownian Motion (GBM) process for simulating asset prices. The GBM equation used is:
+
+```
+S(t+dt) = S(t) * exp((mu - 0.5 * sigma^2) * dt + sigma * sqrt(dt) * Z)
+```
+
+where `Z` is a standard normal random variable. This equation is applied iteratively to generate asset price paths over multiple time steps.
+
+**4. Data Structures:**
+The primary data structure used is a NumPy array to store and return the simulated asset price paths. The array has a shape of `(num_steps + 1, num_paths)`, where each column represents a distinct price path, and each row represents a time step.
+
+**5. Dependencies:**
+- **Internal:** None.
+- **External:**
+    - NumPy: A fundamental Python library for scientific computing, used for efficient numerical operations and random number generation.
+
+**6. Error Handling and Logging:**
+- Error Handling: The `generate_paths` method includes a check to ensure that the `num_steps` and `num_paths` parameters are positive integers. If either is non-positive, a `ValueError` is raised with an appropriate error message.
+- Logging: The file includes `print` statements to log the initialization of the `GBMProcess` instance and the successful generation of price paths. However, no dedicated logging library is used.
+
+**7. Assumptions and Limitations (File-Specific):**
+- Assumptions:
+    - The input parameters (initial price, drift, volatility, time delta) are valid and within reasonable ranges for financial modeling purposes.
+    - The GBM process is an appropriate model for simulating asset prices in the given context.
+- Limitations:
+    - The GBM process assumes constant drift and volatility over time, which may not accurately reflect real-world asset price dynamics.
+    - The simulation does not account for potential market events, regime shifts, or other factors that could impact asset price trajectories.
+    - The file does not include functionality for calibrating or estimating the input parameters (drift, volatility) from historical data.

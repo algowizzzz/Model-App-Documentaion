@@ -1,0 +1,39 @@
+DRAFT SUBSECTION: 3.3. Data Quality Assessment (ID: data_quality)
+
+3.3. Data Quality Assessment
+
+The data quality assessment process is a critical component in ensuring the reliability and accuracy of the model's outputs. This section outlines the key steps taken to evaluate the quality of the input data used by the risk calculation model.
+
+Data Accuracy
+-------------
+The model relies on accurate risk factor data, including the name, weight, value, and category of each risk factor. To ensure the accuracy of this data, the following measures are in place:
+
+- **Data Validation**: The `_validate_factors` method in the `RiskCalculator` class checks the input risk factors for any invalid weights (outside the range of 0 to 1) or values (less than 0). Any validation errors are reported and logged for further investigation.
+- **Data Sourcing**: The risk factor data is sourced from a trusted internal database, which is subject to regular quality checks and audits by the data management team. The lineage and provenance of the data are well-documented.
+- **Data Reconciliation**: The risk factor data is periodically reconciled against other internal systems and external references to identify and resolve any discrepancies.
+
+Data Completeness
+-----------------
+The model requires a comprehensive set of risk factors to provide a thorough assessment of the overall risk profile. To ensure the completeness of the data:
+
+- **Mandatory Fields**: The `RiskFactor` class enforces the inclusion of all required fields (name, weight, value, and category) for each risk factor. Incomplete risk factor data cannot be processed by the model.
+- **Periodic Reviews**: The list of risk factors is reviewed on a quarterly basis to identify any missing or outdated information. New risk factors are added, and obsolete ones are removed as needed.
+- **Escalation Procedures**: If any gaps or omissions in the risk factor data are identified, there are established escalation procedures to notify the data owners and initiate the necessary data collection or updates.
+
+Data Appropriateness
+--------------------
+The model is designed to handle a specific set of products, portfolios, and processes, as outlined in Section 1.2 of the Hierarchical Summary. To ensure the appropriateness of the data:
+
+- **Scope Alignment**: The risk factor data is carefully curated to align with the model's scope and applicability. Risk factors that are not relevant to the model's intended use cases are excluded.
+- **Regulatory Compliance**: The risk factor data and the model's calculations are regularly reviewed to ensure compliance with relevant regulatory requirements and industry standards.
+- **Stakeholder Feedback**: The model's users and stakeholders provide feedback on the appropriateness and relevance of the risk factor data. This feedback is incorporated into the ongoing data quality assessment and model refinement processes.
+
+Handling of Missing, Erroneous, or Anomalous Data
+-------------------------------------------------
+In the event of missing, erroneous, or anomalous risk factor data, the model employs the following strategies:
+
+- **Missing Data**: If any required risk factor data is missing, the `RiskCalculator` class will not process the affected risk factors and will provide a list of validation errors. The model's outputs will reflect the incomplete data, and the users will be notified to address the data gaps.
+- **Erroneous Data**: The `_validate_factors` method in the `RiskCalculator` class checks for invalid weights and values in the risk factors. Any errors detected will be logged, and the affected risk factors will be excluded from the calculations. The model's outputs will reflect the impact of the erroneous data, and the data owners will be notified to investigate and correct the issues.
+- **Anomalous Data**: The model does not currently have any automated mechanisms to detect anomalous risk factor data. However, the periodic reviews and stakeholder feedback processes help identify any unusual or unexpected data patterns, which are then investigated and addressed accordingly.
+
+In summary, the data quality assessment process for the risk calculation model focuses on ensuring the accuracy, completeness, and appropriateness of the input risk factor data. The model employs various validation checks, data sourcing and reconciliation procedures, and escalation mechanisms to maintain high-quality data. Any issues with missing, erroneous, or anomalous data are handled by excluding the affected risk factors from the calculations and notifying the relevant stakeholders for further investigation and resolution.

@@ -1,0 +1,53 @@
+{
+  "name": "Custom Summary Template",
+  "version": "1.0",
+  "sections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "required": true,
+      "description": "High-level overview of the codebase",
+      "subsections": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "required": true
+        },
+        {
+          "id": "architecture",
+          "title": "Architecture",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "title": "Key Components",
+      "required": true,
+      "description": "Detailed description of major code components",
+      "subsections": [
+        {
+          "id": "classes",
+          "title": "Classes",
+          "required": true
+        },
+        {
+          "id": "functions",
+          "title": "Functions",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": "relationships",
+      "title": "Component Relationships",
+      "required": true,
+      "description": "How different parts of the code interact"
+    }
+  ],
+  "metadata": {
+    "author": "Documentation Agent",
+    "last_updated": "2024-03-21",
+    "description": "Template for generating structured code summaries"
+  }
+}

@@ -1,0 +1,17 @@
+DRAFT SUBSECTION: 7.4. Access Controls (ID: gov_access_control)
+
+7.4. Access Controls
+
+This section describes the controls in place to manage access to the model code, data, and supporting systems.
+
+Access to the model codebase is restricted to authorized personnel within the Model Development and Validation teams. The codebase is stored in a secure version control repository with role-based permissions. Only team members with the appropriate access rights can view, modify, or commit changes to the code. Regular audits are conducted to ensure that access privileges are up-to-date and aligned with current team responsibilities.
+
+The model data, including configuration files, training datasets, and validation data, is stored in a secure data storage system with access controls. Access to this data is granted on a need-to-know basis, with specific permissions assigned to each user or user group. Data access is logged, and periodic reviews are performed to identify and address any unauthorized access attempts.
+
+The systems and infrastructure supporting the model, such as the development environment, testing frameworks, and deployment pipelines, are also secured with access controls. Administrative access to these systems is restricted to a small number of authorized personnel within the IT and DevOps teams. Access is granted based on the principle of least privilege, and all activities are logged for audit purposes.
+
+Regular reviews of access controls are conducted to ensure that permissions are up-to-date and aligned with the evolving needs of the model development and deployment processes. Any changes to access privileges are documented and approved by the appropriate stakeholders, such as the Model Governance Committee and the Information Security team.
+
+In the event of personnel changes or suspected security incidents, access privileges are promptly revoked or suspended to mitigate the risk of unauthorized access. The model development and deployment processes include contingency plans to ensure the continued secure operation of the model in such scenarios.
+
+Overall, the access controls in place for the model codebase, data, and supporting systems are designed to protect the integrity and confidentiality of the model and its components, in alignment with the organization's information security policies and regulatory requirements.

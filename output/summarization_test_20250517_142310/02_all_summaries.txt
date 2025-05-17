@@ -1,0 +1,671 @@
+
+
+================================================================================File: README.md
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file (`README.md`) is to provide an overview and documentation for the Monte Carlo PFE Calculator for Equity TRS project.
+   - This file serves as a high-level introduction and guide to the project's structure, workflow, and components. It does not contain any executable code but rather acts as a reference for understanding the project's functionality and organization.
+
+2. **Key Components and Functionality:**
+   - The file does not define any classes, functions, or methods directly. Instead, it outlines the different modules and directories that make up the project:
+     - `config/`: Contains JSON files for trade data, market data, and simulation parameters.
+     - `data_management/`: Modules for loading and managing input data.
+     - `financial_instruments/`: Modules for defining and valuing financial instruments (e.g., Equity TRS).
+     - `pfe_calculation/`: Modules for calculating exposures and aggregating PFE.
+     - `reporting/`: Modules for writing output results.
+     - `simulation_engine/`: Modules for the Monte Carlo simulation and underlying stochastic processes (GBM).
+     - `main_pfe_runner.py`: The main script to execute the PFE calculation.
+     - `pfe_results/`: (Will be created to store output)
+
+3. **Core Algorithms and Logic:**
+   - The file describes the overall workflow and high-level steps involved in the PFE calculation process, which includes:
+     - Simulating price paths using the Geometric Brownian Motion (GBM) model.
+     - Valuing trades (Equity TRS) for each simulated price path.
+     - Calculating exposures at each time step.
+     - Computing PFE per trade by taking a specific percentile of positive exposures across simulated paths.
+     - Optionally aggregating PFE profiles across trades.
+
+4. **Data Structures:**
+   - The file does not explicitly define any internal data structures. However, it mentions that input data is stored in JSON files within the `config/` directory.
+
+5. **Dependencies:**
+   - **Internal:** The file does not specify any internal dependencies on other modules or classes within the codebase.
+   - **External:** No external libraries or packages are mentioned in this file.
+
+6. **Error Handling and Logging:**
+   - The file does not provide any information about error handling mechanisms or logging functionalities implemented in the project.
+
+7. **Assumptions and Limitations (File-Specific):**
+   - The file does not explicitly state any assumptions or limitations specific to its content. However, it is worth noting that as a README file, it provides a high-level overview and may not capture all the details and nuances of the project's implementation.
+
+File: main_pfe_runner.py
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to orchestrate and execute the entire Potential Future Exposure (PFE) calculation process for a portfolio of equity total return swaps (TRS).
+   - It serves as the main entry point and driver for the PFE calculation pipeline, coordinating various components such as data loading, simulation, valuation, PFE computation, and result reporting.
+
+2. **Key Components and Functionality:**
+   - **PFECalculationOrchestrator (Class):**
+     - **Purpose:** Manages the end-to-end PFE calculation workflow.
+     - **Key Operations:** Initializes required components, processes individual trades, aggregates PFE profiles, and writes results.
+     - **Inputs:** Configuration directory path.
+     - **Outputs:** Aggregated and individual PFE profiles written to an output directory.
+
+   - `__init__(self, config_path)`:
+     - **Purpose:** Initializes the orchestrator and its dependencies.
+     - **Key Operations:** Loads configuration data, initializes simulation engine, PFE calculator, trade aggregator, and output writer.
+     - **Inputs:** Configuration directory path.
+     - **Outputs:** None.
+
+   - `_calculate_time_parameters(self, trade_info)`:
+     - **Purpose:** Calculates time-related parameters for a given trade.
+     - **Key Operations:** Computes the total time steps and time delta based on trade maturity and time steps per year.
+     - **Inputs:** Trade information dictionary.
+     - **Outputs:** Total time steps and time delta.
+
+   - `process_single_trade(self, trade_info)`:
+     - **Purpose:** Processes a single trade by simulating, valuing, and calculating its PFE profile.
+     - **Key Operations:** Simulates asset price paths, calculates mark-to-market and exposure paths, computes PFE profile, and adds it to the aggregator.
+     - **Inputs:** Trade information dictionary.
+     - **Outputs:** None.
+
+   - `run_full_pfe_calculation(self)`:
+     - **Purpose:** Executes the complete PFE calculation process for all trades.
+     - **Key Operations:** Iterates through trades, processes each trade, aggregates PFE profiles, and writes results to an output directory.
+     - **Inputs:** None.
+     - **Outputs:** None.
+
+3. **Core Algorithms and Logic:**
+   - The core algorithm implemented in this file is the Monte Carlo simulation of asset price paths using the `MonteCarloEngine` class. It generates multiple scenarios of future asset prices, which are then used to calculate mark-to-market values, exposures, and ultimately the PFE profile for each trade.
+   - The PFE calculation itself is performed by the `PFEQuantileCalculator` class, which computes the PFE profile based on the specified quantile (e.g., 95th percentile) of the exposure distribution.
+   - The `TradeAggregator` class is responsible for aggregating individual trade PFE profiles into a portfolio-level PFE profile, using a simple summation approach in this implementation.
+
+4. **Data Structures:**
+   - The primary data structure used is a dictionary (`self.market_data_map`) that maps asset IDs to their corresponding market data objects.
+   - Trade information is represented as dictionaries (`self.trades`), containing details such as trade ID, underlying asset ID, maturity, and time steps per year.
+   - The `PFEQuantileCalculator` and `TradeAggregator` classes likely use internal data structures to store and manipulate PFE profiles and exposure paths.
+
+5. **Dependencies:**
+   - **Internal:**
+     - `data_management.loader.ConfigManager`: Responsible for loading configuration data.
+     - `simulation_engine.monte_carlo_simulator.MonteCarloEngine`: Performs Monte Carlo simulation of asset price paths.
+     - `financial_instruments.equity_trs.EquityTRS`: Represents an equity total return swap (TRS) instrument and calculates mark-to-market and exposure paths.
+     - `pfe_calculation.pfe_computer.PFEQuantileCalculator`: Computes the PFE profile from exposure paths.
+     - `pfe_calculation.exposure
+
+File: reporting/output_writer.py
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to handle the writing of Potential Future Exposure (PFE) results to output files.
+   - It plays a role in the reporting and output generation component of a broader system or model related to risk analysis or portfolio simulations.
+
+2. **Key Components and Functionality:**
+   - **Class: ResultsWriter**
+     - **Purpose:** Manages the creation of an output directory and the writing of PFE results to a JSON file.
+     - **Key Operations:**
+       - Initializes the output directory and handles directory creation.
+       - Converts NumPy arrays to lists for JSON serialization.
+       - Writes aggregated and individual PFE profiles to a JSON file.
+     - **Inputs:**
+       - `output_directory` (str): Path to the output directory.
+       - `simulation_id` (str): Identifier for the simulation run.
+       - `aggregated_pfe_profile` (np.ndarray or None): The aggregated PFE profile.
+       - `individual_pfe_profiles` (dict): Dictionary where keys are trade IDs, and values are PFE profiles (np.ndarray).
+     - **Outputs:**
+       - JSON file containing the PFE results, including the simulation ID, aggregated PFE profile, and individual trade PFE profiles.
+
+3. **Core Algorithms and Logic:**
+   - The `_prepare_data_for_json` method recursively converts NumPy arrays and nested data structures (dictionaries and lists) to Python lists, enabling JSON serialization.
+   - The `write_pfe_results` method constructs a dictionary containing the simulation ID, aggregated PFE profile, and individual trade PFE profiles, and writes it to a JSON file using the `json.dump` function.
+
+4. **Data Structures:**
+   - NumPy arrays are used to represent PFE profiles (both aggregated and individual trade profiles).
+   - A dictionary is used to store individual trade PFE profiles, where the keys are trade IDs, and the values are NumPy arrays representing the PFE profiles.
+
+5. **Dependencies:**
+   - **Internal:** None.
+   - **External:**
+     - `json`: Standard Python library for working with JSON data.
+     - `os`: Standard Python library for interacting with the operating system, used for creating directories.
+     - `numpy`: Third-party library for numerical computing, used for representing and manipulating PFE profiles as NumPy arrays.
+
+6. **Error Handling and Logging:**
+   - The file includes try-except blocks to handle specific exceptions:
+     - `OSError`: Raised when there is an error creating the output directory.
+     - `IOError`: Raised when there is an error writing the PFE results to the JSON file.
+     - `TypeError`: Raised when there is an error serializing the PFE results to JSON.
+   - The file uses `print` statements to log information about the output directory creation and successful writing of PFE results.
+
+7. **Assumptions and Limitations (File-Specific):**
+   - The file assumes that the input PFE profiles are represented as NumPy arrays or dictionaries containing NumPy arrays.
+   - The file assumes that the input `simulation_id` is a valid string identifier.
+   - The file does not handle any validation or error checking for the input PFE profiles or simulation ID.
+   - The file is limited to writing PFE results to a JSON file and does not provide functionality for other output formats or additional processing of the PFE results.
+
+File: reporting/__init__.py
+
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+    - This file appears to be an empty Python module, likely serving as a namespace package for the `reporting` package or module.
+    - Without any code content, it is difficult to determine its specific role within the broader system or model it belongs to.
+
+2. **Key Components and Functionality:**
+    - The file does not contain any classes, functions, or methods.
+
+3. **Core Algorithms and Logic:**
+    - No core algorithms or significant business logic are implemented in this file.
+
+4. **Data Structures:**
+    - No significant internal data structures are used or manipulated in this file.
+
+5. **Dependencies:**
+    - **Internal:** This file does not have any internal dependencies on other modules, classes, or functions within the codebase.
+    - **External:** This file does not import or utilize any external libraries or packages.
+
+6. **Error Handling and Logging:**
+    - No explicit error handling mechanisms or logging functionalities are implemented in this file.
+
+7. **Assumptions and Limitations (File-Specific):**
+    - As an empty file, there are no specific assumptions or limitations inherent to its logic or functionality.
+
+File: config/trades.json
+
+**SUMMARY:**
+
+1. **Overall Purpose and Role:**
+   - This file serves as a configuration file for defining trade details in a system related to financial instruments or derivatives.
+   - Its primary role is to provide a structured data source for initializing and parameterizing trades within the broader model or system it belongs to.
+
+2. **Key Components and Functionality:**
+   - The file does not contain any classes, functions, or methods. It is a JSON file representing an array of trade objects.
+   - Each trade object in the array has the following properties:
+     - **Purpose:** Represents the details of a specific trade.
+     - **Key Properties:**
+       - `trade_id`: A unique identifier for the trade.
+       - `underlying_asset_id`: The identifier of the underlying asset associated with the trade.
+       - `notional`: The notional amount or size of the trade.
+       - `initial_price_at_inception`: The initial price of the underlying asset at the time of trade inception.
+       - `maturity_in_years`: The maturity or expiration of the trade in years.
+       - `time_steps_per_year`: The number of time steps or periods per year for the trade.
+       - `trade_type`: The type of trade, either "receive_equity_return" or "pay_equity_return".
+     - **Inputs:** This file itself serves as an input data source for the model or system.
+     - **Outputs:** This file does not produce any direct outputs; it is consumed by other components of the system.
+
+3. **Core Algorithms and Logic:**
+   - This file does not implement any core algorithms or significant business logic. It is a data source for trade configurations.
+
+4. **Data Structures:**
+   - The file represents an array of trade objects, where each object is a dictionary-like structure with the properties mentioned above.
+
+5. **Dependencies:**
+   - **Internal:** This file does not have any internal dependencies within the codebase.
+   - **External:** This file does not rely on any external libraries or packages.
+
+6. **Error Handling and Logging:**
+   - This file does not contain any explicit error handling mechanisms or logging functionalities, as it is a static data source.
+
+7. **Assumptions and Limitations (File-Specific):**
+   - **Assumptions:**
+     - The trade configurations provided in this file are valid and consistent with the requirements of the broader model or system.
+     - The trade types "receive_equity_return" and "pay_equity_return" are recognized and handled appropriately by the consuming components.
+   - **Limitations:**
+     - This file does not provide any validation or error checking for the trade configurations.
+     - The trade configurations are static and may need to be updated manually if changes are required.
+
+File: config/market_data.json
+
+**SUMMARY:**
+
+1. **Overall Purpose and Role:**
+   - This file serves as a configuration file for storing market data parameters required by the broader financial modeling or trading system.
+   - Its primary role is to provide a centralized location for defining and managing the market data inputs used across various components of the system.
+
+2. **Key Components and Functionality:**
+   - The file does not contain any classes, functions, or methods. It is a JSON data file with a specific structure.
+   - The file defines two dictionaries, "EQ_A" and "EQ_B", each representing a set of market data parameters for a specific financial instrument or asset.
+   - Each dictionary contains the following key-value pairs:
+     - **Purpose:** Store market data parameters for a specific financial instrument.
+     - **Key Operations:** None (data storage only).
+     - **Inputs:** None (data is hard-coded).
+     - **Outputs:** The dictionaries themselves, containing the market data parameters.
+
+3. **Core Algorithms and Logic:**
+   - This file does not implement any algorithms or complex business logic. It serves as a static data storage file.
+
+4. **Data Structures:**
+   - The file utilizes a JSON object structure, containing two dictionaries ("EQ_A" and "EQ_B").
+   - Each dictionary represents a set of market data parameters for a specific financial instrument, with keys such as "current_price", "volatility", "risk_free_rate", and "dividend_yield".
+
+5. **Dependencies:**
+   - **Internal:** None (assuming this is a standalone configuration file).
+   - **External:** None (assuming no external libraries are required to read or parse the JSON file).
+
+6. **Error Handling and Logging:**
+   - The file does not contain any explicit error handling mechanisms or logging functionalities, as it is a static data file.
+
+7. **Assumptions and Limitations (File-Specific):**
+   - **Assumptions:**
+     - The market data parameters provided in the file are accurate and up-to-date.
+     - The structure and naming conventions of the dictionaries and their keys are consistent with the expectations of the broader system consuming this data.
+   - **Limitations:**
+     - The market data parameters are hard-coded in the file, which may require manual updates or a separate process to keep the data current.
+     - The file does not provide any mechanisms for data validation or error handling, which may need to be implemented in the consuming components of the system.
+
+File: config/simulation_params.json
+
+**SUMMARY:**
+
+1. **Overall Purpose and Role:**
+   - This file serves as a configuration file for setting up and controlling the parameters of a simulation process.
+   - Its role is to provide a centralized location for specifying key simulation settings, which are likely consumed by other components of the broader model or system.
+
+2. **Key Components and Functionality:**
+   - The file does not contain any classes, functions, or methods. It is a JSON file with key-value pairs representing configuration parameters.
+
+3. **Core Algorithms and Logic:**
+   - This file does not implement any algorithms or complex logic. It merely stores configuration values.
+
+4. **Data Structures:**
+   - The file uses a JSON object as its data structure, with the following keys and their corresponding values:
+     - `"simulation_id"`: A string representing the unique identifier for the simulation run.
+     - `"num_paths"`: An integer specifying the number of simulation paths or iterations.
+     - `"pfe_quantile"`: A float representing the quantile value for Potential Future Exposure (PFE) calculation.
+     - `"output_directory"`: A string indicating the directory path where simulation results will be stored.
+
+5. **Dependencies:**
+   - **Internal:** This file does not have any explicit internal dependencies on other modules, classes, or functions within the codebase.
+   - **External:** This file does not rely on any external libraries or packages.
+
+6. **Error Handling and Logging:**
+   - This file does not contain any explicit error handling mechanisms or logging functionalities, as it is a configuration file.
+
+7. **Assumptions and Limitations (File-Specific):**
+   - **Assumptions:**
+     - The values provided in this configuration file are valid and within the expected ranges for the simulation process.
+     - The specified `"output_directory"` path is a valid and writable location on the file system.
+   - **Limitations:**
+     - This file does not provide any validation or error checking for the provided configuration values.
+     - The configuration parameters are hard-coded in this file, which may limit flexibility and require code changes for different simulation scenarios.
+
+File: data_management/__init__.py
+
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+   - This file appears to be an empty Python module, likely serving as a namespace package for the `data_management` package or module.
+   - Its primary purpose is to act as a container or entry point for other submodules or subpackages within the `data_management` package.
+
+2. **Key Components and Functionality:**
+   - This file does not contain any classes, functions, or methods.
+
+3. **Core Algorithms and Logic:**
+   - No core algorithms or significant business logic are implemented in this file.
+
+4. **Data Structures:**
+   - No significant data structures are used or manipulated in this file.
+
+5. **Dependencies:**
+   - **Internal:** This file does not have any internal dependencies on other modules, classes, or functions within the codebase.
+   - **External:** This file does not import or utilize any external libraries or packages.
+
+6. **Error Handling and Logging:**
+   - This file does not contain any explicit error handling mechanisms or logging functionalities.
+
+7. **Assumptions and Limitations (File-Specific):**
+   - As this file is empty, there are no specific assumptions or limitations inherent to its logic.
+
+File: data_management/loader.py
+
+**1. Overall Purpose and Role:**
+The primary purpose of this file is to provide a centralized mechanism for loading and managing configuration data required by the broader system or model. It serves as a data loader and configuration manager, responsible for reading and parsing JSON files containing essential data such as trades, market data, and simulation parameters.
+
+**2. Key Components and Functionality:**
+
+**Function: load_json_data(file_path: str)**
+- **Purpose:** Load and parse data from a JSON file.
+- **Key Operations:** Opens the specified file, reads its contents, and deserializes the JSON data into a Python object.
+- **Inputs:** file_path (str) - The path to the JSON file to be loaded.
+- **Outputs:** The deserialized Python object containing the data from the JSON file.
+
+**Function: get_trades(config_dir: str = "config")**
+- **Purpose:** Load trade data from a JSON file.
+- **Key Operations:** Constructs the file path for the trades.json file within the specified config directory and calls load_json_data to load the data.
+- **Inputs:** config_dir (str) - The directory path where the trades.json file is located (default: "config").
+- **Outputs:** The deserialized Python object containing the trade data.
+
+**Function: get_market_data(config_dir: str = "config")**
+- **Purpose:** Load market data from a JSON file.
+- **Key Operations:** Constructs the file path for the market_data.json file within the specified config directory and calls load_json_data to load the data.
+- **Inputs:** config_dir (str) - The directory path where the market_data.json file is located (default: "config").
+- **Outputs:** The deserialized Python object containing the market data.
+
+**Function: get_simulation_params(config_dir: str = "config")**
+- **Purpose:** Load simulation parameters from a JSON file.
+- **Key Operations:** Constructs the file path for the simulation_params.json file within the specified config directory and calls load_json_data to load the data.
+- **Inputs:** config_dir (str) - The directory path where the simulation_params.json file is located (default: "config").
+- **Outputs:** The deserialized Python object containing the simulation parameters.
+
+**Class: ConfigManager**
+- **Purpose:** Manage the loading and storage of configuration data from multiple JSON files.
+- **Key Operations:** Initializes the ConfigManager with a specified config directory, provides a load_all method to load all configuration data (trades, market data, and simulation parameters) from their respective JSON files.
+- **Inputs:** config_dir (str) - The directory path where the configuration JSON files are located (default: "config").
+- **Outputs:** An instance of the ConfigManager class with the loaded configuration data stored as attributes.
+
+**3. Core Algorithms and Logic:**
+The core logic of this file revolves around reading and parsing JSON data from files. The load_json_data function implements error handling for common exceptions that may occur during file operations and JSON deserialization, such as FileNotFoundError, JSONDecodeError, and other unexpected exceptions.
+
+**4. Data Structures:**
+The file primarily deals with Python dictionaries and lists, which are the typical data structures resulting from deserializing JSON data.
+
+**5. Dependencies:**
+
+**Internal Dependencies:**
+- None
+
+**External Dependencies:**
+- json: A built-in Python module for working with JSON data.
+- os: A built-in Python module for interacting with the operating system, used here for file path operations.
+
+**6. Error Handling and Logging:**
+The load_json_data function implements explicit error handling using try-except blocks for the following exceptions:
+- FileNotFoundError: Raised when the specified JSON file is not found.
+- JSONDecodeError: Raised when the JSON data in the file cannot be deserialized correctly.
+- Exception: A catch-all block for any other unexpected exceptions that may occur during file loading.
+
+The file does not implement any explicit logging functionality.
+
+**7. Assumptions and Limitations (File-Specific):**
+- The file assumes that the JSON files containing the configuration data (trades, market data, and simulation parameters) are located in the specified config directory or a subdirectory relative to the script's execution path.
+- The file assumes that the JSON data in the files is well-formed and can be deseri
+
+File: simulation_engine/monte_carlo_simulator.py
+
+**1. Overall Purpose and Role:**
+The primary purpose of this file is to provide a Monte Carlo simulation engine for various assets. It serves as a component within a broader system or model for simulating asset price paths, potentially for applications such as risk analysis or option pricing. The file's specific role is to orchestrate and execute Monte Carlo simulations for a given asset, based on provided market data and simulation parameters.
+
+**2. Key Components and Functionality:**
+
+**Class: MonteCarloEngine**
+- **Purpose:** Orchestrate Monte Carlo simulations for various assets.
+- **Key Operations:**
+    - Initialize the simulation engine with the desired number of paths.
+    - Run simulations for a specific asset by generating price paths using the Geometric Brownian Motion (GBM) process.
+- **Inputs:**
+    - `simulation_params` (dict): A dictionary containing simulation parameters, such as the number of paths.
+    - `asset_market_data` (dict): A dictionary containing market data for the asset, including current price, risk-free rate, dividend yield, and volatility.
+    - `total_time_steps` (int): The total number of time steps for the simulation.
+    - `time_delta` (float): The time increment per step.
+- **Outputs:**
+    - `price_paths` (numpy.ndarray): An array containing the simulated price paths for the asset.
+
+**Function: run_asset_simulation(asset_market_data, total_time_steps, time_delta)**
+- **Purpose:** Simulate price paths for a single asset using the GBM process.
+- **Key Operations:**
+    - Calculate the drift parameter based on the risk-free rate and dividend yield.
+    - Initialize a GBMProcess object with the provided market data and time parameters.
+    - Generate price paths using the GBMProcess object.
+- **Inputs:** Same as the inputs for the MonteCarloEngine class.
+- **Outputs:** Same as the outputs for the MonteCarloEngine class.
+
+**3. Core Algorithms and Logic:**
+The core algorithm implemented in this file is the Geometric Brownian Motion (GBM) process for simulating asset price paths. The GBM process is a widely used model in finance for modeling the behavior of asset prices under the assumption of log-normal distribution. The file utilizes the GBMProcess class (likely defined in a separate module) to generate price paths based on the provided market data and simulation parameters.
+
+**4. Data Structures:**
+The primary data structures used in this file are dictionaries for representing simulation parameters (`simulation_params`) and asset market data (`asset_market_data`). Additionally, the file likely utilizes NumPy arrays for storing and manipulating the simulated price paths.
+
+**5. Dependencies:**
+
+**Internal Dependencies:**
+- `GBMProcess` class (from `.gbm_model` module)
+
+**External Dependencies:**
+- NumPy (likely used for array operations and random number generation)
+
+**6. Error Handling and Logging:**
+The provided code does not include explicit error handling mechanisms or logging functionalities. However, it is common practice to implement error handling and logging in production-level code to ensure robustness and facilitate debugging.
+
+**7. Assumptions and Limitations (File-Specific):**
+- The file assumes that the input market data and simulation parameters are provided in the correct format and within valid ranges.
+- The file assumes that the GBMProcess class is correctly implemented and generates valid price paths.
+- The file does not include any validation or error handling for the input data or simulation parameters.
+- The file is limited to simulating price paths for a single asset at a time. Simulating multiple assets simultaneously may require additional logic or modifications.
+
+File: simulation_engine/__init__.py
+
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+    - This file appears to be an empty Python module, likely serving as the entry point or initialization file for the `simulation_engine` package or module.
+    - Its primary purpose is to facilitate the organization and importation of the various components and functionality related to the simulation engine within the broader codebase.
+
+2. **Key Components and Functionality:**
+    - This file does not contain any classes, functions, or methods.
+
+3. **Core Algorithms and Logic:**
+    - No core algorithms or significant business logic are implemented in this file.
+
+4. **Data Structures:**
+    - No significant internal data structures are used or manipulated in this file.
+
+5. **Dependencies:**
+    - **Internal:** This file does not have any explicit internal dependencies on other modules, classes, or functions within the codebase.
+    - **External:** This file does not import or utilize any external libraries or packages.
+
+6. **Error Handling and Logging:**
+    - This file does not contain any explicit error handling mechanisms or logging functionalities.
+
+7. **Assumptions and Limitations (File-Specific):**
+    - As an empty initialization file, there are no specific assumptions or limitations inherent to its logic or functionality.
+
+File: simulation_engine/gbm_model.py
+
+**1. Overall Purpose and Role:**
+This file contains an implementation of the Geometric Brownian Motion (GBM) process for simulating asset prices over time. Its primary purpose is to provide a reusable component for generating multiple paths of asset price trajectories based on the GBM stochastic process. This file is likely a part of a larger financial modeling or risk management system, serving as a simulation engine component for asset price evolution under the GBM assumption.
+
+**2. Key Components and Functionality:**
+- **Class: GBMProcess**
+    - **Purpose:** Encapsulates the GBM process for simulating asset prices.
+    - **Key Operations:**
+        - Initializes the GBM process with given parameters (initial price, drift, volatility, time delta).
+        - Generates multiple asset price paths over specified time steps using the GBM equation.
+    - **Inputs:**
+        - Initial asset price (S0), drift rate (mu), volatility (sigma), and time delta (dt).
+        - Number of time steps and number of paths to generate.
+    - **Outputs:**
+        - A NumPy array containing the simulated asset prices for each path and time step.
+
+**3. Core Algorithms and Logic:**
+The core algorithm implemented in this file is the Geometric Brownian Motion (GBM) process, which is a widely used stochastic process for modeling asset prices in finance. The GBM equation is used to simulate the evolution of asset prices over time, incorporating the effects of drift (expected return) and volatility (randomness). The file generates multiple paths by iteratively applying the GBM equation with random shocks drawn from a standard normal distribution.
+
+**4. Data Structures:**
+The primary data structure used is a NumPy array to store and return the simulated asset price paths. The array has a shape of (num_steps + 1, num_paths), where each column represents a distinct price path, and each row represents a time step (including the initial price at t=0).
+
+**5. Dependencies:**
+- **Internal:** None (assuming this is a standalone file).
+- **External:**
+    - NumPy: Used for efficient numerical operations and random number generation.
+
+**6. Error Handling and Logging:**
+- Error Handling: The `generate_paths` method includes a check for invalid inputs (non-positive number of steps or paths), raising a `ValueError` in such cases.
+- Logging: The file uses `print` statements to log the initialization parameters and the number of paths/steps generated. However, it does not employ a dedicated logging library.
+
+**7. Assumptions and Limitations (File-Specific):**
+- Assumptions:
+    - The asset prices follow a Geometric Brownian Motion process.
+    - The drift rate, volatility, and time delta are constant over the simulation period.
+- Limitations:
+    - The GBM process assumes continuous-time trading and log-normal price distributions, which may not accurately reflect real-world market dynamics.
+    - The file does not include functionality for incorporating additional factors (e.g., jumps, stochastic volatility) or advanced features like path-dependent options.
+
+File: financial_instruments/equity_trs.py
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to represent and value an Equity Total Return Swap (TRS) financial instrument.
+   - Its specific role is to provide a self-contained class for modeling and calculating the mark-to-market (MtM) and exposure values of an Equity TRS contract, which is likely a component of a larger risk management or pricing system.
+
+2. **Key Components and Functionality:**
+   - **Class: EquityTRS**
+     - **Purpose:** Encapsulates the logic and calculations for an Equity Total Return Swap.
+     - **Key Operations:**
+       - Initializes the TRS contract with trade details (notional, initial price, trade type).
+       - Calculates the MtM values for a given set of underlying price paths.
+       - Calculates the exposure values from the MtM values.
+     - **Inputs:**
+       - Trade details dictionary (notional, initial price, trade type).
+       - Array of current underlying price paths (time steps, num paths).
+     - **Outputs:**
+       - MtM values array (time steps, num paths).
+       - Exposure values array (time steps, num paths).
+
+3. **Core Algorithms and Logic:**
+   - The MtM calculation is based on the change in the underlying equity price relative to the initial price at inception, multiplied by the notional amount. The calculation is adjusted for the trade type (receiver or payer).
+   - The exposure calculation simply takes the maximum of 0 and the MtM values, assuming positive MtM means the counterparty owes the TRS holder.
+
+4. **Data Structures:**
+   - The primary data structure is a NumPy array representing the underlying price paths, with shape (num_time_steps + 1, num_paths).
+   - The trade details are stored in a Python dictionary.
+
+5. **Dependencies:**
+   - **Internal:** None.
+   - **External:** NumPy library for numerical operations and array manipulation.
+
+6. **Error Handling and Logging:**
+   - The `__init__` method raises a `ValueError` if the `trade_type` is invalid.
+   - The file uses `print` statements to log the creation of the TRS instrument and the MtM calculation process, which could be replaced with a proper logging library in a production environment.
+
+7. **Assumptions and Limitations (File-Specific):**
+   - The file assumes that the funding leg (fixed or floating rate payments) of the TRS is netted against the equity leg at each valuation date, focusing solely on the change in equity value.
+   - The exposure calculation assumes that positive MtM values indicate the counterparty owes the TRS holder, which may not hold true in all cases or under different assumptions.
+   - The file does not handle any potential exceptions or edge cases beyond the `trade_type` validation, such as handling zero or negative initial prices.
+
+File: financial_instruments/__init__.py
+
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+   - This file appears to be an empty Python module, likely serving as a namespace package or an entry point for the `financial_instruments` package or module.
+   - Without any code content, it is difficult to determine its specific role within the broader model or system it belongs to.
+
+2. **Key Components and Functionality:**
+   - The file does not contain any classes, functions, or methods.
+
+3. **Core Algorithms and Logic:**
+   - No core algorithms or significant business logic are implemented in this file.
+
+4. **Data Structures:**
+   - No significant internal data structures are used or manipulated in this file.
+
+5. **Dependencies:**
+   - **Internal:** No internal dependencies on other modules, classes, or functions are present.
+   - **External:** No external libraries or packages are utilized in this file.
+
+6. **Error Handling and Logging:**
+   - No explicit error handling mechanisms or logging functionalities are implemented in this file.
+
+7. **Assumptions and Limitations (File-Specific):**
+   - As an empty file, there are no specific assumptions or limitations inherent to its logic.
+
+File: pfe_calculation/pfe_computer.py
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to provide a class for calculating the Potential Future Exposure (PFE) at a given quantile from a set of exposure paths.
+   - This file appears to be a standalone component responsible for a specific calculation step within a broader risk management or counterparty credit risk modeling system.
+
+2. **Key Components and Functionality:**
+   - **PFEQuantileCalculator** (class)
+     - **Purpose:** Calculate the PFE profile (a vector of PFE values over time) at a specified quantile from exposure paths.
+     - **Key Operations:**
+       - Initializes with a quantile value between 0 and 1.
+       - Calculates the PFE at each time step as the specified quantile of positive exposures across paths.
+       - Ensures PFE values are non-negative.
+     - **Inputs:** A 2D NumPy array representing exposure paths, with shape (num_time_steps + 1, num_paths).
+     - **Outputs:** A 1D NumPy array representing the PFE profile over time, with shape (num_time_steps + 1,).
+
+3. **Core Algorithms and Logic:**
+   - The core algorithm used is the calculation of the quantile of positive exposures across paths at each time step using NumPy's `np.percentile` function.
+   - The quantile is specified as a percentage (e.g., 95 for the 95th percentile) based on the provided quantile value.
+   - The calculation is performed along the axis representing paths (axis=1) to obtain the quantile for each time step.
+   - A maximum operation with 0 is applied to ensure non-negative PFE values.
+
+4. **Data Structures:**
+   - The primary data structure used is a 2D NumPy array to represent exposure paths, with rows representing time steps and columns representing individual paths.
+
+5. **Dependencies:**
+   - **External:** NumPy (for array operations and quantile calculation).
+
+6. **Error Handling and Logging:**
+   - A `ValueError` is raised if the input `exposure_paths` array is not 2D.
+   - A `ValueError` is raised if the provided quantile is not between 0 and 1 (exclusive).
+   - Print statements are used for logging initialization and successful PFE profile calculation.
+
+7. **Assumptions and Limitations (File-Specific):**
+   - The code assumes that the input `exposure_paths` array has a specific shape, with the first row representing exposures at time 0 (usually 0).
+   - The code assumes that exposures are non-negative values, as it applies a maximum operation with 0 to ensure non-negative PFE values.
+   - The code does not handle any potential exceptions or errors beyond the specified `ValueError` cases.
+   - The code does not provide any functionality for generating or simulating exposure paths; it assumes these are provided as input.
+
+File: pfe_calculation/exposure_aggregator.py
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file is to provide functionality for aggregating Potential Future Exposure (PFE) profiles across multiple trades.
+   - Within the broader model or system, this file likely serves as a component responsible for consolidating and combining PFE calculations from individual trades into an aggregated portfolio-level view.
+
+2. **Key Components and Functionality:**
+   - **TradeAggregator** (class)
+     - **Purpose:** Manages the aggregation of PFE profiles across multiple trades.
+     - **Key Operations:**
+       - Stores individual trade PFE profiles in a dictionary.
+       - Provides a method to retrieve all stored individual PFE profiles.
+       - Implements a simple summation method to aggregate PFE profiles across trades.
+     - **Inputs:** Trade ID (string) and corresponding PFE profile (NumPy array).
+     - **Outputs:** Dictionary of individual trade PFE profiles, aggregated PFE profile (NumPy array).
+
+3. **Core Algorithms and Logic:**
+   - The `calculate_simple_sum_pfe` method implements a basic aggregation approach by summing the PFE profiles of all trades. It checks for consistent profile lengths and performs a NumPy array summation across trades.
+   - The method acknowledges that this simple summation is generally not how portfolio PFE is calculated due to netting effects, but serves as a basic example.
+
+4. **Data Structures:**
+   - The primary data structure used is a Python dictionary (`self.all_trade_pfe_profiles`) to store individual trade PFE profiles, with trade IDs as keys and NumPy arrays as values.
+   - NumPy arrays are used to represent PFE profiles.
+
+5. **Dependencies:**
+   - **Internal:** None.
+   - **External:** NumPy library for numerical operations and array manipulation.
+
+6. **Error Handling and Logging:**
+   - The `add_trade_pfe_profile` method prints a warning if attempting to overwrite an existing PFE profile for a trade ID.
+   - The `calculate_simple_sum_pfe` method raises a `ValueError` if the PFE profiles have different lengths, preventing incorrect summation.
+   - The file uses standard `print` statements for logging and status updates.
+
+7. **Assumptions and Limitations (File-Specific):**
+   - The file assumes that PFE profiles are represented as NumPy arrays of consistent length across trades.
+   - The simple summation approach implemented in `calculate_simple_sum_pfe` is acknowledged as a limitation, as it does not account for netting effects in portfolio PFE calculation.
+   - The file does not implement more complex aggregation methods, such as netting or advanced portfolio PFE calculations, as stated in the class docstring.
+
+File: pfe_calculation/__init__.py
+
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+    - This file appears to be an empty Python module, as it does not contain any code.
+    - Without any code or comments, it is difficult to determine the specific purpose or role of this file within a broader model or system.
+
+2. **Key Components and Functionality:**
+    - There are no classes, functions, or methods defined in this file.
+
+3. **Core Algorithms and Logic:**
+    - No algorithms or significant business logic are implemented in this file.
+
+4. **Data Structures:**
+    - No data structures are used or manipulated in this file.
+
+5. **Dependencies:**
+    - **Internal:** This file does not have any internal dependencies on other modules, classes, or functions within the codebase.
+    - **External:** This file does not import or utilize any external libraries or packages.
+
+6. **Error Handling and Logging:**
+    - There are no explicit error handling mechanisms or logging functionalities implemented in this file.
+
+7. **Assumptions and Limitations (File-Specific):**
+    - As this file is empty, there are no specific assumptions or limitations that can be identified based on the provided code.

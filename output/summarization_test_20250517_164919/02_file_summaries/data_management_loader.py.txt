@@ -1,0 +1,59 @@
+SUMMARY:
+
+1. **Overall Purpose and Role:**
+   - The primary purpose of this file, `data_management/loader.py`, is to provide a set of functions and a configuration management class for loading and managing various data files required by the broader model or system.
+   - This file plays a crucial role in the data management and initialization components of the system, ensuring that necessary input data is properly loaded and made available to other parts of the application.
+
+2. **Key Components and Functionality:**
+
+   - **load_json_data(file_path: str):**
+     - Purpose: Loads data from a JSON file located at the specified `file_path`.
+     - Key Operations: Checks if the file exists, reads the contents, and parses the JSON data.
+     - Inputs: The file path of the JSON file to be loaded.
+     - Outputs: The parsed data from the JSON file.
+
+   - **get_trades(config_dir: str = "config"):**
+     - Purpose: Loads the trade data from the "trades.json" file located in the specified `config_dir`.
+     - Key Operations: Calls `load_json_data()` with the appropriate file path.
+     - Inputs: The directory where the configuration files are located (default is "config").
+     - Outputs: The trade data loaded from the JSON file.
+
+   - **get_market_data(config_dir: str = "config"):**
+     - Purpose: Loads the market data from the "market_data.json" file located in the specified `config_dir`.
+     - Key Operations: Calls `load_json_data()` with the appropriate file path.
+     - Inputs: The directory where the configuration files are located (default is "config").
+     - Outputs: The market data loaded from the JSON file.
+
+   - **get_simulation_params(config_dir: str = "config"):**
+     - Purpose: Loads the simulation parameters from the "simulation_params.json" file located in the specified `config_dir`.
+     - Key Operations: Calls `load_json_data()` with the appropriate file path.
+     - Inputs: The directory where the configuration files are located (default is "config").
+     - Outputs: The simulation parameters loaded from the JSON file.
+
+   - **ConfigManager:**
+     - Purpose: Provides a simple class to manage the loading and storage of all configuration data required by the system.
+     - Key Operations:
+       - Initializes with the specified `config_dir` (default is "config").
+       - Provides a `load_all()` method that calls the respective `get_*()` functions to load all configuration data.
+     - Inputs: The directory where the configuration files are located (default is "config").
+     - Outputs: The loaded configuration data (trades, market data, and simulation parameters) stored as class attributes.
+
+3. **Core Algorithms and Logic (File-Specific):**
+   - The file does not contain any complex algorithms or significant business logic beyond the basic file loading and parsing operations. The core functionality is centered around the `load_json_data()` function and the `ConfigManager` class, which handle the loading and management of the required configuration data.
+
+4. **Data Structures:**
+   - The file primarily works with Python dictionaries to represent the loaded JSON data, as returned by the `json.load()` function.
+   - The `ConfigManager` class maintains references to the loaded configuration data as class attributes (e.g., `self.trades`, `self.market_data`, `self.sim_params`).
+
+5. **Dependencies:**
+   - **Internal:** This file does not have any direct internal dependencies within the codebase.
+   - **External:** The file utilizes the following external libraries:
+     - `json`: For parsing and loading JSON data.
+     - `os`: For handling file paths and checking file existence.
+
+6. **Error Handling and Logging:**
+   - The `load_json_data()` function includes explicit error handling for common exceptions, such as `FileNotFoundError`, `json.JSONDecodeError`, and generic `Exception`.
+   - The function logs relevant error messages to provide context and aid in troubleshooting.
+   - The `ConfigManager` class does not include any additional error handling or logging beyond what is provided by the `load_json_data()` function.
+
+7. **Assumptions and Limitations (Strictly File-Specific):**
