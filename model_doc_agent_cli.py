@@ -335,29 +335,38 @@ def main():
             env=env
         )
         
-        if not summarization_success:
-            print("Failed to complete the documentation summarization process.")
+        # Step 2: Get the latest output directory even if summarization had an error
+        print("\n--- Step 2: Locating Generated Documentation ---")
+        output_dirs = [d for d in os.listdir("output") if d.startswith("summarization_test_")]
+        if not output_dirs:
+            print("Could not find any summarization output directories.")
             return 1
         
-        # Step 2: Get the latest output directory if not already set by monitoring
-        if not current_output_dir:
-            print("\n--- Step 2: Locating Generated Documentation ---")
-            output_dirs = [d for d in os.listdir("output") if d.startswith("summarization_test_")]
-            if not output_dirs:
-                print("Could not find any summarization output directories.")
+        latest_output_dir = max(output_dirs)
+        latest_output_path = os.path.join("output", latest_output_dir)
+        print(f"Found latest output directory: {latest_output_path}")
+        
+        # Set the current_output_dir for the monitor
+        current_output_dir = latest_output_path
+        
+        # Start monitoring for the found directory
+        start_monitoring_output()
+        
+        # Check if we have the necessary JSON file for final documentation
+        full_doc_json_path = os.path.join(latest_output_path, "05_full_documentation.json")
+        
+        if not os.path.exists(full_doc_json_path):
+            if not summarization_success:
+                print("Summarization process failed and did not generate the required JSON file.")
+                print("Cannot proceed to final documentation generation.")
                 return 1
-            
-            latest_output_dir = max(output_dirs)
-            latest_output_path = os.path.join("output", latest_output_dir)
-            print(f"Found latest output directory: {latest_output_path}")
-            
-            # Set the current_output_dir for the monitor
-            current_output_dir = latest_output_path
-            
-            # Start monitoring for the found directory
-            start_monitoring_output()
-        else:
-            latest_output_path = current_output_dir
+            else:
+                print("Full documentation JSON file not found, but summarization reported success.")
+                print("This is unexpected. Cannot proceed to final documentation generation.")
+                return 1
+        elif not summarization_success:
+            print("WARNING: Summarization process reported errors, but found the necessary JSON file.")
+            print("Attempting to proceed with final documentation generation anyway...")
         
         # Step 3: Run generate_final_documentation.py
         print("\n--- Step 3: Generating Final Markdown Documentation ---")
@@ -377,9 +386,12 @@ def main():
         # Step 4: Show completion message with output location
         final_doc_path = os.path.join(latest_output_path, "final_documentation.md")
         
+        if not os.path.exists(final_doc_path):
+            print(f"ERROR: Final documentation file not found at {final_doc_path}")
+            return 1
+            
         # Display the final documentation
-        if os.path.exists(final_doc_path):
-            display_file_content(final_doc_path, "final_documentation.md")
+        display_file_content(final_doc_path, "final_documentation.md")
         
         print("\n--- Documentation Generation Complete! ---")
         print(f"Your documentation has been generated at: {final_doc_path}")
@@ -397,6 +409,11 @@ def main():
             print("Please open it manually using your preferred editor.")
         
         return 0
+    except Exception as e:
+        print(f"ERROR: Unhandled exception in main execution: {str(e)}")
+        import traceback
+        print(traceback.format_exc())
+        return 1
     finally:
         # Ensure monitoring is stopped when the main function exits
         stop_monitoring_output()
