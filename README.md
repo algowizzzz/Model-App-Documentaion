@@ -1,0 +1,100 @@
+# Model Documentation Agent
+
+## Description
+
+The Model Documentation Agent is a Python-based tool designed to automatically generate comprehensive documentation for codebases, particularly those related to financial models. It leverages Large Language Models (LLMs) like Anthropic's Claude to understand and summarize code, then structures this information into a standardized documentation format.
+
+## Features
+
+- **Automated Code Summarization**: Utilizes LLMs to analyze Python code and generate summaries at file and hierarchical levels.
+- **Structured Documentation Generation**: Creates detailed model documentation based on a customizable JSON template (e.g., BMO standard).
+- **Section-wise Content Generation**: Drafts individual sections and subsections of the documentation by prompting the LLM with relevant code summaries and outline information.
+- **Real-time Monitoring**: Provides a live view of the documentation generation process, showing files as they are created and sections as they are drafted.
+- **CLI Interface**: Easy-to-use command-line interface to select codebases and initiate documentation generation.
+- **Error Handling & Retry**: Robust error handling with automatic retries for API calls and graceful recovery from failures.
+- **Configuration Management**: Uses a `config.py` for managing LLM settings and other parameters.
+- **Sensitive Data Cleaning**: Includes a script to remove API keys and other sensitive information before committing to version control.
+
+## Prerequisites
+
+- Python 3.9 or higher
+- Pip (Python package installer)
+- Git (for version control)
+- An Anthropic API Key (for Claude LLM access)
+
+## Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/algowizzzz/Model-App-Documentaion.git
+    cd Model-App-Documentaion
+    ```
+
+2.  **Set up a virtual environment (recommended):**
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
+
+3.  **Install dependencies:**
+    The project's dependencies are not explicitly listed in a `requirements.txt` in the provided context. Assuming they are managed within the virtual environments of sub-projects or need to be manually identified. For core functionality, you'll likely need libraries like `anthropic`, `langchain`, `python-dotenv`, etc.
+    ```bash
+    # Example: pip install anthropic langchain python-dotenv
+    # Please identify and install all necessary packages.
+    ```
+
+4.  **Set up your Anthropic API Key:**
+    Create a `.env` file in the project root directory and add your API key:
+    ```
+    ANTHROPIC_API_KEY=YOUR_API_KEY_HERE
+    ```
+    The `clean_sensitive_info.py` script will replace this with a placeholder if run, and `.gitignore` is configured to prevent committing the actual key.
+
+## Usage
+
+Run the main CLI script to start the documentation generation process:
+
+```bash
+python3 model_doc_agent_cli.py
+```
+
+The script will:
+1.  Prompt you to select a codebase from the `Data/` directory.
+2.  Ask if you want to see individual file summaries in the monitor.
+3.  Execute the `test_end_to_end_summarization.py` script, which performs:
+    - Codebase analysis and file summarization.
+    - Hierarchical summary generation.
+    - Documentation outline creation.
+    - Drafting of each section and subsection.
+4.  The monitor will display progress, including generated file contents and section drafts.
+5.  Finally, it runs `generate_final_documentation.py` to assemble the complete Markdown document.
+6.  The final documentation will be saved in a timestamped subdirectory within the `output/` folder (e.g., `output/summarization_test_YYYYMMDD_HHMMSS/final_documentation.md`).
+7.  The script will attempt to open the generated Markdown file automatically.
+
+## Configuration
+
+-   **LLM Configuration**: Managed in `src/utils/config.py` and `src/utils/llm_factory.py`. You can adjust the default model (e.g., Claude Haiku, Sonnet, Opus), temperature, and other LLM parameters.
+-   **Documentation Template**: The structure of the final document is defined by a JSON template, typically `templates/bmo_model_documentation_template.json`.
+-   **Codebase Location**: Codebases to be documented should be placed in the `Data/` directory.
+
+## Troubleshooting
+
+-   **`NameError: name 'CODEBASE_DIR' is not defined`**: This was an issue in `test_end_to_end_summarization.py` due to an erroneous extra function call. It has been fixed.
+-   **API Authentication Errors**: Ensure your `ANTHROPIC_API_KEY` is correctly set in the `.env` file and that you have active API access with sufficient credits/limits.
+-   **Python Executable Issues**: The script attempts to find the correct Python executable (system vs. venv). If you encounter issues, ensure your `VENV_DIR` path in `model_doc_agent_cli.py` is correct or manually specify the Python path.
+-   **Missing `05_full_documentation.json`**: If this file is not generated by `test_end_to_end_summarization.py`, the final Markdown document cannot be created. The improved error handling should provide logs in the `output/<run_timestamp>/error_log.txt` if issues occur.
+-   **GitHub Push Protection**: If GitHub blocks pushes due to detected secrets, use the `python3 clean_sensitive_info.py` script and ensure your `.gitignore` is up-to-date. You might need to clean your Git history if secrets were committed previously.
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+1.  Fork the repository.
+2.  Create a new branch (`git checkout -b feature/your-feature-name`).
+3.  Make your changes.
+4.  Commit your changes (`git commit -m 'Add some feature'`).
+5.  Push to the branch (`git push origin feature/your-feature-name`).
+6.  Open a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the `LICENSE` file for details (assuming MIT, please create a `LICENSE` file if one doesn't exist). 
