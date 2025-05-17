@@ -1,0 +1,47 @@
+{
+  "title": "Risk Model Documentation Template",
+  "version": "1.0",
+  "description": "Standard template for documenting risk models at BMO",
+  "sections": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "description": "Overview of the model, its purpose, and key objectives."
+    },
+    {
+      "id": "methodology",
+      "title": "Methodology",
+      "description": "Technical details of the mathematical approach, algorithms, and implementation strategy."
+    },
+    {
+      "id": "data_sources",
+      "title": "Data Sources and Preprocessing",
+      "description": "Description of input data, its sources, quality checks, and preprocessing steps."
+    },
+    {
+      "id": "model_structure",
+      "title": "Model Structure",
+      "description": "Detailed architecture of the model components and their interactions."
+    },
+    {
+      "id": "validation",
+      "title": "Model Validation",
+      "description": "Approaches to validate model outputs, testing strategies, and performance metrics."
+    },
+    {
+      "id": "risk_assessment",
+      "title": "Risk Assessment",
+      "description": "Evaluation of model risks, limitations, and error scenarios."
+    },
+    {
+      "id": "implementation",
+      "title": "Implementation Details",
+      "description": "Technical specifications for deployment, runtime requirements, and integration."
+    },
+    {
+      "id": "appendix",
+      "title": "Appendix",
+      "description": "Additional technical materials, code references, and supplementary information."
+    }
+  ]
+} 

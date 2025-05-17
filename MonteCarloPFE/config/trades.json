@@ -1,0 +1,20 @@
+[
+  {
+    "trade_id": "TRS001",
+    "underlying_asset_id": "EQ_A",
+    "notional": 1000000,
+    "initial_price_at_inception": 100.0,
+    "maturity_in_years": 1,
+    "time_steps_per_year": 12,
+    "trade_type": "receive_equity_return"
+  },
+  {
+    "trade_id": "TRS002",
+    "underlying_asset_id": "EQ_B",
+    "notional": 500000,
+    "initial_price_at_inception": 75.0,
+    "maturity_in_years": 2,
+    "time_steps_per_year": 12,
+    "trade_type": "pay_equity_return"
+  }
+] 

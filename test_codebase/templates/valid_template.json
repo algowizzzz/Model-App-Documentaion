@@ -1,0 +1,24 @@
+{
+    "template_version": "1.0",
+    "sections": {
+        "overview": {
+            "title": "Overview",
+            "required": true,
+            "subsections": ["purpose", "architecture"]
+        },
+        "implementation": {
+            "title": "Implementation Details",
+            "required": true,
+            "subsections": ["components", "algorithms"]
+        },
+        "testing": {
+            "title": "Testing",
+            "required": false,
+            "subsections": ["unit_tests", "integration_tests"]
+        }
+    },
+    "metadata": {
+        "author": "Test Author",
+        "last_updated": "2024-03-20"
+    }
+} 

@@ -1,0 +1,19 @@
+{
+    "template_version": "1.0",
+    "sections": {
+        "overview": {
+            "title": "Overview",
+            "required": true,
+            "subsections": ["purpose", "architecture"]
+        }, // Invalid JSON comment
+        "implementation": {
+            "title": "Implementation Details"
+            "required": true, // Missing comma
+            "subsections": ["components", "algorithms"]
+        }
+    },
+    "metadata": {
+        "author": "Test Author",
+        "last_updated": "2024-03-20"
+    }
+} 

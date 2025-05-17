@@ -1,0 +1,1 @@
+# Placeholder for creating the directory. The actual agent code will be in base_agent.py 

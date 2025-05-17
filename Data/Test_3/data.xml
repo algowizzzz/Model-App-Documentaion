@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <person>
+        <name>John Doe</name>
+        <age>30</age>
+        <skills>
+            <skill>Python</skill>
+            <skill>JavaScript</skill>
+        </skills>
+    </person>
+    <metadata>
+        <created>2024-03-20</created>
+        <version>1.0</version>
+    </metadata>
+</root> 

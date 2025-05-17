@@ -1,0 +1,14 @@
+{
+    "name": "test-project",
+    "version": "1.0.0",
+    "description": "A test JSON file",
+    "settings": {
+        "debug": true,
+        "maxRetries": 3,
+        "timeout": 1000
+    },
+    "dependencies": [
+        "module1",
+        "module2"
+    ]
+} 

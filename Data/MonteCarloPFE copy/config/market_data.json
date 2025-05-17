@@ -1,0 +1,14 @@
+{
+  "EQ_A": {
+    "current_price": 100.0,
+    "volatility": 0.20,
+    "risk_free_rate": 0.05,
+    "dividend_yield": 0.01
+  },
+  "EQ_B": {
+    "current_price": 75.0,
+    "volatility": 0.25,
+    "risk_free_rate": 0.05,
+    "dividend_yield": 0.015
+  }
+} 

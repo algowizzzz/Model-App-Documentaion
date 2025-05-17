@@ -1,0 +1,6 @@
+{
+  "simulation_id": "PFE_Run_Complex_Test_001",
+  "num_paths": 100,
+  "pfe_quantile": 0.95,
+  "output_directory": "pfe_results"
+} 

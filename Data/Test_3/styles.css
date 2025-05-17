@@ -1,0 +1,19 @@
+/* Test CSS file */
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.header {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Test media query */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+} 
