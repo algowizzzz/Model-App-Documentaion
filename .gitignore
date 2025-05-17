@@ -32,6 +32,20 @@ output/
 # Data directories with embedded git repos
 Data/control/
 
+# Environment variables and secrets
+.env
+*.pem
+*.key
+*_key
+*_secret
+secrets/
+
+# Sensitive files that may contain API keys
+*credentials*
+*api_key*
+*secret*
+*token*
+
 # OS specific
 .DS_Store
 .DS_Store?
